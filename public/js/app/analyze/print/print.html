@@ -1,0 +1,276 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>学情分析</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li>
+                <span>错题打印</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet portlet-form " style="margin-bottom:0 !important;">
+                    <div class="md-radio-inline">
+                        <div class="md-radio " ng-repeat="c in vm.classlist" style="margin:0 0 10px; width:25%">
+                            <input type="radio" id="rdo{{$index}}" name="rdoclass" value="1" class="md-radiobtn" ng-click="selectClass(c)" ng-checked="$index==0" />
+                            <label for="rdo{{$index}}">
+                                <span class="inc"></span>
+                                <span class="check"></span>
+                                <span class="boxext"></span>
+                            </label>
+                            <span ng-bind="c.gradename"></span>
+                            <span ng-bind="c.classname"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane ">
+                    <ul class="class-navtabs clearfix" style="margin-bottom: 0;list-style: none;">
+                        <li class="class-navtabsact" ng-class='{"class-navtabsact":vm.tabindex==0}'>
+                            <a data-toggle="tab" aria-expanded="true" ng-click="selectTab(0)">按学生打印</a>
+                        </li>
+                        <li class="" ng-class='{"class-navtabsact":vm.tabindex==1}'>
+                            <a data-toggle="tab" aria-expanded="false" ng-click="selectTab(1)">按错误率打印</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" style="position:relative;">
+                        <div class="tab-pane " ng-class="{'active':vm.tabindex==0}">
+                            <div class="portlet-body">
+                                <div class="clearfix">
+                                    <div ng-click="openBox($event)" class="cursor font-six float-l" style="padding:15px 0 30px;">选择章节 <img src="img/icon-d.png" alt="Alternate Text" /></div>
+                                    <div ng-click="openStudent($event)" class="cursor font-six float-l" style="padding:15px 0 30px 20px;">选择学生 <img src="img/icon-d.png" alt="Alternate Text" /></div>
+                                    <!--<div class="float-r">
+                                        <button class="btn-circle  class-btnblue" style="width:90px;" ng-click="print('printWrong')">打印</button>
+                                    </div>-->
+                                    <div class="float-r">
+                                        <button class="btn-circle  class-btnblue" ng-click="downloadStudentWrong()">下载打印</button>
+                                    </div>
+
+                                    <div class="block-graytemplate clearfix student-choose" ng-if="vm.boxsttudent">
+                                        <div ng-if="vm.upidlist.length>0" class="clearfix">
+                                            <div class="student-list cursor" ng-repeat="u in vm.upidlist" ng-click="multiStudent(u)">
+                                                <div class="learn-table-headpt poto-list">
+                                                    <img src="img/a2.jpg" ng-src="{{u.headpic}}">
+                                                    <div class="check-xin fa fa-heart font-red " ng-if="u.isguanzhu==1"></div>
+                                                    <div class="" ng-class="{'studen-act':u.checked}"></div>
+                                                </div>
+                                                <span class="font-minsong" ng-bind="u.realname">珠珠</span>
+                                            </div>
+                                        </div>
+                                        <div class="" style="width: 100%; margin-top: 30px;">
+                                            <button class="btn-circle btn-blue" ng-click="selectStudents()" style="margin-left:390px;">确定</button>
+                                        </div>
+                                        <div no-data datalist="vm.upidlist">
+                                            <div class="kby ">
+                                            	<div class="dy-blank"></div>
+                                                <p>学生还没有错题～</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="block-graytemplate" ng-if="vm.boxstatus" style="position:relative;">
+                                    <div class="class-check  scrollable-bar">
+                                        <div class="tree-container tree-demo">
+                                            <div class="clearfix" ng-repeat="b in vm.classwrongquestionbook">
+                                                <span class="float-l " ng-class="{'tree-jian':!b.expanded,'tree-jia':b.expanded}" ng-click="expandBook(b)"></span>
+                                                <div class="float-l tree-container">
+                                                    <div class="clearfix">
+                                                        <i class="float-l " ng-class="{'ticon-default':!b.checked,'ticon-checked':b.checked}" ng-click="checkedBook(b)"></i>
+                                                        <div class="float-l tree-note"><sanp ng-bind="b.bookname">第一级</sanp></div>
+                                                    </div>
+                                                    <div class="tree-container1" ng-repeat="c in b.chapterlist" ng-if="!b.expanded">
+                                                        <div class="clearfix mtb20 ">
+                                                            <span class="float-l " ng-class="{'tree-jian':!c.expanded,'tree-jia':c.expanded}" ng-click="expandChapter(c)"></span>
+                                                            <i class="float-l " ng-class="{'ticon-default':!c.checked,'ticon-checked':c.checked}" ng-click="checkedChapter(b,c)"></i>
+                                                            <div class="float-l tree-note"><sanp ng-bind="c.chaptername">第二级</sanp></div>
+                                                        </div>
+                                                        <div class="clearfix" style="margin-left:46px;margin-bottom:20px;" ng-repeat="w in c.wronglhlist" ng-if="!c.expanded">
+                                                            <div class="float-l tree-note-check"></div>
+                                                            <i class="float-l " ng-class="{'ticon-default':!w.checked,'ticon-checked':w.checked}" ng-click="checkedLearn(b,c,w)"></i>
+                                                            <div class="float-l tree-note"><sanp ng-bind="w.lhname">第三级</sanp></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="tree-btn"><button class="btn-circle btn-blue" ng-click="getClassChapterIdUserList()">确定</button></div>
+                                </div>
+
+                                <div class="clearfix" style="margin-bottom:30px;" ng-if="vm.selectedArray.length>0">
+                                    <div class="student-list clearfix cursor" ng-repeat="s in vm.selectedArray" ng-click="checkStudentWrong(s)">
+                                        <div class="learn-table-headpt poto-list">
+                                            <img src="/img/a2.jpg" ng-src="{{s.headpic}}">
+                                            <div class="check-xin fa fa-heart font-red " ng-if="s.isguanzhu==1"></div>
+                                            <div class="" ng-class="{'studen-act':s.pchecked}"></div>
+                                        </div>
+                                        <span class="font-minsong" ng-bind="s.realname">珠珠</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane " ng-class="{'active':vm.tabindex==1}">
+                            <div class="portlet-body">
+                                <div class="clearfix">
+                                    <div ng-click="openBox($event)" class="cursor font-six float-l" style="padding:15px 0 30px;">选择章节 <img src="img/icon-d.png" alt="Alternate Text" /></div>
+                                    <!--<div class="float-r" >
+                                        <button class="btn-circle  class-btnblue" style="width:90px;" ng-click="print('printWrong')">打印</button>
+                                    </div>-->
+                                    <div class="float-r">
+                                        <button class="btn-circle  class-btnblue" ng-click="downloadClassWrong()">下载打印</button>
+                                    </div>
+                                 </div>
+                                <div class="block-graytemplate" ng-if="vm.boxstatus" style="position:relative;">
+                                    <div class="class-check  scrollable-bar" ng-if="vm.boxstatus">
+                                        <div class="tree-container tree-demo">
+                                            <div class="clearfix" ng-repeat="b in vm.classwrongquestionbook">
+                                                <span class="float-l " ng-class="{'tree-jian':!b.expanded,'tree-jia':b.expanded}" ng-click="expandBook(b)"></span>
+                                                <div class="float-l tree-container">
+                                                    <div class="clearfix">
+                                                        <i class="float-l " ng-class="{'ticon-default':!b.checked,'ticon-checked':b.checked}" ng-click="checkedBook(b)"></i>
+                                                        <div class="float-l tree-note"><sanp ng-bind="b.bookname">第一级</sanp></div>
+                                                    </div>
+                                                    <div class="tree-container1" ng-repeat="c in b.chapterlist" ng-if="!b.expanded">
+                                                        <div class="clearfix mtb20 ">
+                                                            <span class="float-l " ng-class="{'tree-jian':!c.expanded,'tree-jia':c.expanded}" ng-click="expandChapter(c)"></span>
+                                                            <i class="float-l " ng-class="{'ticon-default':!c.checked,'ticon-checked':c.checked}" ng-click="checkedChapter(b,c)"></i>
+                                                            <div class="float-l tree-note"><sanp ng-bind="c.chaptername">第二级</sanp></div>
+                                                        </div>
+                                                        <div class="clearfix" style="margin-left:46px;margin-bottom:20px;" ng-repeat="w in c.wronglhlist" ng-if="!c.expanded">
+                                                            <div class="float-l tree-note-check"></div>
+                                                            <i class="float-l " ng-class="{'ticon-default':!w.checked,'ticon-checked':w.checked}" ng-click="checkedLearn(b,c,w)"></i>
+                                                            <div class="float-l tree-note"><sanp ng-bind="w.lhname">第三级</sanp></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tree-btn"><button class="btn-circle btn-blue" ng-click="selectHFWrong()">确定</button></div>
+                                </div>
+                             </div>
+                    </div>
+
+                        <div ng-if="vm.wrongquestionlist.length>0" id="printWrong">
+                            <div ng-repeat="w in vm.wrongquestionlist">
+                                <h5 class="note-class-title" ng-bind="w.chaptername">四则运算-课时1加、减法的意义和各部分间的关系</h5>
+                                <div class="portlet  block-shadowgray mb10" ng-repeat="q in w.qitems" style="padding-bottom: 30px;">
+                                    <div class="portlet-body">
+                                        <div class="note-wrong-title clearfix">
+                                            <div class="float-l">第<span class="font-blue">{{$index+1}}</span>题</div>
+                                            <div class="float-l">类型：<span ng-bind="getQuestionType(q.questiontype)"></span></div>
+                                            <div class="float-l">难度：<span ng-bind="q.difficultylevel"></span></div>
+                                            <div class="float-l">错误率：<span ng-bind="q.rate"></span>%</div>
+                                            <div class="float-l">班级错误人数：<span ng-bind="q.wrongnum"></span></div>
+                                            <!--<div class="float-l">处理情况：<span ng-bind="getWrongQuesStatus(q.wrongquesstatus)">未处理</span></div>-->
+                                        </div>
+                                        <div class="green-timubox"><h4 class="green-timu">题干</h4></div>
+                                        <div class="note-wrong-stem">
+                                            <p custom-mathjax content="q.title" ng-bind-html="toHtml(q.title)"></p>
+                                        </div>
+
+                                        <div class="green-timubox" ng-if="vm.wrongtype==1"><h4 class="green-timu">做错学生</h4></div>
+
+                                        <div class="clearfix" style="padding-left:53px;" ng-if="vm.wrongtype==1">
+                                            <div class="student-list clearfix cursor" ng-repeat="s in q.studentlist" ng-click="selectWrongStudent(s,q.studentlist)">
+                                                <div class="learn-table-headpt poto-list">
+                                                    <img src="/img/a2.jpg" ng-src="{{s.headpicstudent}}">
+                                                    <div class="check-xin fa fa-heart font-red " ng-if="s.isguanzhu==1"></div>
+                                                    <div class="" ng-class="{'studen-act':s.checked}"></div>
+                                                </div>
+                                                <span class="font-minsong" ng-bind="s.studentname"></span>
+                                            </div>
+
+                                        </div>
+                                        <div class="green-timubox"><h4 class="green-timu">学生答案</h4></div>
+                                        <div class="note-ywrong" ng-if="s.checked" ng-repeat="s in q.studentlist">
+                                            <div class="note-ywrong-img">
+                                                <p>
+                                                    <div style="overflow: hidden;border:1px solid #ccc;display: none;">
+                                                        <div class="viewer" pc-img imgoptions="s"></div>
+
+                                                        <div class="note-ywrong-imgup">答案看不全，可拖动哦！<div class="triangle"></div></div>
+                                                    </div>
+                                                </p>
+
+                                            </div>
+                                            <div style="margin-top:25px;">
+                                                <span class="font14">老师评语</span>
+                                                <span ng-if="s.recordingcomment">
+                                                    <span class="cont-comment" ng-click="playSingleVoice(s)">
+                                                        <img src="http://img1.yqj.cn/w/images/yqj/yqj-img/voice.png" ng-if="!s.played">
+                                                        <img src="http://img1.yqj.cn/w/images/yqj/yqj-img/voice.gif" ng-if="s.played">
+                                                    </span>
+                                                    <span><span ng-bind="s.voicetime">14</span>"</span>
+                                                </span>
+                                                <p class="homework-comm" ng-if="s.singlecommentlist.length>0">
+                                                    <span ng-repeat="c in s.singlecommentlist" class="i-marginr">#<span ng-bind="c.cidname">注意审题哦</span>#</span>
+
+                                                </p>
+                                                <div clss="note-ywrong-redo " ng-if="s.wrongquestionimglist.length>0">
+                                                    <span class="font14">重做结果</span>
+                                                    <div class="row clearfix" style="padding-top:20px;">
+                                                        <div class="col-md-6 col-sm-6" ng-repeat="w in s.wrongquestionimglist">
+                                                            <p class="font14">(<span ng-bind="w.wrongquessubmittime*1000|date:'yyyy-MM-dd HH:mm:ss'">2016-10-04 12:45:38</span> 第<span>{{$index+1}}</span>次重做)</p>
+                                                            <img src="http://img1.yqj.cn/w/images/yqj/yqj-img/wrong-note.png" alt="Alternate Text" height="144" ng-src="{{w.wrongquesimgurl}}" />
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="green-timubox" style="margin-bottom:0;"><h4 class="green-timu">错题精讲</h4></div>
+                                        <div class="note-wrong-video clearfix" ng-if="false">
+                                            <div class="video-lits">
+                                                <ul class="clearfix">
+                                                    <li class="ng-scope" ng-repeat="v in q.videoresource">
+                                                        <div class="video-errorrate"><span ng-bind="v.errorrate | number:0">71</span>％错误率</div>
+                                                        <div class="video-box">
+                                                            <img width="195" height="106">
+                                                            <div class="video-play wrong-video-on"></div>
+                                                        </div>
+                                                        <div class="font14" style="padding-top:6px;">的对抗开打了扣分哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</div>
+                                                        <div class="video-margintop">
+                                                            <span class="video-catalog " ng-bind="v.resourcename">错题精讲栏目中已有老师讲解这道错题快去看看吧</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div no-data datalist="vm.wrongquestionlist">
+                            <div class="font-six font-gray" style="width: 390px; margin: auto; display: none; text-align:center;">
+                                <img src="/img/blank/ct-blank.png" height="258" width="370" alt="" />
+                                学生还没有错题～
+                            </div>
+                        </div>
+                      
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/libs/jquery-migrate-1.1.0.js"></script>
+<script src="/js/libs/jquery.jqprint.js"></script>
+<script type="text/javascript">
+    setMinheight();
+
+</script>

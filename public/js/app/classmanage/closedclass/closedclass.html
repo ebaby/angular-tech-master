@@ -1,0 +1,75 @@
+<div class="container-top body-margin block-template content-left" style="padding:0; min-height: 600px;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>班级管理</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li>
+                <span>已关闭班级</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+
+        <!--<div class="topic" ng-hide="hide"  ng-if="vm.classlist.length>0">
+            <div class="col-md-11">告诉学生班群号！学生依据班群号加入相应班级。</div>
+            <div class="col-md-1" style="text-align:right;" ng-click="hide = true"><i class="fa fa-close font-sixsize cursor"></i></div>
+        </div>-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet" ng-if="vm.classlist&&vm.classlist.length>0">
+                    <div class="portlet-body">
+                        <div class="tab-content">
+                            
+                            <div class="sethome-record block-graytemplate clearfix homewlist-w" style="height:160px;" ng-repeat="c in vm.classlist" >
+                                <div class="float-l closeclass-title">
+                                    <img src="http://img1.yqj.cn/w/images/ys-pc/3.2/a3.jpg" alt="Alternate Text" ng-src="{{c.classpic}}" />
+                                </div>
+                                <div class="float-l search-content closeclass-list1" style="width:35%;margin-top:10px">
+                                   <p class="search-title class-xx">
+                                       <span ng-bind="c.gradename"></span>
+                                       <span ng-bind="c.classname"></span>
+                                       <!--<span class="font-blue cursor" style="font-size:14px;"  ng-click="closeClassDialog(c,1)" >取消关闭</span>-->
+                                   </p>
+                                    <p class="class-ls class-qh">班级群号：<span ng-bind="c.classid" class="font-red"></span></p>
+                                    <p class="class-ls">数学老师：<span ng-bind="c.teacher.realname"></span></p>
+                                    <p class="class-ls">所在学校：<span ng-bind="c.schoolname"></span> </p>
+                                    <p class="class-ls">关闭时间：<span ng-bind="c.classclosetime*1000 | date:'yyyy/MM/dd  HH:mm:ss'">2013-09-12 10：20</span></p>
+                                </div>
+                                <div class="float-l closeclass-list">
+                                    <p ng-bind="c.student.length">50</p>
+                                    <p >学生人数</p>
+                                </div>
+                                <div class="float-l closeclass-list">
+                                    <p  ng-bind="c.tchwnum">500</p>
+                                    <p >布置次数</p>
+                                </div>
+                                <div class="float-l closeclass-list">
+                                    <p  ng-bind="c.correcthwnum">1100</p>
+                                    <p>批改份数</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div no-data datalist="vm.classlist">
+                    <div class="kby " style="display: none;">
+                    	<div class="gyxs-blank"></div>
+                        <p>您没有已关闭班级~</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight()
+</script>

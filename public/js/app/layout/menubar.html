@@ -1,0 +1,68 @@
+<div scroll-load gotop-id="gotop"></div>
+<div id="gotop" class="fixed-tu"></div>
+<div class="fixed-tu1 zhiCustomBtn" id="customer"  onclick="showMQ()"></div>
+<div class="fixed-code" ng-mouseenter="show = true" ng-mouseleave="show = false"></div>
+<div class="fixed-wx" ng-show="show"><img src="//img1.yqj.cn/w/images/ys-pc/wx.jpg" width="96" height="96"></div>
+<div class="fixed-help" ui-sref="app.help">帮助</div>
+<div class="fixed-gl" ui-sref="app.strategy">攻略</div>
+<div class="fixed-study"><a href="/static/ljzyb.html" target="_blank" style="text-decoration:none;color:#fff;">学习平台</a></div>
+
+<script type="text/javascript">
+//  function showMQ() {
+//      $(".picBox").show();
+//      $(".picBox").css("position", "fixed");
+//      $("#iframegensee").height($(window).height() - 62);
+//  }
+	//智齿客服
+	 //初始化智齿咨询组件实例
+     try{
+        var zhiManager = (getzhiSDKInstance());
+        var tchid = 0,token = 0;
+         zhiManager.set('customBtn', 'true'); 
+         zhiManager.set('color','09aeb0'); //按钮颜色 API示例，格式为 0-9 a-f 之间的六位有效字符 不用加#
+              //再调用load方法
+         zhiManager.on("load", function () {
+             zhiManager.initBtnDOM();
+         });
+         
+     }catch(e){
+     	console.log(e);
+     }
+      
+	function showMQ() {
+		if (window.localStorage.getItem("tch_token")) {
+			token = window.localStorage.getItem("tch_token");
+			$.ajax({
+              type: 'POST',
+              url: globalConfig.apiPath + "Account/User/ATeacher/TInfo/GetInfo",
+              data: {Token: token},
+              success: function (result) {
+                  if (result.Code == 0) {
+					 tchid = result.Data.TeacherID;
+					 setZhiManager();
+                  }else{
+					alert(result.Msg);
+					return;
+                  }
+              },
+              error: function (xhr, type) {
+              }
+    		})  			
+		}else{
+			setZhiManager();
+		}
+
+	}
+	
+	function setZhiManager(){
+//		console.log(token,tchid);
+		zhiManager.set('userinfo', { //设置用户信息
+         	partnerId: token,   //用户token
+         	params: '{"用户编号":' + tchid + ',"用户类型":"2","来源":"易师PC"}'   //自定义用户信息字段
+    	});		
+    	
+	}
+	
+	
+    $('.fixed-study').children('a').attr('href', window.globalConfig.domain + 'resource/YS/ljzyb.html');
+</script>

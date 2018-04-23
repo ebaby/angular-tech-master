@@ -1,0 +1,122 @@
+
+<div class="portlet light" style="padding-top: 0;">
+    <div class="portlet-body form">
+        <div class="tab-content">
+            <ul class="class-navtabs clearfix">
+                <li class="class-navtabsact" ng-class='{"class-navtabsact":vm.tabindex==0}'>
+                    <a data-toggle="tab" aria-expanded="true" ng-click="selectTab(0)">获得记录</a>
+                </li>
+                <li ng-class='{"class-navtabsact":vm.tabindex==1}'>
+                    <a data-toggle="tab" aria-expanded="false" ng-click="selectTab(1)">积分兑换</a>
+                </li>
+                <li ng-class='{"class-navtabsact":vm.tabindex==2}'>
+                    <a data-toggle="tab" aria-expanded="false" ng-click="selectTab(2)">兑换记录</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane " ng-class="{'active':vm.tabindex==0}">
+                    <!--<div class="portlet-body">-->
+                    <!-- <div class="portlet-title">
+                        <div class="caption">
+                            <span class="caption-subject  sbold">积分累计（<span class="font-b"><span ng-bind="vm.integralsorce"></span>分</span>）</span>
+                        </div>
+                        <div class="actions">
+                            <div class="btn-group">
+                                <a class="btn  btn-outline btn-default filter-cancel btn-circle btn-sm" href="javascript:void(null);" ng-click="creditDialog()" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <i class="fa fa-question-circle font-b icon-size"></i>查看积分规则
+                                </a>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="portlet-body form">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_15_1">
+                                <table class="table  table-hover">
+                                    <tbody>
+                                        <tr ng-repeat="c in vm.integralhistroy" ng-class="{'even-line':$index%2==0}">
+                                            <td align="center" valign="middle" width="20%" ng-bind="c.actionoper" height="40" class="textlist">注册易师 </td>
+                                            <td align="center" valign="middle" width="40%" class="blue-list"><!--<span ng-bind="c.changetype==0?'-':'+'"></span>--><span ng-bind="c.score">100</span>分</td>
+                                            <td align="center" valign="middle" width="25%" ng-bind="c.time*1000 | date:'yyyy/MM/dd  HH:mm:ss'">2016-5-11 10:40</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align: right; margin-right: 50px;">
+                        <div set-pagination page-options="hdlistOptions" class="pagination"></div>
+                    </div>
+                </div>
+                <!--</div>-->
+
+                <div class="tab-pane " ng-class="{'active':vm.tabindex==1}">
+                    <div class="portlet-body">
+                        <div class="tab-pane active">
+                            <table class="table height-table">
+                                <tbody>
+                                    <tr ng-repeat="c in vm.productlist">
+                                        <td align="left" valign="middle" width="20%">
+                                            <div class="Pictures-map">
+                                                <img src="img/cup.png" ng-src="{{c.pic}}" alt="Alternate Text" />
+                                            </div>
+                                        </td>
+                                        <td align="center" valign="middle" ng-bind="c.productname">注册易师 </td>
+                                        <td align="center" valign="middle" class="font-red" width="30%"><span>-</span><span ng-bind="c.point">100</span>分</td>
+                                        <td align="right" valign="middle" width="15%">
+                                            <button type="button" class="btn-circle  class-btnblue" ng-click="buyDialog(c)">立即兑换</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="text-align: right; margin-right: 50px;">
+                            <div set-pagination page-options="splistOptions" class="pagination"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane " ng-class="{'active':vm.tabindex==2}">
+                    <div class="portlet-body" ng-if="vm.convertproductlist.length>0">
+                        <div class="tab-pane active">
+                            <table class="table  height-table">
+                                <tbody>
+                                    <tr ng-repeat="c in vm.convertproductlist">
+                                        <td align="left" valign="middle" width="20%">
+                                            <!--<img src="{{c.pic}}" />-->
+                                            <div class="Pictures-map">
+                                                <img src="img/cup.png" alt="Alternate Text" />
+                                            </div>
+                                        </td>
+                                        <td align="center" valign="middle" width="20%" ng-bind="c.productname">注册易师 </td>
+                                        <td align="center" valign="middle" class="font-red" width="30%"><span>-</span><span ng-bind="c.point">100</span>分</td>
+                                        <td align="right" valign="middle" width="25%"><span>兑换时间：</span><span ng-bind="c.converttime*1000 | date:'yyyy/MM/dd  HH:mm:ss'"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="text-align: right; margin-right: 50px;">
+                            <div set-pagination page-options="jllistOptions" class="pagination"></div>
+                        </div>
+                    </div>
+                    <div no-data datalist="vm.convertproductlist">
+                        <div class="kby ">
+                        	<div class="jf-blank"></div>
+                            	<p>还没有兑换记录~</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <!--<div style="width:390px; margin: 100px auto; display:none">
+                    <img src="img/blank/jf-blank.jpg" alt="" />
+                    还没有班级学情分析~
+                </div>-->
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight();
+</script>

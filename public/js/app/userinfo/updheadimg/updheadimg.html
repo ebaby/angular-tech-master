@@ -1,0 +1,99 @@
+﻿<style>
+    .cropArea {
+        background: #E4E4E4;
+        margin: auto;
+        overflow: hidden;
+    }
+
+        .cropArea.big {
+            width: 800px;
+            height: 600px;
+        }
+
+        .cropArea.medium {
+            width: 500px;
+            height: 350px;
+        }
+
+        .cropArea.small {
+            width: 300px;
+            height: 200px;
+        }
+</style>
+<div class="portlet">
+
+    <div class="portlet-body form">
+        <form class="form-horizontal">
+            <div class="form-wizard">
+
+                <!--<div upload-img img-options="imgOptions" style="height: 500px; margin-left: 20px" ></div>-->
+                <!--<iframe src="/webapi/uppic" id="main_iframe" marginheight="0" marginwidth="0" frameborder="0" style="overflow-x : hidden;overflow-y : hidden;height:600px;" width="100%" height="100%" name="main_iframe"></iframe>-->
+
+
+                <!--<div class="headimg" style=" ">
+                    <img src="images/zbk-03.png" ng-src="{{teacherinfo.headpic}}" id="imgurl" />
+                </div>
+                <button class="btn-circle  btn-blue " ng-click="uploadImgDialog()" style="margin-left:100px;margin-right:10px;"> 选择文件</button>
+                <button class="btn-circle  class-btnblue" style="width:106px; box-sizing:border-box;" ng-click="saveBaseInfo()"> 上传</button>-->
+
+
+                <div class="hd-container">
+                    <div class="imageBox">
+                        <img-crop image="imageDataURI" result-image="resImageDataURI" change-on-fly="changeOnFly" area-type="square" area-min-size="selMinSize"
+                                  result-image-format="image/png" result-image-quality="resImgQuality" result-image-size="resImgSize" on-change="onChange($dataURI)" on-load-begin="onLoadBegin()"
+                                  on-load-done="onLoadDone()" on-load-error="onLoadError()" class="ng-isolate-scope"></img-crop>
+                    </div>
+                    <div class="action">
+                        <!-- <input type="file" id="file" style=" width: 200px">-->
+                        <div class="new-contentarea tc">
+                            <!--<a href="javascript:void(0)" class="upload-img">
+                                <label for="upload-file">选择图片</label>
+                            </a>-->
+                            <button class="btn-circle  btn-blue cursor" for="upload-file" style="margin-right:10px;"> 选择图片</button>
+                            <input type="file" class="" name="upload-file" id="upload-file" onchange="angular.element(this).scope().handleFileSelect(event)" />
+                        </div>
+                        <button class="btn-circle  class-btnblue" style="width:106px; box-sizing:border-box;" ng-click="uploadImage()"> 上传</button>
+                        <!--<input type="button" id="btnCrop" class="Btnsty_peyton" value="裁切">
+                        <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+">
+                        <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-">-->
+                    </div>
+                    <div class="cropped">
+                        <img ng-src="{{resImageDataURI}}" />
+                    </div>
+                </div>
+
+
+                
+                
+                <!--<div class="cropArea medium" >
+                    <img-crop image="imageDataURI"
+                              result-image="resImageDataURI"
+                              change-on-fly="changeOnFly"
+                              area-type="{{type}}"
+                              area-min-size="selMinSize"
+                              result-image-format="{{resImgFormat}}"
+                              result-image-quality="resImgQuality"
+                              result-image-size="resImgSize"
+                              on-change="onChange($dataURI)"
+                              on-load-begin="onLoadBegin()"
+                              on-load-done="onLoadDone()"
+                              on-load-error="onLoadError()"></img-crop>
+                </div>
+                <div style="text-align:center">
+                    <h3>Result</h3>
+                    <div>
+                        <img ng-src="{{resImageDataURI}}" />
+                    </div>
+                </div>
+                <input type="file" id="fileInput" onchange="angular.element(this).scope().uploadImage(event)" style="display:none;">
+                <button class="btn-circle  btn-blue " onclick="$('#fileInput').click()" style="margin-left:100px;margin-right:10px;"> 选择文件</button>
+                <button class="btn-circle  class-btnblue" style="width:106px; box-sizing:border-box;" ng-click="saveBaseInfo()"> 上传</button>-->
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

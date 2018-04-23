@@ -1,0 +1,73 @@
+
+<div class="dialog-head">添加教辅</div>
+<!--<div class="dialog-teachoose">
+    <form class="for-horizontal">
+        <div class="form-body">
+            <div class="form-group ">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12 " style="text-align:right;padding:0px;">
+                    选择学科：
+                </label>
+                <div class="col-md-2 col-sm-2 col-xs-6" style="padding: 0">
+                    <div class="margin-bottom-10">
+                        <select class="bs-select form-control bs-select-hidden" ng-model="vm.subjectinfo" ng-options="s.subjectname for s in vm.subjectItem" ng-change="getJCBbDialog()">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-2 col-xs-6" style="text-align:right;padding:0px;">
+                    选择年级：
+                </label>
+                <div class="col-md-2 col-sm-2 col-xs-6" style="padding:0">
+                    <div class="margin-bottom-10">
+                        <select class="bs-select form-control bs-select-hidden" ng-model="vm.gradeinfo" ng-options="g.gradename for  g in vm.gradeItem" ng-change="getJCBbDialog()">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-2 col-xs-6" style="text-align:right;padding:0px;">
+                    选择版本：
+                </label>
+                <div class="col-md-2 col-sm-2 col-xs-6" style="padding:0">
+                    <div class="margin-bottom-10" style="margin-right:15px;">
+                        <select class="bs-select form-control bs-select-hidden" ng-model="vm.bookinfo" ng-options="v.versionname for v in vm.bookItem" ng-change="searchClassBook()">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>-->
+<div class="portlet-body caption " style="height:500px;overflow:auto;background:#fff;margin-left:0px;margin-top:0px;">
+
+    <div class="setting-list" ng-if="vm.wrongqconcisebook.length>0">
+        <ul class="clearfix">
+            <li ng-repeat="b in vm.wrongqconcisebook" ng-click="selectSearchBook(b)">
+                <div class="pl block-graytemplate">
+                    <div class="stting-ing">
+                        <img ng-src="{{b.coverpicurl}}">
+                    </div>
+                    <div class="stting-wz1"><span ng-bind="b.coursename">小学教材全练</span></div>
+                    <div class="stting-wz"><span ng-bind="b.versionname">人教实验A版</span>（<span ng-bind="b.njjdname">下</span>） </div>
+                    <!-- 选中状态 -->
+                    <div class="teach-okon" ng-show="b.checked">
+                        <img src="img/index/win.png" alt="" />
+                    </div>
+                </div>
+                <!--<div class="stting-sc" style="display:none; "></div>-->
+            </li>
+        </ul>
+    </div>
+    <div no-data datalist="vm.searchBookItem">
+        <div class="kby xqfx-blank" style="display: none;">
+
+        </div>
+    </div>
+</div>
+<!--<div class="dialog-foot">
+    <button type="button" class="btn-circle btn-blue" ng-click="addBookDialog()">加入书架</button>
+</div>-->

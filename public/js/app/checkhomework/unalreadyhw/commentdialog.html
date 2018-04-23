@@ -1,0 +1,96 @@
+<div class="dialog-head">单题评语</div>
+<div class="page-content" style="padding-top:6px;margin-bottom:0px;min-height:300px;overflow-y:auto;min-width:800px;">
+    <div class="portlet-body" style="border:1px solid #e5e5e5;">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="nav tab-left">
+                    <li class="" ng-class="{'active':$index==0}" style="width:200px;" ng-repeat="cv in vm.cclassidlist">
+                        <a ng-click="getHomeWorkQuestionCommonList(cv)">
+                            <img ng-if="cv.cclassid==5" src="/img/icon-wh.png" alt="" class="icon-marginr" />
+                            <img ng-if="cv.cclassid==9" src="/img/icon-dt.png" alt="" class="icon-marginr" />
+                            <img ng-if="cv.cclassid==8" src="/img/icon-gn.png" alt="" class="icon-marginr" />
+                            <img ng-if="cv.cclassid==3" src="/img/icon-z.png" alt="" class="icon-marginr" />
+                            <img ng-if="cv.cclassid==4" src="/img/icon-xx.png" alt="" class="icon-marginr" />
+                            <img ng-if="cv.cclassid==6" src="/img/icon-js.png" alt="" class="icon-marginr" />
+                            <img ng-if="cv.cclassid==10" src="/img/icon-one.png" alt="" class="icon-marginr" />
+                            <img ng-if="cv.cclassid==12" src="/img/icon-xj.png" alt="" class="icon-marginr" />
+                            <img ng-if="cv.cclassid==11" src="/img/icon-kb.png" alt="" class="icon-marginr" />
+                            {{cv.cclassname}}<span ng-if="cv.num>0">({{cv.num}})</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-8" style="margin-top:10px;padding:0; margin-left:30px;">
+                <div class="col-md-6 col-sm-6 col-xs-6 comment-list" ng-repeat="vci in vm.cidlist">
+                    <div class="clearfix" ng-if="!vci.checked" ng-click="selectCommont(vci,true)">
+                        <div class="float-l">
+                            <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 style="width: 16px; height: 16px; margin-top: -5px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                            <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                        bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                        bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                        eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                        MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                        dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                        dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                        IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                        ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                        cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                        RD0ieG1wLmlpZDo5QjNDMjA2NDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                        bnRJRD0ieG1wLmRpZDo5QjNDMjA2NTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                        ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNUUyMzM4NjExRTY5QzNG
+                                                        QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNUUzMzM4NjExRTY5
+                                                        QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                        ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BY6V2wAAAHtJREFUeNpiXLVqFRsDA0M3EMcAsRADYfAe
+                                                        iBcDcSkTkOgCYjUg1gFiRiKwNlR9EwuQiIVqfM5AHACpSwLiK0xQpxKrEdkAISYGCsCo5pGj+R0Q
+                                                        S5KoTwKkjwmaQ+ZABYgBMkA8F6QHpLkMiO8A8TUg/k8EvgRVXwsQYACfEB5gLshgigAAAABJRU5E
+                                                        rkJggg==">
+                                                    </image>
+                                                   </svg>
+                        </div>
+
+                        <div ng-bind="vci.ctitle" class="clearfix float-l text-omit" title="{{vci.ctitle}}" style="margin-left:3px;">
+
+                        </div>
+                    </div>
+                    <div class="clearfix" ng-if="vci.checked" ng-click="selectCommont(vci,false)">
+                        <div class="float-l">
+                            <svg version="1.1" id="Svg1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 style="width: 16px; height: 16px; margin-top: -5px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                            <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                    bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                    bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                    eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                    MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                    dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                    dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                    IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                    ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                    cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                    RD0ieG1wLmlpZDo5QjEyQzVFMDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                    bnRJRD0ieG1wLmRpZDo5QjEyQzVFMTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                    ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNURFMzM4NjExRTY5QzNG
+                                                    QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNURGMzM4NjExRTY5
+                                                    QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                    ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7GfnjAAAAOhJREFUeNpitF/7k42BgaEbiGOAWIiBMHgP
+                                                    xIuBuJQJSHQBsRoQ6wAxIxFYG6q+iQVIxEI1PmcgDoDUJQHxFSaoU4nViGyAEBOJmnYA8Q8YhxTN
+                                                    U4DYHYh/kqp5AhBnA/ETIOYnRTMoNvKh/pRFlkDX/AeIHyPx20HxCcQvgVgK3VR0zTeAWAaI90Gj
+                                                    owKIXwOxBDYnsaDxQfG9AojDgdgR6kdZXP5hwSIWAcTS0FQkiy8wWHCI2xITBSA/vwNiSRITCygM
+                                                    3jFBc8gcXIGCBYACdC5ID0hzGRDfAeJrQPyfCHwJqr4WIMAAI14wiZLGvXEAAAAASUVORK5CYII=">
+                                                    </image>
+                                                    </svg>
+                        </div>
+
+                        <!--span ng-bind="vci.ctitle"></span>-->
+                        <div ng-bind="vci.ctitle" title="{{vci.ctitle}}" class="clearfix float-l text-omit">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dialog-foot">
+    <button ng-click="closeDialog()" class="btn-blue btn-circle">确定</button>
+</div>

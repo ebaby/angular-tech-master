@@ -1,0 +1,271 @@
+<!-- 基本资料 -->
+<div class="portlet use-margin" style="box-shadow:none;">
+    <div class="portlet-title ">
+        <div class="float-l selectbook-title font-blue">
+            基本信息
+        </div>
+        <div class="float-r font-blue font-minsong cursor" ng-click="baseInfoToggle()" style="margin:15px 0;">
+            修改资料 <span ng-class="{'btn-amend':baseInfoVisible,'btn-amendact':!baseInfoVisible}"></span>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <form class="form-horizontal" ng-show="baseInfoVisible">
+            <div class="form-wizard">
+                <div class="">
+                    <div class="form-group form-group-sm">
+                        <label class="col-sm-2  control-label label-fsize">真实姓名：</label>
+                        <div class="col-sm-4 col-top" ng-bind="base.turename">
+                        </div>
+                        <label class="col-sm-2 control-label label-fsize">手机号：</label>
+                        <div class="col-sm-4 col-top" ng-bind="base.mobile">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-sm-2 control-label label-fsize">我的性别：</label>
+                        <div class="col-sm-4 col-top">
+                            <span ng-show="base.sex==='g'">女</span> <span ng-show="base.sex==='b'">男</span>
+                        </div>
+                        <label class="col-sm-2 control-label label-fsize ">Email：</label>
+                        <div class="col-sm-4 col-top" ng-bind="base.email">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form class="form-horizontal" ng-hide="baseInfoEditVisible" name="baseForm">
+            <div class="form-wizard">
+                <div class="form-body">
+                    <div class="tab-pane">
+                        <div class="form-group">
+                            <label class="control-label col-md-2 font-sixsong">
+                                真实姓名：
+                            </label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control font-sixsong" name="username" placeholder="请输入您的真实姓名" ng-model="vm.base.turename" maxlength="12" required />
+                                <span class="help-block"></span>
+                                <span class="wdatle"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2 font-sixsong">
+                                我的性别：
+                            </label>
+                            <!--<div class="col-sm-4">
+                                <label for="boy">
+                                    <input type="radio" name="sex" ng-checked="vm.base.sex==='b'" ng-model="vm.base.sex" value="b" />
+                                    <span style="line-height: 32px;">男</span></label>
+                                <label for="gril" style="margin-left: .6rem;">
+                                    <input type="radio" name="sex" ng-checked="vm.base.sex==='g'" ng-model="vm.base.sex" value="g" />
+                                    <span style="line-height: 32px;">女</span></label>
+                            </div>-->
+                            <div class="col-sm-4">
+                                <div class="md-radio-inline">
+                                    <div class="md-radio">
+                                        <input type="radio" id="checkbox1_8" name="sex" class="md-radiobtn" ng-checked="vm.base.sex==='b'" ng-model="vm.base.sex" value="b">
+                                        <label for="checkbox1_8">
+                                            <span class="inc"></span>
+                                            <span class="check"></span>
+                                            <span class="boxext"></span>男
+                                        </label>
+                                    </div>
+                                    <div class="md-radio">
+                                        <input type="radio" id="checkbox1_9" name="sex" class="md-radiobtn" ng-checked="vm.base.sex==='g'" ng-model="vm.base.sex" value="g">
+                                        <label for="checkbox1_9">
+                                            <span class="inc"></span>
+                                            <span class="check"></span>
+                                            <span class="boxext"></span>女
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2 font-sixsong">
+                                手机号：
+                            </label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control font-sixsong" placeholder="请输入有效的手机号" ng-model="vm.base.mobile" ng-disabled="true" />
+                                <span class="help-block"></span>
+                                <span class="wdatle"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2 font-sixsong">
+                                Email：
+                            </label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control font-sixsong" name="email" placeholder="请输入有效的email" ng-model="vm.base.email">
+                                <span class="help-block"></span>
+                                <span class="wdatle"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  <div class="form-actions">
+                                                <div class="row">
+                                                    <div class="col-md-offset-3 col-md-9">
+                                                        <a href="javascript:;" class="btn btn-outline green button-next"> 保存
+                                                            <i class="fa fa-angle-right"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                          </div> -->
+                    <div style="margin-left: 143px;">
+                        <button type="button" class="btn-circle btn-blue" ng-click="saveBaseInfo()" ng-disabled="baseForm.$invalid">保存</button>
+                        <button type="button" class="btn-circle btn-blue btn-ccc" ng-click="baseInfoToggle()">取消</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<div class="portlet use-margin" style="box-shadow:none;">
+    <div class="portlet-title">
+        <div class="float-l selectbook-title font-blue">
+            任教信息
+        </div>
+        <div class="float-r font-minsong font-blue cursor" ng-click="teachInfoToggle()" style="margin:15px 0;">
+            修改资料<span ng-class="{'btn-amend':teachInfoVisible,'btn-amendact':!teachInfoVisible}" class="i-marginl"></span>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <form class="form-horizontal" ng-show="teachInfoVisible">
+            <div class="">
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-2  control-label label-fsize">所在省市：</label>
+                    <div class="col-sm-4 col-top">
+                        <span ng-bind="base.province"></span>&nbsp;<span ng-bind="base.city"></span>&nbsp;<span ng-bind="base.countyname"></span>
+                    </div>
+                    <label class="col-sm-2 control-label label-fsize">学科：</label>
+                    <div class="col-sm-4 col-top" ng-bind="base.teacher.subjectlist[0].subjectname">
+                        数学
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-2 control-label label-fsize">所在学校：</label>
+                    <div class="col-sm-4 col-top" ng-bind="vm.base.schoolinfo.schoolname">
+                    </div>
+                    <label class="col-sm-2 control-label label-fsize ">身份：</label>
+                    <div class="col-sm-4 col-top">
+                        <!--<span ng-show="base.teacheridentity==1">公立教师</span>
+                        <span ng-show="base.teacheridentity==2">培训机构教师</span>
+                        <span ng-show="base.teacheridentity==3">个人</span>
+                        <span ng-show="base.teacheridentity==4">师范生</span>-->
+                        <span ng-bind="vm.base.identityinfo.name"></span>
+
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-2 control-label label-fsize">家庭住址：</label>
+                    <div class="col-sm-5 col-top" ng-bind="base.address">
+                        北京市昌平区
+                    </div>
+                    <!-- <label class="col-sm-2 control-label label-fsize " >毕业院校：</label>
+                                             <div class="col-sm-4 col-top">
+                                                北京是昌平区汤立路
+                                             </div> -->
+                </div>
+            </div>
+        </form>
+        <form class="form-horizontal" ng-hide="teachInfoEditVisible">
+            <div class="form-body">
+                <div class="form-group">
+                    <label class="control-label col-md-2 font-sixsong">
+                        选择省市：
+                    </label>
+                    <div class="col-md-2">
+                        <div class="margin-bottom-10">
+                            <select class="bs-select form-control bs-select-hidden font-sixsong" data-width="125px" ng-model="vm.base.proinfo" ng-options="v.provincename for v in vm.provinceItem" ng-change="getCity()">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="margin-bottom-10">
+                            <select class="bs-select form-control bs-select-hidden font-sixsong" data-width="125px" ng-model="vm.base.cityinfo" ng-options="v.cityname for v in vm.cityItem" ng-change="getCounty()">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="margin-bottom-10">
+                            <select class="bs-select form-control bs-select-hidden font-sixsong" data-width="125px" ng-model="vm.base.countyinfo" ng-options="v.countyname for v in vm.countyItem" ng-change="getSchool()">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2 font-sixsong">
+                        所在学校：
+                    </label>
+                    <div class="col-sm-6">
+                        <!-- <input class="form-control" type="text" /> -->
+                        <select class="bs-select form-control bs-select-hidden font-sixsong" data-width="125px" ng-model="vm.base.schoolinfo" ng-options="v.schoolname for v in vm.schoolItem">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                    <!-- <a href="" class="select-scho">请选择学校</a> -->
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2 font-sixsong">
+                        所教学科：
+                    </label>
+                    <div class="col-md-2">
+                        <div class="margin-bottom-10">
+                            <select class="bs-select form-control bs-select-hidden" ng-model="vm.base.subjectinfo" ng-options="x.subjectname for x in vm.subjectItem" ng-disabled="true">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2 font-sixsong">
+                        教师身份：
+                    </label>
+                    <div class="col-md-2">
+                        <div class="margin-bottom-10">
+                            <select class="bs-select form-control bs-select-hidden font-sixsong" ng-model="vm.base.identityinfo" ng-options="i.name for i in vm.teachertypes">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2 font-sixsong">
+                        家庭住址：
+                    </label>
+                    <div class="col-md-6">
+                        <div class="margin-bottom-10">
+                            <input type="text" class="form-control font-sixsong" name="username" ng-model="vm.base.address" />
+                            <span class="wdatle"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                                            <label class="control-label col-md-2">
+                                            毕业学校：
+                                            </label>
+                                            <div class="col-md-4">
+                                                <div class="margin-bottom-10">
+                                                   <input type="text" class="form-control" name="username">
+                                                </div>
+                                             </div>
+                                        </div> -->
+
+
+                <div style="margin-left: 143px;">
+                    <button type="button" class="btn-circle btn-blue" ng-click="saveTeachInfo()">保存</button>
+                    <button type="button" class="btn-circle btn-blue btn-ccc" ng-click="teachInfoToggle()">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    setMinheight();
+</script>

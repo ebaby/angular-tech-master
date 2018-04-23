@@ -1,0 +1,220 @@
+/* 
+* @Author: Marte
+* @Date:   2016-05-13 16:58:02
+* @Last Modified by:   Marte
+* @Last Modified time: 2016-06-03 19:27:38
+*/
+/*--二级导航--*/
+.nav-two{
+    display:inline-block;
+    padding:15px 15px 15px 30px !important;
+    cursor:pointer;
+}
+
+.font-ff7{
+    color:#ff7a5b !important;
+}
+
+.home{
+    margin:0px 0px 0px 0px; 
+    }
+.btn-navicon{
+    margin-right:6px;
+    box-shadow: none !important;
+    background:none !important;
+}
+.nav-on{
+    background:#e7505a !important;
+    color:#fff !important;
+}
+.page-contenttop{
+    padding-top:8px !important;
+}
+.btn-navicon{
+    margin-right: 6px;
+    box-shadow: none !important;
+}
+.class{
+    color:#666;
+    font-size:18px;
+    font-family:"微软雅黑";
+    margin:10px 0px -5px 0px;
+    }
+.class-bank{
+    border:2px solid #2fc3e1;
+    background:#fff;
+    margin-bottom:10px;
+    }   
+.class-title{ 
+     background:#32c5d2; 
+     text-align:center; 
+     color:#fff; 
+     font-family:"微软雅黑";
+     font-size:16px;
+     line-height:46px;
+     }
+.class-list{
+    width:100%; 
+    height:auto;
+    position:relative;
+    }
+.class-list ul{
+    list-style:none; padding:0; margin:0;}   
+.class-list ul li{
+    float:left;
+    color:#666;
+    font-size:16px; 
+    font-family:"微软雅黑";
+    width:25%;
+    padding:30px 12px;
+    text-align:center;
+    }
+
+.timeline-qbottom{
+    margin-bottom:6px !important; 
+}
+.timeline-qbottom::before{
+    content:'';
+    margin-bottom:-10px !important;
+    margin-top:-10px !important;
+    margin-left:94px !important;
+}.time-rq{
+    color:#555d64; 
+    font-size:14px; 
+    font-family:"微软雅黑";
+    margin-top:15px;
+    float:left;
+    margin-top:32px;
+    width:70px;
+    }
+.timeline .timeline-badge {
+    float: left;
+    position: relative;
+    padding-right: 30px;
+    height: 24px;
+    width:24px;
+    margin-left:-6px;
+    margin-top:31px;
+}
+.timeline .timeline-badge-yp {
+    width:23px;
+    height:23px;
+    font-size:14px !important;
+    border:0;
+    margin-left:20px;
+}
+.timeline-badge-yp img{
+    width:100%;
+    height:100%;
+}
+.timeline .timeline-body {
+    position: relative;
+    padding:0 !important;
+    margin-top: 20px;
+    margin-left:150px;
+    background-color:#f1f1f1;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+}
+.timeline .timeline-body-content {
+    font-size: 14px;
+    margin-top: 0px;
+}
+.time-sj{ 
+    color:#666; 
+    font-family:"微软雅黑"; 
+    font-size:16px;
+    margin-bottom:16px;
+}
+.time-jj{
+    float:left; 
+    margin-left:20px;
+    margin-top:14px;
+}
+.time-ks{ 
+    color:#333;
+    font-size:20px;
+    font-family:"微软雅黑";
+    margin-bottom:1px;
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden; 
+    text-overflow:ellipsis;
+}
+.time-wj{ 
+    color:#666;
+    font-size:14px;
+    font-family:"微软雅黑";
+    margin-bottom:8px;
+}
+.time-wj span{
+    color:#e7505a;
+    margin-right:10px;
+    font-size:18px;
+    font-family:"微软雅黑";
+    margin-left:2px;
+    }
+.timeline .timeline-badge-wp {
+    width: 40px;
+    height:40px;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+    background:#ff7a5a;
+    line-height:40px;
+    text-align:center;
+    color:#FFF;
+    font-size:14px !important;
+    border:0;
+    margin-left:20px;
+}
+.timeline-fontm{
+    float:right; 
+    color:#32c5d2; 
+    line-height:150px;
+     margin-right:60px;
+     cursor:pointer;
+}
+.timeline-rpoto {
+    float: right;
+    cursor: pointer;
+}
+    .timeline-rpoto img {
+        width: 100%;
+    }
+.timeline-xpoto{
+    float:right;
+    cursor:pointer;
+    width:151px;
+    height:148px;
+    background:url(../images/05.png) no-repeat;
+}
+.timeline-xpoto:hover{
+     background:url(../images/051.png) no-repeat;
+}
+.timeline-qpoto{
+    float:right;
+    cursor:pointer;
+    width:151px;
+    height:148px;
+    background:url(../images/04.jpg) no-repeat;
+}
+.timeline-qpoto:hover{
+     background:url(../images/041.png) no-repeat;
+}
+.loadingadd{
+    text-align:center; 
+    margin-top:30px !important; 
+    color:#31C4E2;
+    font:normal 18px "微软雅黑";
+    cursor:pointer;
+}   
+    
+
+
+
+
+   

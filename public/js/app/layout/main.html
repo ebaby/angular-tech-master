@@ -1,0 +1,240 @@
+<!-- 首页开始 -->
+<div class=" container-top body-margin" style="width: 950px; float: right;">
+    <div class="">
+
+        <div class="bigbanbox">
+            <ul>
+                <li style="background: #5dd7fb;">
+                    <img src="//img1.yqj.cn/w/images/ys-pc/banner/banner1.png">
+                </li>
+
+            </ul>
+            <div class="btn_list">
+                <span class="l">&lt;</span>
+                <span class="r">&gt;</span>
+            </div>
+            <ol>
+                <li class="act"></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+
+        <div class="content clearfix">
+            <div class="timeline-list block-template">
+                <div class="timeline timeline1">
+                    <div class="timeline-badge" style="margin-top: -3px; left: 8px;">
+                        <img src="img/icon-end.png" alt="" />
+                    </div>
+                    <div class="sethome-state">最近布置作业</div>
+                </div>
+                <div ng-if="vm.homeworklist.length>0">
+                    <div class="timeline" ng-repeat="hw in vm.homeworklist" ng-show="!hw.disable">
+                        <div class="timeline-badge">
+                            <img src="img/icon-dian.png" alt="" />
+                        </div>
+                        <div class="sethome-list">
+                            <div class="sethome-time">
+                                <span class="sethome-class"><span ng-bind="hw.gradename"></span><span ng-bind="hw.classname"></span></span>
+                                <span class="i-marginl font-minsong" ng-bind="hw.publishtime*1000 | date:'yyyy/MM/dd  HH:mm:ss'"></span>
+                                <!--<span class="i-marginl">18:30</span>-->
+                            </div>
+                            <div class="sethome-record block-graytemplate clearfix">
+                                <div class="float-l">
+                                    <div class="sethome-ks" ng-bind="hw.lhname" style="width:420px">
+                                        课时3 求一个数的百分之几是多少
+                                    </div>
+                                    <div class="sethome-xq">
+                                        接收 <span ng-bind="hw.accept" class="font-eight span-margin font-red"></span>
+                                        未交 <span ng-bind="hw.nosubmit" class="font-eight span-margin font-blue"></span>
+                                        预检 <span ng-bind="hw.waiting" class="font-eight span-margin font-red"></span>
+                                        已交<span ng-bind="hw.submit" class="font-eight span-margin font-blue"></span>
+                                        未批<span ng-bind="hw.nocorrections" class="font-eight span-margin font-red"></span>
+                                        已批<span ng-bind="hw.correct" class="font-eight span-margin font-blue"></span>
+                                    </div>
+                                    <div class="sethome-xq">
+                                        作业截止时间：
+                                    <span ng-click="editDatetime(hw)" ng-if="!hw.editable">{{hw.subendtime*1000 | date:'yyyy/MM/dd  HH:mm:ss'}}
+                                        <span class="font-blue cursor i-marginl">修改</span>
+                                    </span>
+                                        <div ng-if="hw.editable" style="width: 150px; margin-left: 95px; height: 30px; margin-top: -25px;" date-picker date-option="dateoption"></div>
+                                    </div>
+                                </div>
+                                <div class="float-r">
+                                    <div class="timelist-btn">
+                                        <div style="margin-bottom: 10px;" ng-click="goToSAnalyze(hw)" ng-if="hw.homeworkstatus==1">
+                                            <button type="button" class="btn-circle  btn-blue">学情分析</button>
+                                        </div>
+                                        <div style="margin-bottom: 10px;">
+                                            <button type="button" class="btn-circle  btn-ff7" ng-click="goToUnStudents(hw)" ng-if="hw.homeworkstatus==0">批改</button>
+                                        </div>
+                                        <div>
+                                            <span class="cursor timelist-tj" ng-click="goToStatistics(hw)">作业统计</span>
+                                            <span class="cursor timelist-pg" ng-if="(hw.correct+hw.nocorrections)==0" ng-click="deleteHwDialog(hw)">取消布置 </span>
+                                            <span class="cursor timelist-pg font-nine" ng-if="(hw.correct+hw.nocorrections)!=0&&hw.homeworkstatus==0" style="cursor: text;" title="已有同学提交作业 不能取消布置">取消布置 </span>
+                                            <span class="cursor timelist-pg" ng-click="goToStudents(hw)" ng-if="hw.homeworkstatus==1">查看批改</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ckgd"><a ui-sref="app.sethomework.sethwlog">查看更多></a></div>
+                </div>
+            </div>
+
+            <div class="content-r block-template">
+                <div class="classhw" ng-repeat="c in vm.classhwstatisticslist">
+                    <div class="classhw-title clearfix" style="padding-bottom: 10px;">
+                        <div class="classname"><span ng-bind="c.gradename">5年级</span><span ng-bind="c.classname">808班</span>（<span ng-bind="c.joinusercount">60</span>人）</div>
+                        <div class="float-r trend">
+                            <img src="img/icon-up.png" alt="" title="上升趋势" ng-show="c.classhwtrend=='上升'" />
+                            <img src="img/icon-down.png" alt="" title="下降趋势" ng-show="c.classhwtrend=='下降'" />
+                            <img src="img/icon-smooth.png" alt="" title="平稳趋势" ng-show="c.classhwtrend=='平稳'" />
+                        </div>
+                    </div>
+                    <div class="classhw-list">
+                        <div class="row" style="margin: 0 1px;">
+                            <div class="col-33">
+                                <div>布置作业</div>
+                                <div><span class="font-digital" ng-bind="c.classhwnum">80</span>份</div>
+                            </div>
+                            <div class="col-33">
+                                <div>布置课时</div>
+                                <div><span class="font-digital" ng-bind="c.lessionhournum">80</span>课</div>
+                            </div>
+                            <div class="col-33">
+                                <div>布置题数</div>
+                                <div><span class="font-digital" ng-bind="c.questionnum">80</span>题</div>
+                            </div>
+                            <div class="col-33">
+                                <div>批改作业</div>
+                                <div><span class="font-digital" ng-bind="c.correcthwnum">80</span>份</div>
+                            </div>
+                            <div class="col-33">
+                                <div>批改人次</div>
+                                <div><span class="font-digital" ng-bind="c.correctstudentnum">80</span>人</div>
+                            </div>
+                            <div class="col-33">
+                                <div>批改题数</div>
+                                <div><span class="font-digital" ng-bind="c.correctquestionnum">80</span>题</div>
+                            </div>
+                            <div class="col-33">
+                                <div>做题总数</div>
+                                <div><span class="font-digital" ng-bind="c.studentquestionnum">80</span>道</div>
+                            </div>
+                            <div class="col-33">
+                                <div>产生错题</div>
+                                <div><span class="font-digital" ng-bind="c.classwrongnum">80</span>道</div>
+                            </div>
+                            <div class="col-33">
+                                <div>处理错题</div>
+                                <div><span class="font-digital" ng-bind="c.passwrongnum">80</span>道</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--<div class="foot1">
+        <div class="float-l foot-left"><a href="#">关于我们</a>  |  <a href="#">加入我们</a>  | <a href="#">联系我们</a>  | <a href="#">友情链接</a>  </div>
+        <div class="foot-left" style="float: right">2015-2018易全解（yqj.cn）京ICP备15055904号</div>
+        <div></div>
+    </div>-->
+</div>
+
+
+<script>
+    var current = 0;
+    var picarry = [{ color: '#fff', url: '//img1.yqj.cn/w/images/ys-pc/banner/banner2.png' }, { color: 'c', url: '//img1.yqj.cn/w/images/ys-pc/banner/banner3.png' }, { color: '#fff', url: '//img1.yqj.cn/w/images/ys-pc/banner/banner1.png' }]
+    $(document).ready(function () {
+        window.clearInterval(interval);
+        var interval = window.setInterval(setSlider, 6000);
+
+        $(".bigbanbox ol li").click(function () {
+
+            $(this).parent('ol').children('li').removeClass('act');
+            $(this).addClass('act');
+
+            current = $(this).index();
+            var i = picarry[current];
+            $('.bigbanbox ul li').css('background', i.color);
+            $('.bigbanbox ul li img').attr('src', i.url);
+            //$(".bigbanbox ul li img").animate({ opacity: 'toggle' }, "slow", null, function () {
+            //    $(".bigbanbox ul li img").attr("src", i.url);
+            //    $(".bigbanbox ul li img").animate({ opacity: 'toggle' }, "slow");
+            //    $('.bigbanbox ul li').css('background', i.color);
+            //});
+
+        });
+
+        $('.btn_list .l').click(function () {
+
+            if (current == 0) {
+                current = 3;
+            }
+            current--;
+            var i = picarry[current];
+            $('.bigbanbox ul li').css('background', i.color);
+            $('.bigbanbox ul li img').attr('src', i.url);
+
+            $(".bigbanbox ol li").removeClass('act');
+            $(".bigbanbox ol li").eq(current).addClass('act');
+
+            //$(".bigbanbox ul li img").animate({ opacity: 'toggle' }, "slow", null, function () {
+            //    $(".bigbanbox ul li img").attr("src", i.url);
+            //    $(".bigbanbox ul li img").animate({ opacity: 'toggle' }, "slow");
+            //    $('.bigbanbox ul li').css('background', i.color);
+            //});
+
+            //console.log(current);
+
+        });
+
+        $('.btn_list .r').click(function () {
+            current++;
+            if (current == 3) {
+                current = 0;
+            }
+
+            var i = picarry[current];
+            $('.bigbanbox ul li').css('background', i.color);
+            $('.bigbanbox ul li img').attr('src', i.url);
+
+            $(".bigbanbox ol li").removeClass('act');
+            $(".bigbanbox ol li").eq(current).addClass('act');
+
+            //console.log(current);
+
+        });
+
+    });
+
+    function setSlider() {
+        var i = picarry[current];
+        $('.bigbanbox ul li').css('background', i.color);
+        $('.bigbanbox ul li img').attr('src', i.url);
+        //$(".bigbanbox ul li img").animate({ opacity: 'toggle' }, "slow", null, function () {
+        //    $(".bigbanbox ul li img").attr("src", i.url);
+        //    $(".bigbanbox ul li img").animate({ opacity: 'toggle' }, "slow");
+        //    $('.bigbanbox ul li').css('background', i.color);
+        //});
+
+        $(".bigbanbox ol li").each(function (i, j) {
+            if (current == i) {
+                $(".bigbanbox ol li").removeClass('act');
+                $(j).addClass('act');
+
+            }
+        });
+        current++;
+        if (current == picarry.length) {
+            current = 0;
+        }
+    }
+</script>

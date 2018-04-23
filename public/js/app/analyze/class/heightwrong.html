@@ -1,0 +1,92 @@
+<div class="container-top body-margin block-template content-left" style="padding: 0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>学情分析</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li class="font-act">
+                <span ui-sref="app.analyze.class" class="cursor">班级报告</span><span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li>
+                <span>班级高频错题</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding: 15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block-graytemplate portlet-form ">
+                    <div class="portlet-body">
+                        <div ng-if="chapterwrong.wrongdata.length>0">
+                            <div ng-repeat="c in chapterwrong.wrongdata">
+                                <div class="selectbook-title ">
+                                    <span class="caption" ng-bind="c.chaptername">第一章：4556</span>
+                                    <span class="font-blue" style="font-weight:500;">(共<span ng-bind="c.wronglist.length">2</span>道错题)</span>
+                                </div>
+                                <ul class="section-list" >
+                                    <li class="clearfix" ng-repeat="w in c.wronglist" style="position: relative;padding:0;">
+                                        
+                                        <div  style="padding:10px;">
+                                            <!--<div ng-bind="w.xuanxiang" ></div>-->
+                                            <div custom-mathjax content="w.timuxushu" ng-bind-html="toHtml(w.timuxushu)" ></div>
+                                            <!--1.根据从一个方向看到的图形，用给定数量的小正方题摆出性瘾的立体图形用给定时量的小正方题摆出立体图形用给定摆出性瘾的立体图形用给定时量的小正方题摆出立体图形用给定。-->       
+                                        </div>
+
+                                        <!--<div class="section-list2">
+                                            <div class="font-six font-red"><span ng-bind="w.wrongnum">90</span>人</div>
+                                            错误人数
+                                        </div>
+                                        <div class="section-list3 ">
+                                            <div class="font-six font-red"><span ng-bind="w.wrongrate">90</span>%</div>
+                                            错误率
+                                        </div>-->
+                                        <div class="wrongtopicl">
+                                            <p class="">题目类型：<span class="font-blue" ng-bind="w.questiontypename">综合题</span></p>
+                                            <p>题目难度：<span class="font-blue" ng-bind="w.difficultylevel">中</span></p>
+                                            <p>错误人数：<span class="font-blue" ng-bind="w.wrongnum">3</span></p>
+                                            <p>错误率：<span class=" font-red"><span ng-bind="w.wrongrate">90</span>%</span></p>
+                                            <p ng-click="expendToggle(w)" ng-if="!w.expend" class="cursor font-blue">查看错误详情<span  class="btn-amend cursor" style="margin-left:4px;"></span></p>
+                                            <p ng-click="expendToggle(w)" ng-if="w.expend" class="cursor font-blue">收起错误详情<span  class="btn-amendact cursor" style="margin-left:4px;"></span></p>
+                                        </div>
+
+                                        <div class="row wrongtopic-on" ng-if="w.expend">
+                                            <div class="col-md-6" ng-repeat="s in w.classanalysisuwqstudentlist">
+                                                <p><span ng-bind="s.realname">我的</span>错题情况：</p>
+                                                <p>
+                                                    <div style="overflow: hidden;border:1px solid #ccc;display: none;">
+                                                        <div class="viewer" pc-img imgoptions="s"></div>
+                                                    </div>
+                                                </p>
+                                                <!--<img  alt="Alternate Text" ng-src="{{s.answerpic}}" />-->
+                                            </div>
+                                            <!--<div class="col-md-6">
+                                                <p>我的错题情况：</p>
+                                                <img src="" alt="Alternate Text" />
+                                            </div>-->
+                                        </div>                                        
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div no-data datalist="chapterwrong.wrongdata">
+                            <div class="kby xqfx-blank" style="display:none;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="row" style="text-align: right; margin-right: 50px;">
+                            <div set-pagination page-options="gplistOptions" class="pagination"></div>
+                        </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight()
+</script>

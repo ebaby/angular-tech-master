@@ -1,0 +1,76 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>学情分析</span><span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li>
+                <span>高频错题</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding: 0 15px;">
+        <div class="">
+            <div class="wrongtop-title clearfix">
+                <div class="float-l" ng-if="vm.currentbook" style="position:absolute;">
+                    <b>教辅</b>
+                    <!--<span class="font-six" ng-bind="vm.currentbook.coursename" style="margin-left:10px;">小学教材全练</span>-->
+                    <span class="font-six" style="margin-left:10px;">
+                        {{vm.currentbook.gradename}}{{vm.currentbook.subjectname}}{{vm.currentbook.njjdname}}{{vm.currentbook.versionname}}{{vm.currentbook.jxjdhfname}}
+                    </span>
+                </div>
+                <div class="float-r  chose-book">
+                    <span class="cursor font-blue" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">切换教辅  <i class="fa fa-caret-down"></i></span>
+                    <ul class="dropdown-menu-v2  block-graytemplate">
+                        <li>
+                            <a ng-repeat="b in vm.wrongqconcisebook" ng-click="selectSearchBook(b)" style="overflow: hidden;text-overflow:ellipsis; " title="{{b.gradename}}{{b.subjectname}}{{b.njjdname}}{{b.versionname}}{{b.jxjdhfname}}">
+                                <!--<span ng-bind="b.coursename" title="{{b.coursename}}">小学教材全练（上册）北师大版六三制</span>-->
+                                {{b.gradename}}{{b.subjectname}}{{b.njjdname}}{{b.versionname}}{{b.jxjdhfname}}
+                            </a>
+                        </li>
+                    </ul>
+                    <!--<div class="chose-book" ng-show="vm.bookbox">
+                        <span></span>
+                        <p ><span ng-bind="b.coursename">小学教材全练（上册）北师大版六三制</span></p>
+                    </div>-->
+                </div>
+            </div>
+            <div class="wrongtop-body" ng-show="vm.treeids.length>0">
+                <div>
+                    <button type="button" class="btn-circle  class-btnblue" ng-repeat="t in vm.treeids" ng-class="{' classbtn-act':t.checked}" ng-click="selectChapter(t)"><span ng-bind="t.treename" title="{{t.treename}}">第一章</span> </button>
+                </div>
+                <div class="clearfix">
+                    <div class="video-lits" ng-show="vm.wrongqcourseres.length>0">
+                        <ul class="clearfix">
+                            <li ng-repeat="w in vm.wrongqcourseres">
+                                <div class="video-errorrate"><span ng-bind="w.wrongrate">71</span>％错误率</div>
+                                <div class="video-box">
+                                    <img width="195" height="106" src="/img/banner1.png" ng-src="{{w.resourcepic}}">
+                                    <div class="video-play wrong-video-on" ng-click="videoDialog(w)"></div>
+                                </div>
+                                <div class="font14" style="padding-top:6px;"><span ng-bind="w.resourcename"></span></div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div no-data datalist="vm.wrongqcourseres">
+                        <div class="kby video-blank" style="display:none;">
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="true">
+                    <button type="button" class="btn-circle btn-blue" style="width:120px;" ng-if="vm.wrongqcourseres.length>0&&vm.currenttree.senttostustatus==0" ng-click="wQConciseToFreeStudent()">推荐给学生</button>
+                    <button type="button" class="btn-circle btn-blue btn-ccc" style="width:120px;border:0;outline:none;cursor:not-allowed;" ng-if="vm.wrongqcourseres.length>0&&vm.currenttree.senttostustatus==1">已推荐给学生</button>
+                </div>
+            </div>
+            <div no-data datalist="vm.treeids">
+                <div class="kby xqfx-blank" style="display:none;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

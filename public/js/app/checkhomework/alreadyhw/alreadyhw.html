@@ -1,0 +1,106 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>批改作业</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li>
+                <span>已批完作业</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding: 15px;">
+        <!-- 已批改作业列表 -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet  portlet-form" ng-if="vm.homeworklist!=null&&vm.homeworklist.length>0">
+                    <div class="timeline timeline1">
+                        <div class="timeline-badge" style="margin-top: -3px; left: 8px;">
+                            <img src="img/icon-end.png" alt="" />
+                        </div>
+                        <div class="sethome-state">已批改作业列表<span class="font-nine font-minsong">（按布置作业时间排序）</span></div>
+                    </div>
+                    <div class="portlet-body" scroll-data pageoptions="pageOptions">
+                        <div>
+                            <div class="timeline" ng-repeat="hw in vm.homeworklist" ng-show="!hw.disable">
+                                <div class="timeline-badge">
+                                    <img src="img/icon-dian.png" alt="" />
+                                </div>
+                                <div class="sethome-list">
+                                    <div class="sethome-time">
+                                        <span class="sethome-class"><span ng-bind="hw.gradename"></span><span ng-bind="hw.classname"></span></span>
+                                        <span class="i-marginl font-minsong" ng-bind="hw.publishtime*1000| date:'yyyy/MM/dd  HH:mm:ss'">2016/05/07</span>
+                                        <!--<span class="i-marginl">18:30</span>-->
+                                    </div>
+                                    <div class="sethome-record block-graytemplate clearfix  homewlist-w">
+                                        <div class="float-l">
+                                            <div class="sethome-ks" ng-bind="hw.lhname">
+                                                课时3 求一个数的百分之几是多少
+                                            </div>
+                                            <div class="sethome-xq">
+                                                接收 <span ng-bind="hw.accept" class="font-eight span-margin font-red"></span>
+                                                未交 <span ng-bind="hw.nosubmit" class="font-eight span-margin font-blue"></span>
+                                                预检 <span ng-bind="hw.waiting" class="font-eight span-margin font-red"></span>
+                                                已交<span ng-bind="hw.submit" class="font-eight span-margin font-blue"></span>
+                                                未批<span ng-bind="hw.nocorrections" class="font-eight span-margin font-red"></span>
+                                                已批<span ng-bind="hw.correct" class="font-eight span-margin font-blue"></span>
+                                            </div>
+                                            <div class="sethome-xq">
+                                                作业截止时间：
+                                                <span ng-click="editDatetime(hw)" ng-if="!hw.editable">
+                                                    {{hw.subendtime*1000| date:'yyyy/MM/dd  HH:mm:ss'}}
+                                                    <span class="font-blue cursor i-marginl">修改</span>
+                                                </span>
+                                                <div ng-if="hw.editable" style="width: 150px; margin-left: 95px; height: 30px; margin-top: -25px;" date-picker date-option="dateoption"></div>
+                                            </div>
+                                        </div>
+                                        <div class="float-r">
+                                            <div class="timelist-btn">
+                                                <div style="margin-bottom: 10px;" ng-click="goToSAnalyze(hw)" ng-if="hw.homeworkstatus==1">
+                                                    <button type="button" class="btn-circle  btn-blue">学情分析</button>
+                                                </div>
+                                                <div style="margin-bottom: 10px;">
+                                                    <button type="button" class="btn-circle  btn-ff7" ng-click="goToUnStudents(hw)" ng-if="hw.homeworkstatus==0">批改</button>
+                                                </div>
+                                                <div>
+                                                    <span class=" cursor timelist-tj" ng-click="goToStatistics(hw)">作业统计</span>
+                                                    <span class=" cursor timelist-pg" ng-if="(hw.correct+hw.nocorrections)==0" ng-click="deleteHwDialog(hw)">取消布置 </span>
+                                                    <span class=" cursor timelist-pg" ng-if="(hw.correct+hw.nocorrections)!=0&&hw.homeworkstatus==0" style="cursor: text;" title="已有同学提交作业 不能取消布置">取消布置 </span>
+                                                    <span class=" cursor timelist-pg" ng-click="goToStudents(hw)" ng-if="hw.homeworkstatus==1">查看批改</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div no-data datalist="vm.pigailist">
+                                <div class="kby " style="display: none;">
+                                	<div class="gyzy-blank"></div>
+                                    	<p>还没有要批改的作业，赶快去布置吧~</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align: right; margin-right: 50px;">
+                        <div set-pagination page-options="yplistOptions" class="pagination"></div>
+                    </div>
+                </div>
+                <div no-data datalist="vm.homeworklist">
+                    <div class="kby " style="display:none;">
+                    	<div class="gyzy-blank"></div>
+                        <p>空空如也，您还没有批改完的作业哦！~</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight()
+</script>

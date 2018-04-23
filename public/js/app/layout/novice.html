@@ -1,0 +1,445 @@
+
+<div class="container-top " style="width:950px;float:right;">
+    <div class="">
+        <div>
+            <img src="img/parents/new-back.png" alt="Alternate Text" />
+        </div>
+        <div class="block-template" style="margin:20px 0;padding-bottom:60px;position:relative;">
+            <ul class="new-content">
+                <li style="margin-left: 8px;">
+                    <div class="line-on line1-on"></div>
+                    <div class="list-on list1-on"></div>
+                    <div>
+                        创建班级
+                    </div>
+                    <ul class="list-title" ng-if="vm.classInfoItems.length==0">
+                        <li>填写信息创建班级</li>
+                        <li>将 班级号告诉学生</li>
+                        <li>等待学生加入</li>
+                    </ul>
+                    <ul class="list-title" ng-if="vm.classInfoItems.length>0">
+                        <li class="text-omit"><span ng-bind="vm.currentclassinfo.gradename">五年级</span><span ng-bind="vm.currentclassinfo.classname">503班</span></li>
+                        <li class="text-omit">数学老师：<span ng-bind="vm.currentclassinfo.teachername">王晶</span></li>
+                        <li class="text-omit">班级群号：<span ng-bind="vm.currentclassinfo.classid">1110</span></li>
+                    </ul>
+                    <div class="classon-btn" ng-if="vm.classInfoItems.length==0"><button class="btn-circle btn-blue" ui-sref="app.classmanage.create">创建班级</button></div>
+                    <div class="classon-btn" ng-if="vm.classInfoItems.length>0"><button class="btn-circle btn-blue back-gray">创建成功</button></div>
+                </li>
+                <li>
+                    <div class="line-on line2-on"></div>
+                    <div class="list-on list2-on"></div>
+                    <div>布置作业</div>
+                    <ul class="list-title" ng-if="vm.inteacherarrangelist.length==0">
+                        <li>选班级（可多选）</li>
+                        <li>选择教辅书</li>
+                        <li>选择课时</li>
+                        <li>选择作业提交时间</li>
+                        <li>最后作业布置完成</li>
+                    </ul>
+                    <ul class="list-title" ng-if="vm.inteacherarrangelist.length>0">
+                        <li class="text-omit"><span ng-bind="vm.currrenthomework.gradename">五年级</span><span  ng-bind="vm.currrenthomework.classname">503班</span></li>
+                        <li class="text-omit"><span ng-bind="vm.currrenthomework.lhname">课时6~7分数与除法的关系课时6~7分数与除法的关系</span></li>
+                        <li class="text-omit" >作业截止时间：<span ng-bind="vm.currrenthomework.subendtime*1000 | date:'yyyy/MM/dd  HH:mm:ss'" title=""> </span></li>
+                    </ul>
+                    <div class="classon-btn" ng-if="vm.inteacherarrangelist.length==0"><button class="btn-circle btn-blue"  ui-sref="app.sethomework.sethw">布置作业</button></div>
+                    <div class="classon-btn" ng-if="vm.inteacherarrangelist.length>0"><button class="btn-circle btn-blue back-gray">布置完成</button></div>
+                </li>
+                <li>
+                    <div class="line-on line3-on"></div>
+                    <div class="list-on list3-on"></div>
+                    <div>批改作业</div>
+                    <ul class="list-title">
+                        <li>选择批改作业列表</li>
+                        <li>选择批改学生列表</li>
+                        <li>开始批改作业</li>
+                        <li>批改作业小结</li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="line-on line4-on"></div>
+                    <div class="list-on list4-on"></div>
+                    <div>学情分析</div>
+                    <ul class="list-title">
+                        <li>课时学情分析</li>
+                        <li>班级学情分析</li>
+                        <li>个人学情分析</li>
+                    </ul>
+                </li>
+                <li style="margin:0;">
+                    <div class="line-on line5-on"></div>
+                    <div class="list-on list5-on"></div>
+                    <div>班级管理</div>
+                    <ul class="list-title">
+                        <li>班级学生管理</li>
+                        <li>班级信息设置</li>
+                        <li>班级教辅设置</li>
+                    </ul>
+                </li>
+                <div class="clear"></div>
+            </ul>
+            <div><div class="big-classbtn" ng-if="vm.inteacherarrangelist.length>0"><button class="btn-circle btn-blue" ng-click="setUserGuidance()" style="width:150px;">我学会易师了</button></div></div>
+        </div>
+        <div class="block-template" style="margin:20px 0;padding-bottom:60px;position:relative;">
+            <div class="parents-get" >
+                <div >发给家长的使用指南</div>
+            </div>
+            <ul class="guide-list">
+                <!--<li>
+                    <img src="img/new/logo1.png" alt="Alternate Text" />
+                    <div class="todo-inline"  ng-click="selectTips(0)">
+                        <a data-toggle="modal"  >易全解家长使用指南<span>（必发1）</span></a>
+                        <p class="title-copy">微信扫一扫直接分享给家长</p>
+                    </div>
+                    <div>
+                       <button class="btn-circle class-btnblue"style="width:90px;"  ng-click="selectTips(0)">查看</button>
+                    </div>
+                </li>-->
+                <li>
+                    <img src="img/new/logo3.png" alt="Alternate Text" />
+                    <div class="todo-inline"  ng-click="selectTips(1)">
+                        <a data-toggle="modal"  >易全解下载<span>（必发1）</span></a>
+                        <p class="title-copy">微信扫一扫直接分享给家长</p>
+                    </div>
+                    <div>
+                       <button class="btn-circle class-btnblue"style="width:90px;" ng-click="selectTips(1)">查看</button>
+                    </div>
+                </li>
+                <li>
+                    <img src="img/new/logo4.png" alt="Alternate Text" />
+                    <div class=" todo-inline"  ng-click="selectTips(2)">
+                        <a data-toggle="modal"  class="font-sixsize">拍照提交作业方法必读<span style="font-size: 14px;">（必发2）</span></a>
+                        <p class="title-copy">微信扫一扫直接分享给家长</p>
+                    </div>
+                    <div>
+                       <button class="btn-circle class-btnblue"style="width:90px;" ng-click="selectTips(2)">查看</button>
+                    </div>
+                </li>
+                <li>
+                    <img src="img/new/logo2.png" alt="Alternate Text" />
+                     <div class="todo-inline">
+                        <a data-toggle="modal" href="http://img1.yqj.cn/w/images/jsd2.4/易全解致家长的一封信.docx">致家长的一封信</a>
+                        <p class="title-copy" >直接下载或打印分享给家长</p>
+                    </div>
+                    <div>
+                       <button class="btn-circle class-btnblue"style="width:90px;" onclick="javascript:window.location.href='http://img1.yqj.cn/w/images/jsd2.4/易全解致家长的一封信.docx'">查看</button>
+                    </div>
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <!--<div  id="todo-task-modal" class="modal fade in" role="dialog" aria-labelledby="myModalLabel10" aria-hidden="true" style="display:block;" ng-if="vm.tipsindex==0">
+            <div class="modal-dialog" style="width:900px">
+                <div class="modal-content scroller" style="height: 100%;" data-always-visible="1" data-rail-visible="0">
+                    <div class="modal-header clearfix" style="padding: 15px 15px 10px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="closeTips()"></button>
+                        <h4 class="float-l">家长快速了解易全解使用流程——小易指南</h4>
+                        <div class="float-l" style="margin-left: 20px; line-height: 40px;">
+                            <span>2016/5/26</span>
+                            <span class="font-blue i-marginl">易起教</span>
+                        </div>
+                    </div>
+                    <div class="modal-body todo-task-modal-body clearfix" style="padding: 0 15px;">
+                        <div class="float-l new-ewm">
+                            <img src="img/new/2.png" alt="" />
+                        </div>
+                        <div class="float-l ewm-text">
+                            <div class=" scan font-blue">
+                                <img src="img/new/3.png" alt="" />
+                                微信扫一扫直接用手机打开
+
+                            </div>
+                            <span class="font-sixsize">可分享给家长或家长群</span>
+                        </div>
+                    </div>
+                    <div class="portlet light bordered  scroller-height" style="padding-bottom: 0; overflow-y:auto;" >
+                        <div class="portlet-body" slimscroll="{slimscrollOption: 200}" id="dv0"  >
+                            <div class="scroller" style="height:540px; width: 100%" data-always-visible="1" data-rail-visible1="1">
+                                <div style="width: 90%">
+                                    <span class="font-sixsize">亲爱的家长：</span>
+                                    <p style="text-indent: 30px;">
+                                        您好！班级现在开始全面采用“易全解”作业诊断导学系统，在不影响学生视力的情况下（学生在纸质作业本上写作业）该作业诊断导学系统可以对作业情
+                                              况进行及时的分析和统计，并且提供试题视频讲解、错题统计分析、学习情况诊断等功能，能够有效的解决家长辅导孩子遇到的难题，提高孩子数学学习能力，
+                                              提高成绩，而且完全免费。
+                                    </p>
+                                    <h4 class="font-blue">家长只做四步即可完成</h4>
+                                    <div class="use-list">
+                                        <p>1.帮助孩子下载并注册“易全解”app客户端  下载安装</p>
+                                        <p>2.加入老师创建的班级</p>
+                                        <p>3.关注“易起教”家长微信</p>
+                                        <p>4.“易起教”绑定APP账号</p>
+                                    </div>
+                                </div>
+                                <div class="downlist">
+                                    <div class="clearfix">
+                                        <div class="float-l downlist-title">
+                                            第一步(1)：
+
+                                        </div>
+                                        <div class="float-l downlist-body">
+                                            苹果手机在App Store搜索“易全解”下载安装；安卓手机在应用宝、360手机助手等应用商店搜索“易全解”下载安装。
+
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img src="img/new/list1.jpg" alt="" />
+                                    </div>
+                                </div>
+                                <div class="downlist">
+                                    <div class="clearfix">
+                                        <div class="float-l downlist-title">
+                                            第二步(2)：
+
+                                        </div>
+                                        <div class="float-l downlist-body">
+                                            打开老师发送的下载链接，直接下载安装；也可登陆“易全解”官网www.yqj.cn 扫描二维码下载
+
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img src="img/new/list2.jpg" alt="" />
+                                    </div>
+                                </div>
+                                <div class="downlist">
+                                    <div class="clearfix">
+                                        <div class="float-l downlist-title">
+                                            第二步：
+
+                                        </div>
+                                        <div class="float-l downlist-body">
+                                            下载后打开易全解，选择“新用户注册”，请输入孩子真实姓名，方便老师查看。
+
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img src="img/new/list3.jpg" alt="" />
+                                    </div>
+                                </div>
+                                <div class="downlist">
+                                    <div class="clearfix">
+                                        <div class="float-l downlist-title">
+                                            第三步：
+
+                                        </div>
+                                        <div class="float-l downlist-body">
+                                            关注“易起教“微信公号：搜索微信公号”“易起教”并关注。也可扫描或长按二维码直接关注。
+
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img src="img/new/list4.jpg" alt="" />
+                                    </div>
+                                    <div class="clearfix" style="margin-left: 94px;">
+                                        <div class="float-l new-ewm">
+                                            <img src="img/new/2.png" alt="" />
+                                        </div>
+                                        <div class="float-l font-blue" style="margin-left: 15px; padding-top: 10px;">
+                                            <img src="img/new/3.png" width="32" alt="" />
+                                            <span style="font-size: 18px;">关注易起教公众账号</span>
+                                            <div class="yqj-ewm">
+                                                <p>1.作业和报告</p>
+                                                <p>2.实时接收老师布置作业情况</p>
+                                                <p>3.实时接收孩子作业报告、了解孩子只是掌握情况、错题情况</p>
+                                                <p>4.查看孩子学业水平排名</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="downlist">
+                                    <div class="clearfix">
+                                        <div class="float-l downlist-title">
+                                            第四步：
+
+                                        </div>
+                                        <div class="float-l downlist-body">
+                                            绑定帐号，关注孩子：在易起教微信，点击关注孩子，输入易全解app的注册手机号绑定，接收孩子学情消息，和孩子一起进步，陪伴孩子学习了解孩子学习情况，及时沟通鼓励孩子以科学的教育方式和孩子一起学习。
+
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img src="img/new/list5.jpg" alt="" />
+                                    </div>
+                                    <div style="width: 256px; margin: 0 auto;">
+                                        <img src="img/new/parents-help.png"
+                                            alt="" />
+                                    </div>
+                                </div>
+                                <div class="downlist">
+                                    <div class="clearfix">
+                                        <div class="float-l downlist-title">
+                                            分步提示：
+
+                                        </div>
+                                        <div class="float-l downlist-body">
+                                            每道作业题都有分布提示，循序渐进的思考提示帮助学生探寻问题解决的方法，同时家长也可以根据分布提示来辅导孩子作业。
+
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img src="img/new/list6.jpg" alt="" />
+                                    </div>
+                                </div>
+                                <div class="downlist">
+                                    <div class="clearfix">
+                                        <div class="float-l downlist-title">
+                                            批改结果：
+
+                                        </div>
+                                        <div class="float-l downlist-body">
+                                            智能错题本来了！作业批改完成，结果及时呈现给学生，错题本能够分类记录错题，难题都匹配视频讲解，每一道错题都可以查看详细
+                                                  的解题思路，并且对应知识点的视频讲解，鼓励学生每日消灭错题让学习不留问题。
+
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img src="img/new/list7.jpg" alt="" />
+                                    </div>
+                                </div>
+                                <div class="downlist">
+                                    <div class="clearfix">
+                                        <div class="float-l downlist-title">
+                                            学情诊断：
+
+                                        </div>
+                                        <div class="float-l downlist-body">
+                                            智能错题本来了！作业批改完成，结果及时呈现给学生，错题本能够分类记录错题，难题都匹配视频讲解，每一道错题都可以查看详细
+                                                  的解题思路，并且对应知识点的视频讲解，鼓励学生每日消灭错题让学习不留问题。
+
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img src="img/new/list8.jpg" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <div id="todo-task-modal1" class="modal fade in" role="dialog" aria-labelledby="myModalLabel10" aria-hidden="true" style="display:block;" ng-if="vm.tipsindex==1">
+            <div class="modal-dialog"style="width:800px">
+                <div class="modal-content scroller" style="height: 100%;" data-always-visible="1" data-rail-visible="0">
+                    <div class="modal-header clearfix" style="padding: 15px 15px 10px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="closeTips()"></button>
+                        <h4 class="float-l">请将以下易全解下载链接分享给班级群里</h4>
+
+                    </div>
+                    <div class="modal-body todo-task-modal1-body clearfix" style="padding: 0 15px;">
+                        <div class="float-l new-ewm">
+                            <img src="img/new/2.png" alt="" />
+                        </div>
+                        <div class="float-l ewm-text">
+                            <div class=" scan font-blue">
+                                <img src="img/new/3.png" alt="" />
+                                	微信扫一扫<span style="font-size:14px;margin-left:5px;">打开分享到班级群</span>
+                            </div>
+                            <!--<span class="font-sixsize">可分享给家长或家长群</span>-->
+                        </div>
+                    </div>
+                    <!-- BEGIN PORTLET-->
+                    <!--<div class="portlet light bordered scroller-height" style="overflow-y:auto;">
+                        <div class="portlet-body"  slimscroll="{slimscrollOption: 200}" id="dv1">
+                            <div class="scroller" style="height: 550px;" data-always-visible="1" data-rail-visible1="1">
+                                <div>
+                                    <img src="img/new/download.png" width="60%" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div id="todo-task-modal2" class="modal fade in" role="dialog" aria-labelledby="myModalLabel10" aria-hidden="true" style="display:block;" ng-if="vm.tipsindex==2">
+            <div class="modal-dialog" style="width:800px">
+                <div class="modal-content scroller" style="height: 100%;" data-always-visible="1" data-rail-visible="0">
+                    <div class="modal-header clearfix" style="padding: 15px 15px 10px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="closeTips()"></button>
+                        <h4 class="float-l">请将以下拍照交作业注意事项必读分享到班级群里</h4>
+                        <!--<div class="float-l" style="margin-left: 20px; line-height: 40px;">
+                            <span>2016/5/26</span>
+                            <span class="font-blue i-marginl">易起教</span>
+                        </div>-->
+                    </div>
+                    <div class="modal-body todo-task-modal2-body clearfix" style="padding: 0 15px;">
+                        <div class="float-l new-ewm">
+                            <img src="img/new/4.png" alt="" />
+                        </div>
+                        <div class="float-l ewm-text">
+                            <div class=" scan font-blue">
+                                <img src="img/new/3.png" alt="" />
+                                微信扫一扫<span style="font-size:14px;margin-left:5px;">打开分享到班级群</span>
+                            </div>
+                           <!-- <span class="font-sixsize">可分享给家长或家长群</span>-->
+                        </div>
+                    </div>
+                    <!-- BEGIN PORTLET-->
+                    <!--<div class="portlet light bordered scroller-height" style="overflow:hidden;">
+                        <div class="portlet-body"  slimscroll="{slimscrollOption: 200}" id="dv2">
+                            <div class="scroller" style="height:550px;" data-always-visible="1" data-rail-visible1="1">
+                                <div class="takpic">
+                                    <img src="img/new/pic-back.png" alt="" />
+                                    <img src="img/new/11.png" alt="" />
+                                    <img src="img/new/12.png" alt="" />
+                                    <img src="img/new/13.png" alt="" />
+                                    <img src="img/new/14.png" alt="" />
+                                    <img src="img/new/15.png" alt="" />
+                                    <img src="img/new/16.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!-- END PORTLET-->
+                    <!--<div class="modal-footer">
+                        <button class="btn default" data-dismiss="modal" aria-hidden="true" ng-click="closeTips()">关闭</button>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div id="todo-task-modal3" class="modal fade" role="dialog" aria-labelledby="myModalLabel10" aria-hidden="true">
+            <div class="modal-dialog" style="width:900px">
+                <div class="modal-content scroller" style="height: 100%;" data-always-visible="1" data-rail-visible="0">
+                    <div class="modal-header clearfix" style="padding: 15px 15px 10px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="float-l">家长快速了解易全解使用流程——小易指南</h4>
+                        <div class="float-l" style="margin-left: 20px; line-height: 40px;">
+                            <span>2016/5/26</span>
+                            <span class="font-blue i-marginl">易起教</span>
+                        </div>
+                    </div>
+                    <div class="modal-body todo-task-modal3-body clearfix" style="padding: 0 15px;">
+                        <div class="float-l new-ewm">
+                            <img src="img/new/2.png" alt="" />
+                        </div>
+                        <div class="float-l ewm-text">
+                            <div class=" scan font-blue">
+                                <img src="img/new/3.png" alt="" />
+                                微信扫一扫直接用手机打开
+                            </div>
+                            <span class="font-sixsize">可分享给家长或家长群</span>
+                        </div>
+                    </div>
+                    <!-- BEGIN PORTLET-->
+                    <div class="portlet light bordered" style="height:570px;overflow-y:auto;">
+                        <div class="portlet-body" id="Div3">
+                            <div class="scroller" style="height: 630px;" data-always-visible="1" data-rail-visible1="1">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PORTLET-->
+                    <div class="modal-footer">
+                        <button class="btn default" data-dismiss="modal" aria-hidden="true" ng-click="closeTips()">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade in" ng-if="vm.tipsindex!=-1" ng-click="closeTips()"></div>
+<script>
+    $(function () {
+        $("#dv0").height($('.scroller-height').height() - 30);
+        $("#dv1").height($('.scroller-height').height() - 30);
+        $("#dv2").height($('.scroller-height').height() - 30);
+    })
+    setMinheight();
+</script>

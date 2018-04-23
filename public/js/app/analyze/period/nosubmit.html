@@ -1,0 +1,20 @@
+
+<div class="dialog-head" style="background:#fff;border-bottom:1px dashed #cdcdcd">
+	<p class="float-l selectbook-title font-gray"style="padding-top:4px;">未交学生</p>
+	<p class="float-r font-minsong" style="margin-right:20px;padding-top:20px">作业截至时间：<span ng-bind="vm.hwInfoItems.settinghomeworkexpand.subendtime*1000|date:'yyyy/MM/dd HH:mm'" class="font-song font-gray">2016/03/16 14:20</span></p>
+</div>
+<div class="" style="padding-top:6px;min-height:300px;margin-bottom:0px;background:#fff; ">
+    <div class="portlet-body" style="width: 100%;height:270px;overflow-y: auto;">
+        <div class="student-list cursor" ng-repeat="u in vm.uncommitlist" ng-click="selectStudent(u)">
+			<div class="learn-table-headpt poto-list">
+				<img src="http://upimg.yqj.cn/headpic/student/2016/08/30/3bb23db7-4135-498f-bad8-1173f8f25088.jpg" ng-src="{{u.headpic}}">
+				<div ng-class="{'studen-act':u.checked}" style=""></div>
+				<div class="check-xin fa fa-heart font-red"  ng-if="u.isguanzhu==1"></div>
+			</div>
+			<span class="font-minsong ng-binding" ><span ng-bind="u.realname">兰玉红</span></span>
+		</div>
+    </div>
+</div>
+<div class="dialog-foot">
+    <div style="text-align: center;"><button ng-click="promptedToStudentSubmit()" class="btn-circle btn-blue" style="width:180px !important; margin-left: 20px;">批量提醒学生提交作业</button></div>
+</div>

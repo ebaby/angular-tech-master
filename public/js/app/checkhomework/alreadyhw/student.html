@@ -1,0 +1,158 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>批改作业</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li class="font-act">
+                <span ui-sref="app.checkhomework.alreadyhw" class="cursor">已批完作业</span><span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li>
+                <span>已批改作业学生列表</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+
+        <!-- 已交作业人数及未交作业人数切换 -->
+        <div class="tabbable-line">
+            <!--<ul class="nav nav-tabs ">
+                <li class="" ng-class='{"active":vm.tabindex==0}'><a href="javascript:void(null)" data-toggle="tab"  ng-click="selectTab(0)"> 已交作业{{vmm.title}}（<span ng-bind="vm.commitCount"></span>） </a></li>
+                <li ng-class='{"active":vm.tabindex==1}'><a href="javascript:void(null)" data-toggle="tab" ng-click="selectTab(1)"> 未交作业（<span ng-bind="vm.unCommitCount"></span>）</a></li>
+            </ul>-->
+            <ul class="class-navtabs clearfix" style="margin:0 !important;">
+                <li class="class-navtabsact" ng-class='{"class-navtabsact":vm.tabindex==0}'>
+                    <a data-toggle="tab" ng-click="selectTab(0)" aria-expanded="true">已交作业{{vmm.title}}（<span ng-bind="vm.commitlist.length"></span>人） </a>
+                </li>
+                <li class="" ng-class='{"class-navtabsact":vm.tabindex==1}'>
+                    <a data-toggle="tab" ng-click="selectTab(1)" aria-expanded="false">未交作业（<span ng-bind="vm.uncommitlist.length"></span>人）</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane " ng-class="{'active':vm.tabindex==0}">
+                    <div class="portlet">
+                        <div class="portlet-body">
+                            <div ng-if="vm.commitlist.length>0">
+                                <table class="table table-noborder table-hover">
+                                    <thead>
+                                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                                            <th width="15%" height="60" align="center" valign="middle">头像 </th>
+                                            <th width="10%" align="center" valign="middle">姓名 </th>
+                                            <th width="25%" align="center" valign="middle">提交时间</th>
+                                            <th width="25%" align="center" valign="middle">作业情况</th>
+                                            <th width="15%" align="center" valign="middle">操作 </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="s in vm.commitlist" ng-class="{'even-line':$index%2==0}">
+                                            <td align="center" valign="middle">
+                                                <!-- <div class="check-tu">
+                                                    <img ng-src="{{s.headpic}}" width="60" height="60">
+                                                    <div class="check-xin"><i ng-if="s.isguanzhu=='1'" class="fa fa-heart" style="color:#ff0000;"></i></div>
+                                                </div>-->
+                                                <div class="learn-table-headpt">
+                                                    <img ng-src="{{s.headpic}}">
+                                                    <div class="check-xin fa font-red" ng-class="{'fa-heart':s.attention==1}"></div>
+                                                </div>
+                                            </td>
+                                            <td align="center" valign="middle" ng-bind="s.realname">陈苗苗</td>
+                                            <td align="center" valign="middle" ng-bind="s.submittime*1000 | date:'yyyy/MM/dd  HH:mm:ss'">2016/03/05 14:20</td>
+                                            <td align="center" valign="middle">
+                                                <div class="clearfix" style="width: 200px;">
+                                                    <div class="float-l">
+                                                        得分<span ng-bind="s.score" class="font-red font-six">90</span>
+                                                    </div>
+                                                    <div class="float-r" style="max-width: 156px; margin-top: 10px;">
+                                                        <div class="float-r icon-marginr">
+                                                            <img src="img/icon-bd.png" alt="" /><span ng-bind="s.wronghalfnum">4</span>题
+                                                        </div>
+                                                        <div class="float-r icon-marginr">
+                                                            <img src="img/icon-w.png" alt="" /><span ng-bind="s.wrongnum">4</span>题
+                                                        </div>
+                                                        <div class="float-r icon-marginr">
+                                                            <img src="img/icon-y.png" alt="" /><span ng-bind="s.rightnum">4</span>题
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td align="center" valign="middle">
+                                                <button type="button" class="btn-circle class-btnblue" ng-click="goToDetail(s)">查看批改</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div no-data datalist="vm.commitlist">
+                                <div class="kby " style="display: none;">
+                                	<div class="gyzy-blank"></div>
+                                    	<p>目前没有已交作业的同学~</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" ng-class="{'active':vm.tabindex==1}">
+                    <div class="portlet ">
+                        <div class="portlet-body">
+                            <div ng-if="vm.uncommitlist.length>0">
+                                <table class="table table-noborder table-hover">
+                                    <thead>
+                                        <tr style="border-bottom:1px solid #e0e0e0;">
+                                            <th width="20%" height="60" align="center" valign="middle"> 头像 </th>
+                                            <th width="25%" align="center" valign="middle"> 姓名 </th>
+                                            <th width="25%" align="center" valign="middle"> 截止时间</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="s in vm.uncommitlist" ng-class="{'even-line':$index%2==0}">
+                                            <td height="50" align="center" valign="middle">
+                                                <!--<div class="check-tu">
+                                                    <img ng-src="{{s.headpic}}" width="60" height="60">
+                                                    <div class="check-xin"><i ng-if="s.isguanzhu=='1'" class="fa fa-heart" style="color:#ff0000;"></i></div>
+                                                </div>-->
+                                                <div class="learn-table-headpt">
+                                                    <img ng-src="{{s.headpic}}">
+                                                    <div class="check-xin fa font-red " ng-class="{'fa-heart':s.attention==1}"></div>
+                                                </div>
+                                            </td>
+                                            <td align="center" valign="middle" ng-bind="s.realname"> </td>
+                                            <td align="center" valign="middle" ng-bind="tchwinfo.subendtime*1000 | date:'yyyy/MM/dd  HH:mm:ss'"></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div no-data datalist="vm.uncommitlist">
+                                <div class="kby " style="display: none;">
+                                	<div class="gyzy-blank"></div>
+                                    <p>目前没有未交作业的同学~</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="vm.num>0">
+                            <div class="ep-left"><button ng-click="reSubmitWorkDialog(true)" class="btn green">批量提醒学生提交作业</button></div>
+                            <div class="ep-right">
+                                <!--<div class="ep-pages">
+                                    <span class="ep-pages-e5e5e5">首页</span> <span class="ep-pages-ctrl ep-pages-e5e5e5">&lt;</span>
+                                    <a href="#" target="_self" class="current">1</a> <a href="#" target="_self">2</a> <a href="#" target="_self">3</a>
+                                    <span>...</span> <a href="#" target="_self" class="ep-pages-ctrl">&gt;</a> <a href="#" target="_self">尾页</a>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight()
+</script>

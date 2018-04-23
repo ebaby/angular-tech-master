@@ -1,0 +1,110 @@
+﻿/*高频错题精讲 部分*/
+.wrongtop-title{
+    padding:0px 10px 10px;
+    border-bottom:1px solid #eee;
+    >div{
+       padding-top:20px;
+    }
+    div.chose-book{
+        position:relative;
+        >ul{
+            width:260px;
+            right:-10px;
+            margin-top:10px !important;
+            padding:0;
+            max-height: 260px;
+            overflow-y: auto;
+            li{
+                >a{
+                    border-bottom:1px solid #eee;
+                        font: 400 16px "微软雅黑";
+                }
+                >a:hover{
+                     color:#3fadf9;
+                }
+               a>span{ 
+                   font:normal 16px/26px "微软雅黑";
+                    color:#666;
+                    }
+                &:nth-last-child(1){
+                    border-bottom:0;
+                }
+            }
+        }
+    }
+}
+
+.wrongtop-body{
+    padding:0 15px;
+    button{
+        width:138px;
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 36px;
+        white-space: nowrap;
+    }
+    .video-lits{
+        ul{
+            >li >a{
+                font:400 16px "微软雅黑";
+            }
+        }
+    }
+}
+/* 视频弹框*/
+.dialog-video{
+    height:440px;
+    .player-modal {
+            z-index: 9999;
+//          position: fixed;
+            background: #222;
+        }
+    .player-close {
+        width: 85px;
+        height: 40px;
+        position: absolute;
+        top: 0;
+        cursor: pointer;
+        right: 0;
+        color: #fff;
+        background: rgba(0,0,0,.2);
+    }
+    .player-close img {
+        width: 80%;
+        padding-left: 10px;
+        padding-top: 4px;
+    }
+    .player-close:hover {
+        background: rgba(0, 0, 0,.5);
+    }
+
+}
+.dialog-videobox{
+    h6{
+        font:600 14px "微软雅黑";
+        border-bottom:1px solid #e0e0e0;
+        padding-bottom:4px;
+        margin-bottom:4px;
+    }
+    padding:10px 15px;
+    .dialog-video-content{
+        p{
+            text-indent:24px;
+            font:normal 12px "宋体";
+            color:#333;
+            line-height: 24px;
+            
+        }
+    }
+
+}
+//作业学情分析 4.0添加
+.work-addbtn{
+    position:absolute;
+    right:0px;
+    top:70px;
+}
+.video-blank{
+    background: url("//img1.yqj.cn/w/images/ys-pc/blank/video-blank.png") center no-repeat!important;
+}

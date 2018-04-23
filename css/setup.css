@@ -1,0 +1,166 @@
+/*
+* @Author: Marte
+* @Date:   2016-05-16 12:46:08
+* @Last Modified by:   Marte
+* @Last Modified time: 2016-10-18 15:21:45
+*/
+.form-horizontal .checkbox, .form-horizontal .checkbox-inline, .form-horizontal .radio, .form-horizontal .radio-inline{
+    padding-top:4px !important;
+}
+
+
+
+
+ .select-scho{
+        line-height:30px;
+       }
+.content-bg{
+    background:url(../images/personal-back.jpg) center repeat-x;
+}
+.profile-usertitle-jobext{
+        text-transform: uppercase;
+        color: #a5a5a5;
+        font-size: 13px;
+        font-weight: 800;
+        margin-bottom: 7px;
+    }
+
+
+/*--布置作业页面--*/
+
+
+
+/*--布置作业-记录页面--*/
+.btn-size{
+    width:120px;
+    height:40px;
+}
+.timeline-btnpg{
+    margin-top:40px;
+    height:44px;width:120px;
+    line-height:44px;
+    text-align:right;
+    margin-right:40px;
+}
+
+/*--布置作业完成页面--*/
+.homewk{
+      font:normal 16px/24px "微软雅黑";
+      margin:10px 0 30px;
+}
+.homewk-title{
+    margin-bottom:10px;
+}
+.homewk-title1{
+    background:url(../images/shu.jpg) no-repeat left;
+    text-indent: 24px;
+}
+.homewk-body{
+    font-size:16px;
+    margin-left:24px;
+}
+.homewk-list{
+    width:700px;
+    height:24px;
+    line-height:24px;
+    background:url(../images/point.png) repeat-x center;
+}
+.homewk-listl{
+    max-width:600px;
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    background:#fff;
+}
+.homewk-photo{
+    line-height:55px;
+    background:url(../images/poto-yes.png) no-repeat left;
+    text-indent:55px;
+    margin:30px 0 20px 30px;
+    font-size:24px;
+}
+
+.homewk-btn{
+    margin-left:200px;
+}
+
+.font-c{
+    color:#ff9933;
+}
+
+/*--批改作业--首次批改--*/
+
+
+
+/*--课时学情分析-分数段内详情--*/
+
+.icon-marginr{
+    margin-right:10px;
+}
+.table-topborder{
+    border-top:0 !important;
+}
+
+/*--说明部分---*/
+
+.loading{
+    text-align:center;
+    margin-top:30px !important;
+    color:#959595;
+    font:normal 14px "微软雅黑";
+    cursor:pointer;
+}
+
+
+
+/*--课时学情分析。数据图页面--*/
+
+   /*--学生掌握情况---*/
+   .setting-bt{
+    color:#666f78 !important;
+    font-size:14px;
+    font-family:"微软雅黑";
+    line-height:30px;
+    font-weight:normal !important;
+    }
+   .df-z{
+        color:#666666;
+        font-size:16px;
+        font-family:"微软雅黑";}
+   .df-z span   {
+        color:#e7505a;
+        font-family:"微软雅黑";
+        font-size:22px;}
+   .cd-wz{ margin-left:20px;}
+   .cd-wz ul {
+    list-style:none;
+    padding:0;
+    margin:0;}
+   .cd-wz ul li{ float:left;margin-left:10px;text-align:right;}
+   .cd-wz ul li span{ color:#666666; font-family:"微软雅黑"; font-size:16px; }
+   .home{ width:75%; height:auto; margin:0 auto;}
+.title-text{
+    cursor:text !important;
+}
+.title-text:visited{
+    text-decoration:none !important;
+}
+.title-text:active{
+     text-decoration:none !important;
+}
+
+.checkbox-center{
+    top:50% !important;
+    left:50% !important;
+    margin-left:-18px;
+    margin-top:-10px;
+}
+/*--进度条--*/
+
+
+
+/*----*/
+.plan-title{
+    width:60%; margin-top:3px;margin-left:10px;
+}

@@ -1,0 +1,65 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li>
+                <span class="cursor">个人中心</span>
+            </li>
+
+        </ul>
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <!-- PORTLET MAIN -->
+                    <div class="portlet  profile-sidebar-portlet personal-title  ">
+                        <div class="view-why" ng-click="creditDialog()" ng-if="creditstatus">
+                            <span class="font-why">?</span>查看积分规则
+                        </div>
+                        <div class="profile-userpic">
+                            <img src="{{teacherinfo.headpic}}" class="img-responsive" alt="">
+                        </div>
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name font-gray" ng-bind="teacherinfo.turename">王丽 </div>
+                            <div class="profile-usertitle-job font-four font-nine">
+                                学科：<span ng-bind="teacherinfo.teacher.subjectlist[0].subjectname">数学老师</span>
+                                <span style="margin-left: 10px;">
+                                    <img src="img/ji.png" alt="" />
+                                </span>
+                                <span class="font-orange" style="margin-left: .3rem;">
+                                    积分：<span ng-bind="teacherinfo.integralscore">100</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row " style="margin: 2rem 0 -15px;  border-bottom: 1px solid #e5e5e5;">
+                            <div class="col-sm-1 "></div>
+                            <div class="col-sm-2 col-text" ng-click='selectTab(0)' ng-class='{"font-active":vm.tabindex==0}'>基本信息</div>
+                            <div class="col-sm-2 col-text" ng-click='selectTab(1)' ng-class='{"font-active":vm.tabindex==1}'>修改头像</div>
+                            <div class="col-sm-2 col-text " ng-click='selectTab(2)' ng-class='{"font-active":vm.tabindex==2}'>修改密码</div>
+                            <div class="col-sm-2 col-text " ng-click='selectTab(3)' ng-class='{"font-active":vm.tabindex==3}'>认证信息</div>
+                            <div class="col-sm-2 col-text" ng-click='selectTab(4)' ng-class='{"font-active":vm.tabindex==4}'>积分累计</div>
+                            <div class="col-sm-1"></div>
+
+
+                            <!--<div class="col-sm-2 "></div>
+                            <div class="col-sm-2 col-text" ng-click='selectTab(0)' ng-class='{"font-active":vm.tabindex==0}'>基本信息</div>
+                            <div class="col-sm-2 col-text" ng-click='selectTab(1)' ng-class='{"font-active":vm.tabindex==1}'>修改头像</div>
+                            <div class="col-sm-2 col-text " ng-click='selectTab(2)' ng-class='{"font-active":vm.tabindex==2}'>修改密码</div>
+                            <div class="col-sm-2 col-text" ng-click='selectTab(4)' ng-class='{"font-active":vm.tabindex==4}'>积分累计</div>
+                            <div class="col-sm-2"></div>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div ui-view='userinfo'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight();
+</script>

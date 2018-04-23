@@ -1,0 +1,105 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;" >
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>学情分析</span><span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li>
+                <span>课时学情分析</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet portlet-form "  ng-if="vm.classlist&&vm.classlist.length>0">
+                    <div class="clearfix bigtitle-border ">
+                        <div class="float-l class-bigtitle">
+                            <span ng-bind="vm.currentclassinfo.gradename"></span><span ng-bind="vm.currentclassinfo.classname"></span>
+                        </div>
+                        <div class="float-r" style="max-width:660px;">
+                            <div class="clearfix" ng-if="vm.classlist.length!=1">
+                                <!--<a href="javascript:;" class="btn default blue-stripe btn-ys btnt" ng-class="{'select-cl':vm.currentclassid==c.classid}" style="margin-left: 5px;" ng-repeat="c in vm.classlist" ng-click="selectClass(c)">
+                                    <span ng-bind="c.gradename"></span>
+                                    <span ng-bind="c.classname"></span>
+                                </a>-->
+                                <button type="button" class="btn-circle  class-btnblue" ng-class="{'classbtn-act':vm.currentclassid==c.classid}" ng-repeat="c in vm.classlist" ng-click="selectClass(c)">
+                                    <span ng-bind="c.gradename"></span>
+                                    <span ng-bind="c.classname"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="timeline timeline1" ng-show="vm.homeworklist&&vm.homeworklist.length>0">
+                        <div class="timeline-badge" style="margin-top: -3px;left:8px;">
+                            <img src="img/icon-end.png" alt="" />
+                        </div>
+                        <div class="sethome-state"><span ng-bind="vm.currentclassinfo.gradename">4年级</span><span ng-bind="vm.currentclassinfo.classname">808班</span></div>
+                    </div>
+                    <div class="portlet-body" scroll-data pageoptions="pageOptions">
+                        <div>                            
+                             <div class="timeline " ng-repeat="hw in vm.homeworklist" ng-show="!hw.disable">
+                                <div class="timeline-badge">
+                                    <img src="img/icon-dian.png" alt="" />
+                                </div>
+                                <div class="sethome-list">
+                                    <div class="sethome-time">
+                                        <span class="sethome-class"><span ng-bind="hw.gradename"></span><span ng-bind="hw.classname"></span></span>
+                                        <span class="i-marginl font-minsong" ng-bind="hw.publishtime*1000| date:'yyyy/MM/dd  HH:mm:ss'">2016/05/07</span>
+                                        <!--<span class="i-marginl">18:30</span>-->
+                                    </div>
+                                    <div class="sethome-record block-graytemplate clearfix  homewlist-w">
+                                        <div class="float-l">
+                                            <div class="sethome-ks" ng-bind="hw.lhname">
+                                                课时3 求一个数的百分之几是多少
+                                            </div>
+                                            <div class="sethome-xq">
+                                                接收 <span ng-bind="hw.accept" class="font-eight span-margin font-red"></span>
+                                                未交 <span ng-bind="hw.nosubmit" class="font-eight span-margin font-blue"></span>
+                                                预检 <span ng-bind="hw.waiting" class="font-eight span-margin font-red"></span>
+                                                已交<span ng-bind="hw.submit" class="font-eight span-margin font-blue"></span>
+                                                未批<span ng-bind="hw.nocorrections" class="font-eight span-margin font-red"></span>
+                                                已批<span ng-bind="hw.correct" class="font-eight span-margin font-blue"></span>
+                                            </div>
+                                            <div class="sethome-xq">
+                                                作业截止时间
+                                                <span ng-click="editDatetime(hw)" ng-if="!hw.editable">{{hw.subendtime*1000 | date:'yyyy/MM/dd  HH:mm:ss'}}
+                                                    <span class="font-blue cursor i-marginl">修改</span>
+                                                </span>
+                                                 <div ng-if="hw.editable" style="width: 150px; margin-left: 95px; height: 30px; margin-top: -25px;" date-picker date-option="dateoption"></div>
+                                            </div>
+                                        </div>
+                                        <div class="float-r">
+                                            <div class="timelist-btn" style="border:0;margin-top:25px;">
+                                                <div style="margin-bottom: 10px;">
+                                                    <button type="button" class="btn-circle  btn-blue" ng-click="goToDetail(hw)" ng-if="hw.correct>0">学情分析</button>
+                                                    <button type="button" class="btn-circle btn-blue btn-ccc" ng-if="hw.correct==0" style="cursor:not-allowed;">学情分析</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="loading" ng-show="false">
+                        加载更多······
+                    </div>
+                </div>
+                <div no-data datalist="vm.homeworklist">
+                    <div class="kby " style="display: none;">
+                    	<div class="xqfx-blank"></div>
+                        <p>该班级还没有作业学情分析~</p>	
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight()
+</script>

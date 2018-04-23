@@ -1,0 +1,40 @@
+﻿
+<div class="dialog-head">学生重新拍照原因</div>
+<div class="page-content" style="padding-top:6px;min-height:200px;margin-bottom:0px;">
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 comment-list" style="border-left:0px solid #fff;" ng-repeat="c in vm.remarks">
+                <div ng-if="!c.checked">
+                    <div class="md-checkbox ep-xz float-l" ng-click="selectRemark(c,true)">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             style="width:15px;height:15px;" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                        <path d="M0,0v512h512V0H0z M480,480H32V32h448V480z" />
+                            </svg>
+
+                    </div>
+                </div>
+
+                <div ng-if="c.checked">
+                    <div class="md-checkbox ep-xz float-l" ng-click="selectRemark(c,false)">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             style="width:15px;height:15px;" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                        <path d="M0,0v512h512V0H0z M480,480H32V32h448V480z M384,112L224,272l-96-96l-64,64l160,160l224-224L384,112z" />
+                            </svg>
+                    </div>
+                </div>
+
+                <div class="clearfix float-l text-omit" ng-bind="c.content">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 comment-list" style="border-left:0px solid #fff;">
+                <input type="text" class="form-control" maxlength="50" style="width:100%;border:0px solid #fff;" ng-model="vm.inputremark" placeholder="学生重拍原因" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dialog-foot">
+    <button ng-click="submitRemarks()" class="btn green">确定</button>
+    <button ng-click="closeDialog()" class="btn gray">取消</button>
+</div>

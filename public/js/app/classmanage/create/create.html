@@ -1,0 +1,162 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>班级管理</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li>
+                <span>创建班级</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet">
+                    <div class="bigtitle-border ">创建班级</div>
+                    <div class="portlet-body form">
+                        <ng-form class="form-horizontal" name="form">
+                            <div class="form-body" style="padding-bottom:0;">
+                                <div class="alert alert-danger " ng-if="vm.msgstatus==1">
+                                    <button class="close" data-close="alert"></button>
+                                    <span ng-bind="vm.errormsg">You have some form errors. Please check below.</span>
+                                </div>
+                                <div class="alert alert-success" ng-if="vm.msgstatus==2">
+                                    <button class="close" data-close="alert"></button>
+                                    <span ng-bind="vm.succmsg">Your form validation is successful! </span>
+
+                                </div>
+                                <div class="form-group" ng-if="false">
+                                    <label class="control-label col-md-2">
+                                        选择区域：
+                                    </label>
+                                    <div class="col-md-2">
+                                        <div class="margin-bottom-10 waddbig">
+                                            <select class="bs-select form-control bs-select-hidden font-minsong" data-width="125px" ng-model="vm.proinfo" ng-options="v.province for v in vm.provinceItem" ng-change="getCity()">
+                                                <option value="">请选择</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="margin-bottom-10">
+                                            <select class="bs-select form-control bs-select-hidden " data-width="125px" ng-model="vm.cityinfo" ng-options="v.city for v in vm.cityItem" ng-change="getCounty()">
+                                                <option value="">请选择</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="margin-bottom-10">
+                                            <select class="bs-select form-control bs-select-hidden" data-width="125px" ng-model="vm.countyinfo" ng-options="v.countyname for v in vm.countyItem" ng-change="getSchool()">
+                                                <option value="">请选择</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-if="false">
+                                    <label class="control-label col-md-2">
+                                        所在学校：
+                                    </label>
+                                    <div class="col-sm-4">
+                                        <select class="bs-select form-control bs-select-hiddeng" data-width="125px" ng-model="vm.schoolinfo" ng-options="v.schoolname for v in vm.schoolItem">
+                                            <option value="">请选择</option>
+                                        </select>
+                                    </div>
+                                    <!--<a href="" class="select-scho">请选择学校</a>-->
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 font-graysong">
+                                        选择年级：
+                                    </label>
+                                    <div class="col-md-6">
+                                        <div class="margin-bottom-10">
+                                            <select class="bs-select form-control bs-select-hidden" name="gradeinfo" ng-model="vm.gradeinfo" ng-options="g.gradename for  g in vm.gradeItem" ng-change="getVersionList()" required>
+                                                <option value="">请选择</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" style="padding-left: 0;padding-top: 5px;">
+                                        <span class="class-zq" ng-if="vm.gradeinfo"></span>
+                                        <span class="class-cwxx" ng-show="form.gradeinfo.$error.required && (form.gradeinfo.$invalid && !form.gradeinfo.$pristine ||!vm.gradeinfo&&vm.submitted)">请选择年级</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label font-graysong" for="title">班级名称：</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control " placeholder="班级名称不超过6个字" maxlength="6" ng-click="openBox($event)" ng-model="vm.classname" name="classname" required />
+                                        <ul class="choose-class" style="display:none;">
+                                            <li ng-repeat="c in vm.classes" ng-bind="c.name" ng-click="selectClass(c.name,$event)"></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4" style="padding-left: 0;padding-top: 5px;">
+                                        <span class="class-zq" ng-if="vm.classname"></span>
+                                        <span class="class-cwxx" ng-show="form.classname.$error.required && (form.classname.$invalid && !form.classname.$pristine ||!vm.classname&&vm.submitted)">请添加班级</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 font-graysong">
+                                        所教学科：
+                                    </label>
+                                    <div class="col-md-6">
+                                        <div class="margin-bottom-10">
+                                            <select class="bs-select form-control bs-select-hidden " ng-model="vm.subjectinfo" ng-options="s.subjectname for  s in vm.subjectItem" ng-change="getVersionList()" ng-disabled="true">
+                                                <option value="">请选择</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 font-graysong">
+                                        教材版本：
+                                    </label>
+                                    <div class="col-md-6">
+                                        <div class="margin-bottom-10 waddbig">
+                                            <select class="bs-select form-control bs-select-hidden " data-width="125px" name="bookinfo" ng-model="vm.versioninfo" ng-options="v.versionname for v in vm.versionlist" required>
+                                                <option value="">请选择</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" style="padding-left: 0; padding-top: 5px;">
+                                        <span class="class-zq" ng-if="vm.bookinfo"></span>
+                                        <span class="class-cwxx" ng-show="form.bookinfo.$error.required && (form.bookinfo.$invalid && !form.bookinfo.$pristine ||!vm.bookinfo&&vm.submitted)">请添加教材版本</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 font-graysong">
+                                        班级口号：
+                                    </label>
+                                    <div class="col-md-6">
+                                        <div class="margin-bottom-10">
+                                            <input type="text" class="form-control " name="des" ng-model="vm.des" value="" placeholder="班级口号不能超过10个字符" maxlength="10" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" style="padding-left: 0;padding-top: 5px;">
+                                        <!--<span class="class-zq" ng-if="vm.des"></span>
+                                        <span class="class-cwxx" ng-show="form.des.$error.required && (form.des.$invalid && !form.des.$pristine ||!vm.des&&vm.submitted)">请添加班级口号</span>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-left: 170px;">
+                                <button class="btn-circle btn-blue" ng-click="createClass(form.$valid)">创建班级</button>
+                            </div>
+                        </ng-form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    setMinheight();
+    $(function () {
+        $(document).click(function () {
+            $('.choose-class').hide();
+        });
+    });
+</script>

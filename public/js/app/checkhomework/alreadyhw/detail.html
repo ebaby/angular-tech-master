@@ -1,0 +1,145 @@
+<div class=" pgzy-content" >
+    <div class="" >
+        <div class="note " ng-if="vm.submithomework.correctstatus==2" style="padding:8px 10px;">
+            <div class="row font-four">
+                <div class="col-md-6" sttyle="z-index:2;">
+                    <div class="clearfix" >
+                        <span class="float-l pgzy-returen" ng-click="goHwresult()">返回小结</span>
+                        <span class="i-marginr"><span ng-bind="vm.tchwinfo.gradename"></span><span ng-bind="vm.tchwinfo.classname"></span></span>
+                        <span class="i-marginr" ng-bind="vm.studentinfo.realname"></span>
+                        <span class="i-marginr" ng-bind="vm.settinghomework.lhname"></span>
+                         <!--<span class="float-l pgzy-returen"style="width:14%">返回小结</span>
+                          <span class="i-marginr float-l" style="width:16%"><span ng-bind="vm.tchwinfo.gradename">4年级</span><span ng-bind="vm.tchwinfo.classname">404班</span></span>
+                          <span class="i-marginr float-l"style="width:10%" ng-bind="vm.sublogItems.realname">周文秀</span>
+                          <span class="i-marginr float-l table-texthidden" style="width:50%" ng-bind="vm.tchwinfo.lhname">
+                            课时3因数与倍数
+                        </span>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <div class="col-md-8">
+                <div >
+                    <div class="portlet light padding-no work-photo" style="padding: 0 !important;margin-top:-10px;">
+                        <canvas id="canvasimg" width="{{currentPigaiItem.answer.picsrcwidth}}" height="{{currentPigaiItem.answer.picsrcheight}}"></canvas>
+
+                        <div class="work-pg" ng-if="vm.correctpagelist.length>1">
+                            <div class="row row-pt" style="margin-top: 2px;">
+                                <div class="col-md-3 padding-no cursor">
+                                    <div ng-hide="vm.currentimgpageindex==0">
+                                        <div ng-click="imgPrevPage()"><i class="fa fa-chevron-left i-marginr"></i>上一页</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 padding-no">
+                                    <div>第<span ng-bind="vm.currentimgpageindex+1">1</span>页，共<span ng-bind="vm.correctpagelist.length">3</span>页</div>
+                                </div>
+                                <div class="col-md-3 padding-no cursor">
+                                    <div ng-hide="vm.currentimgpageindex==vm.correctpagelist.length-1">
+                                        <div ng-click="imgNextPage()">下一页<i class="fa fa-chevron-right i-marginl"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work-flag-on" ng-show="vm.submithomework.correctstatus==2">
+                            <div><div class="work-df" ng-bind="vm.submithomework.myscore"></div></div>
+
+                            <!-- <div><span ng-bind="vm.sublogItems.sumscorse"></span>分</div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4" id="checkcontainer" style="width:440px;position:fixed;display:none;">
+                <div class="portlet light " style="padding:0;">
+                    <div class="portlet-body" id="checkcontrol" style="overflow-y:auto;">
+                        <div class="block-graytemplate note-info  notee" style="background:#fff;">
+                            <div class="zy">
+                                <div class="zyjg">作业结果</div>
+                                <div class="zy-list">
+                                    <!--<ul>
+                                <li>共16题</li>
+                                <li>正确10</li>
+                                <li> 错误4 </li>
+                                <li>半对2</li>
+                            </ul>-->
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="row row-pt">
+                                <div class="col-md-3 col-sm-4 col-xs-6 row-colbor cursor" ng-class="{'col-act':vm.currenthwindex==$index}" ng-repeat="p in vm.questioncorrectlist" ng-click="selectQuestion(p,$index)">
+                                    <span ng-bind="p.question.xuanxiang"></span>
+                                    <span class="" ng-class="{'judgey':p.correct.answerstatus==1,'judgebd':p.correct.answerstatus==2,'judgew':p.correct.answerstatus==3}"></span>
+                                </div>
+                            </div>
+                            <div class="row row-pt" style="margin-top:10px;">
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <button class="btn  red btn-padd" ng-click="correctHomeWork(3,false)">错 </button>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <button class="btn  yellow-casablanca btn-padd" ng-click="correctHomeWork(2,false)">半对</button>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <button class="btn  blue btn-padd " ng-click="correctHomeWork(1,false)">对 </button>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="block-graytemplate note-info notee" style="background:#fff;">
+                            <div class="zy">
+                                <div class="zyjg">单题快捷评语</div>
+                                <div class="zy-gd"><a ng-click="commentDialog()">更多<i class="fa fa-angle-right"></i></a></div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="row row-pt">
+                                <div class="col-md-4 col-sm-6 col-xs-6 row-bottom cursor" ng-repeat="vc in vm.cidsimplelist">
+                                    <div class="note-remark" ng-click="selectSimpleremark(vc)" ng-class="{'remark-act':vc.checked}" title="{{vc.ctitle}}">{{vc.ctitle}}</div>
+                                </div>
+
+                            </div>
+                            <div class=" more-deleta">
+                                <div style="width:100%" ng-repeat="c in vm.currentcomment">
+                                    <div style="float:left"></div><div style="float:left">{{c.ctitle}}</div><div style="float:left"></div><div style="float:left"><i ng-click="deleteComment(c)" class="fa fa-close font-blue i-marginl cursor"></i></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+                        <div class="block-graytemplate note-info notee noteee" style="background:#fff;">
+                            <div class="zy" ng-click="openRef()">
+                                <div class="zyjg">参考答案</div>
+                                <div class="zy-gd"><a><span ng-if="!vm.reopen">展开</span><span ng-if="vm.reopen">收起</span><i ng-if="vm.reopen" class="fa fa-angle-up"></i> <i ng-if="!vm.reopen" class="fa fa-angle-down"></i></a></div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="scroller" ng-show="vm.reopen" style="height:200px; overflow-y:auto;">
+                                <p style="word-wrap:break-word;  padding-left:5px; padding-right:5px; line-height:25px;" custom-mathjax content="currentPigaiItem.ques.daan" ng-bind-html="toHtml(currentPigaiItem.question.daan)">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        setCheckcontrol();
+        function setCheckcontrol() {
+            var docheight = $(window).height();
+            var docwidth = $(window).width();
+            $("#checkcontainer").css("right", (docwidth - 1220) / 2);
+            $("#checkcontainer").css("display", "block");
+            $("#checkcontrol").css("height", (docheight - 250) + "px");
+            $(".page-content").css("minHeight", (docheight + 50) + "px");
+            $(".pgzy-content").css("minHeight", (docheight + 50) + "px");
+        }
+    })
+</script>

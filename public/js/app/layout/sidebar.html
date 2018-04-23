@@ -1,0 +1,78 @@
+<div class="sidebar  nav-sidebar block-template" id="sidebar">
+	<script type="text/javascript">
+		try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+	</script>
+	<div class="sidebar-home">
+		<div class="home-icon nav-sprite nav01" style="margin-top:10px;" ng-click="selectTab(0,0)" ng-class="{'nav01-act':vm.tabindex==0&&vm.childindex==0}">
+			首页
+		</div>
+	</div>
+	<div class="sidebar-block">
+		<div class="sidebar-ernav">布置作业</div>
+		<div class="clearfix">
+			<div class="sidebar-l" ng-click="selectTab(1,0)">
+                <div class="nav-sprite  nav02" ng-class="{'nav02-act':vm.tabindex==1&&vm.childindex==0}"></div>
+				<span>布置新作业</span>
+			</div>
+			<div class="sidebar-r" ng-click="selectTab(1,1)">
+                <div class="nav-sprite  nav03" ng-class="{'nav03-act':vm.tabindex==1&&vm.childindex==1}"></div>
+				<span>布置作业记录</span>
+			</div>
+            <!--<div class="sidebar-l" ng-click="selectTab(1,2)">
+                <div class="nav-sprite  nav11" ng-class="{'nav11-act':vm.tabindex==1&&vm.childindex==2}"></div>
+				<span>布置暑假作业</span>
+			</div>-->
+		</div>
+	</div>
+	<div class="sidebar-block">
+		<div class="sidebar-ernav">批改作业</div>
+		<div class="clearfix">
+			<div class="sidebar-l" ng-click="selectTab(2,0)">
+                <div class="nav-sprite  nav04" ng-class="{'nav04-act':vm.tabindex==2&&vm.childindex==0}"></div>
+                <span>未批完作业</span>
+			</div>
+			<div class="sidebar-r "  ng-click="selectTab(2,1)">
+                <div class="nav-sprite  nav05" ng-class="{'nav05-act':vm.tabindex==2&&vm.childindex==1}"></div>
+				<span>已批完作业</span>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar-block">
+		<div class="sidebar-ernav">学情分析</div>
+		<div class="clearfix">
+			<div class="sidebar-l" ng-click="selectTab(3,0)">
+                <div class="nav-sprite  nav06" ng-class="{'nav06-act':vm.tabindex==3&&vm.childindex==0}"></div>
+				<span>作业学情分析</span>
+			</div>
+			<div class="sidebar-r" ng-click="selectTab(3,1)">
+                <div class="nav-sprite  nav07" ng-class="{'nav07-act':vm.tabindex==3&&vm.childindex==1}"></div>
+				<span>班级报告</span>
+			</div>
+			<div class="sidebar-l" ng-click="selectTab(3,2)">
+                <div class="nav-sprite  nav08" ng-class="{'nav08-act':vm.tabindex==3&&vm.childindex==2}"></div>
+				<span>错题打印</span>
+			</div>
+            <div class="sidebar-r" ng-click="selectTab(3,3)">
+                <div class="nav-sprite  nav12" ng-class="{'nav12-act':vm.tabindex==3&&vm.childindex==3}"></div>
+                <span>高频错题</span>
+            </div>
+
+		</div>
+	</div>
+	<div class="sidebar-block" style="border:0;">
+		<div class="sidebar-ernav">班级管理</div>
+		<div class="clearfix">
+			<div class="sidebar-l " ng-click="selectTab(4,0)">
+                <div class="nav-sprite  nav09" ng-class="{'nav09-act':vm.tabindex==4&&vm.childindex==0}">
+                    <span class="nav-iconup" ng-if="vm.tips"></span>
+                </div>
+				<span>班级管理</span>
+			</div>
+			<div class="sidebar-r" ng-click="selectTab(4,1)">
+                <div class="nav-sprite  nav10" ng-class="{'nav10-act':vm.tabindex==4&&vm.childindex==1}"></div>
+				<span>创建班级</span>
+			</div>
+		</div>
+	</div>
+
+</div>

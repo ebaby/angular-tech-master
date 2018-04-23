@@ -1,0 +1,72 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>学情分析</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li class="font-act">
+                <span ui-sref="app.analyze.class" class="cursor">班级报告</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li>
+                <span>薄弱时知识点分析</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet light bordered  portlet-form ">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <span ng-bind="known.zsdname">因数和倍数的认识</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div ng-show="vm.questionlist.length>0">
+                            <div class=" table-noborder">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr ng-repeat="q in vm.questionlist" style="border-bottom:1px solid #e0e0e0;">
+                                            <td align="left" valign="middle" width="80%">
+                                                <span ng-bind="q.xuanxiang">1.根据从一个方向看的的图形，用给定数量的小正方题摆出的立体图形。</span>
+                                                <span custom-mathjax content="q.timuxushu" ng-bind-html="toHtml(q.timuxushu)"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="clearfix learn-state font-minsong">
+                                <div class="float-l">
+                                    说明：
+                                </div>
+                                <div class="float-l">
+                                    <p style="margin: 0;">1.题号：本次作业中每个小题的题号。</p>
+                                    <p style="margin: 0;">2.答题人次：班级中做过本小题的人数。</p>
+                                    <p style="margin: 0;">3.答错人次：班级张做错本小题的人数。</p>
+                                    <p style="margin: 0;">4.错误率：次作业中每个小题的错误率，即答错人次与在答题人次中所占的比例。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div no-data datalist="vm.questionlist">
+                            <div class="kby xqfx-blank" style="display:none;">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight()
+</script>

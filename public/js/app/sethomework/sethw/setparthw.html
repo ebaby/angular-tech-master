@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-12">
+        <div style="background: #333; border: 1px solid #e7ecf1 !important;">
+            <div class="portlet light padding-no work-photo" style="padding: 0 !important;">
+                <canvas id="canvasimg" width="{{currentPigaiItem.answer.picsrcwidth}}" height="{{currentPigaiItem.answer.picsrcheight}}"></canvas>
+
+                <div class="work-pg" ng-if="vm.currentimgtotalcount>1">
+                    <div class="row row-pt" style="margin-top: 2px;">
+                        <div class="col-md-3 padding-no cursor">
+                            <div ng-hide="vm.currentimgpageindex==0">
+                                <div ng-click="imgPrevPage()"><i class="fa fa-chevron-left i-marginr"></i>上一页</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 padding-no">
+                            <div>第<span>{{vm.currentimgpageindex+1}}</span>页，共<span ng-bind="vm.currentimgtotalcount">3</span>页</div>
+                        </div>
+                        <div class="col-md-3 padding-no cursor">
+                            <div ng-hide="vm.currentimgpageindex==vm.currentimgtotalcount-1">
+                                <div ng-click="imgNextPage()">下一页<i class="fa fa-chevron-right i-marginl"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-flag-on" ng-show="vm.sublogItems.pigaistatus==2">
+                    <div>
+                        <div class="work-df" ng-bind="vm.sublogItems.myscorse"></div>
+                    </div>
+
+                    <!-- <div><span ng-bind="vm.sublogItems.sumscorse"></span>分</div> -->
+
+                </div>
+            </div>
+        </div>
+        <button class="btn green btn-pgok" ng-click="checkQuestion()">选题完成</button>
+    </div>
+</div>

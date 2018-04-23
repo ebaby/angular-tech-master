@@ -1,0 +1,549 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>学情分析</span><span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li>
+                <span>作业学情分析</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hour-title" style="margin-bottom:20px">
+                    <span ng-bind="vm.hwInfoItems.settinghomeworkexpand.lhname"></span>         
+                    <div class="float-r font-four font-gray" style="padding-top:6px;">
+                    	<span ng-bind="vm.hwInfoItems.settinghomeworkexpand.gradename"></span>
+                    	 <span ng-bind="vm.hwInfoItems.settinghomeworkexpand.classname"></span>&nbsp;
+                        	布置时间：<span ng-bind="vm.hwInfoItems.settinghomeworkexpand.publishtime*1000|date:'yyyy-MM-dd'"></span>
+                    </div>
+                </div>
+                <div class="portlet portlet-form" style="box-shadow:0 1px 7px rgba(0,0,0,.1),0 1px 7px rgba(0,0,0,.1) !important; padding:0px 20px 20px 20px;" ng-if="false">
+                    <div class="portlet-title classhw-title   ">
+                        <div class="selectbook-title float-l">
+                            <span class="i-marginr"><span ng-bind="vm.hwInfoItems.settinghomeworkexpand.gradename">4年级404班</span><span ng-bind="vm.hwInfoItems.settinghomeworkexpand.classname"></span></span>
+                        </div>
+                        <div class="float-r">
+                            <div class="font-minsong" style="margin:15px 0 0; line-height:40px;">
+                                <span class="i-marginr">接收（<span class="font-red" ng-bind="vm.hwInfoItems.settinghomeworkexpand.acceptcount">20</span>）</span>
+                                <span class="i-marginr">未交（<span class="font-red" ng-bind="vm.hwInfoItems.settinghomeworkexpand.nosubmitcount">20</span>）</span>
+                                <span class="imarginr">预检（<span class="font-blue" ng-bind="vm.hwInfoItems.settinghomeworkexpand.waitcount">2</span>）</span>
+                                <span class="imarginr">已交（<span class="font-blue" ng-bind="vm.hwInfoItems.settinghomeworkexpand.submitcount">2</span>）</span>
+                                <span class="imarginr">未批（<span class="font-red" ng-bind="vm.hwInfoItems.settinghomeworkexpand.nocorrections">2</span>）</span>
+                                <span class="imarginr">已批（<span class="font-blue" ng-bind="vm.hwInfoItems.settinghomeworkexpand.correctcount">2</span>）</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart">
+                                    <div class="number transactions font-red font-six" style="line-height: 35px;">
+                                        <span ng-bind="vm.hwInfoItems.settinghomeworkexpand.fullmark">100</span>分
+                                    </div>
+                                    <div class="number transactions" style="line-height: 35px;">
+                                        <span class="font-minsong ">满分</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart">
+                                    <div class="number transactions font-red font-six" style="line-height: 35px;">
+                                        <span ng-bind="vm.hwInfoItems.settinghomeworkexpand.maxmark">100</span>分
+                                    </div>
+                                    <div class="number transactions" style="line-height: 35px;">
+                                        <span class="font-minsong ">最高分</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart clearfix">
+                                    <div class="number transactions font-red font-six" style="line-height: 35px;">
+                                        <span ng-bind="vm.hwInfoItems.settinghomeworkexpand.minmark">100</span>分
+                                    </div>
+                                    <div class="number transactions" style="line-height: 35px;">
+                                        <span class="font-minsong ">最低分</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart">
+                                    <div class="number transactions font-red font-six" style="line-height: 35px;">
+                                        <span ng-bind="vm.hwInfoItems.settinghomeworkexpand.averagescore">100</span>分
+                                    </div>
+                                    <div class="number transactions" style="line-height: 35px;">
+                                        <span class="font-minsong ">平均分 </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart">
+                                    <div class="number transactions font-red font-six" style="line-height: 35px;">
+                                        <span ng-bind="vm.hwInfoItems.settinghomeworkexpand.passrate">100</span>%
+                                    </div>
+                                    <div class="number transactions" style="line-height: 35px;">
+                                        <span class="font-minsong ">及格率</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart">
+                                    <div class="number transactions font-red font-six" style="line-height: 35px;">
+                                        <span ng-bind="vm.hwInfoItems.settinghomeworkexpand.excellentrates">100</span>%
+                                    </div>
+                                    <div class="number transactions" style="line-height: 35px;">
+                                        <span class="font-minsong">优秀率</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="portlet portlet-form" style="box-shadow:0 1px 7px rgba(0,0,0,.1),0 1px 7px rgba(0,0,0,.1) !important; padding:0px 20px 20px 20px;">
+                    <div class="portlet-title classhw-title   ">
+                        <div class="selectbook-title float-l">
+                            <span>作业上交情况</span>
+                        </div>
+                        <div class="float-r">
+                            <div class="font-minsong" style="margin:15px 0 0; line-height:40px;">
+                                <a ng-click="noSubmitDialog()" class="font-blue">查看未交 <i class="fa fa-caret-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart">
+                                    共(<span class="font-red" ng-bind="vm.hwInfoItems.settinghomeworkexpand.classusercount">2</span>)
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart">
+                                    已交(<span class="font-red" ng-bind="vm.hwInfoItems.settinghomeworkexpand.submitcount">2</span>)
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart clearfix">
+                                    已批(<span class="font-red" ng-bind="vm.hwInfoItems.settinghomeworkexpand.correctcount">2</span>)
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart">
+                                    未交(<span class="font-red" ng-bind="vm.hwInfoItems.settinghomeworkexpand.nosubmitcount">20</span>)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-graytemplate " ng-if="false">
+                    <div class="portlet-title clearfix classhw-title">
+                        <div class="selectbook-title float-l">
+                            <span>分数段内分布的学生</span>
+                        </div>
+                        <div class="float-r">
+                            <div class="float-r font-blue font-minsong cursor" ng-click="goToStudent()" style="margin:15px 0;">
+                                查看详情 <span class="btn-amend"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div>
+                            <div class="table-scrollable table-noborder" style="border:0 !important">
+                                <table class="table  no-border">
+                                    <tbody>
+                                        <tr ng-repeat="j in vm.hwInfoItems.cjfb">
+                                            <td align="center" valign="middle" width="8%">
+                                                <div ng-bind="j.title">优秀：90-100</div>
+                                            </td>
+                                            <td align="left" valign="middle" width="80%">
+                                                <!-- 进度条 -->
+                                                <div class="plan-setd">
+                                                    <div class="plan-set" style="width:{{j.upidnum/vm.hwInfoItems.classusercount*100 }}%"></div>
+                                                </div>
+                                            </td>
+                                            <td align="center" valign="middle" width="10%">
+                                                <span ng-bind="j.upidnum">7</span>人
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="clearfix  learn-state ">
+                            <div class="float-l">
+                                说明：
+                            </div>
+                            <div class="float-l">
+                                <p style="margin: 0;">1.各分数段：90-100优秀&nbsp;&nbsp;80-89良好&nbsp;&nbsp;60-79一般&nbsp;&nbsp;0-59不及格。</p>
+                                <p style="margin: 0;">2.总体分数段人数分布比例：（1）班级学生在本次作业得分的分数比例；（2）班级学生在本次作业得分的分数分布及各分数段的具体人数。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-graytemplate">
+                    <div class="portlet-title clearfix classhw-title">
+                        <div class="selectbook-title  float-l">
+                            <span>本次作业各题错误情况</span>
+                        </div>
+                         <div class="float-r font-minsong" style="margin:15px 0 0; line-height:40px;">
+                                <a ng-click="goToWrongDetail()" class="font-blue" ng-if="vm.hwInfoItems.wrongquesanalysis.length>0">查看错题详情 <i class="fa fa-caret-right"></i></a>
+                         </div>
+                    </div>
+                    <div class="portlet-body" style="position:relative;">
+
+                        <div  ng-show="vm.hwInfoItems.tilist&&vm.hwInfoItems.tilist.length>0">
+                        <div>
+                            <div id="hwbar" e-chart options="lineEchartOptions" style="height:260px;width:88%;"></div>
+                            <div class="btn_list">
+                                <span class="l" ng-click="nextHomeWork()" ng-hide="vm.pageindex==vm.allpage" title="下一页">&gt;</span>
+                                <span class="r" ng-click="prevHomeWork()" ng-show="vm.pageindex>1" title="上一页">&lt;</span>
+                            </div>
+                        </div>
+                        <div class="work-addbtn" ng-if="vm.hwInfoItems.wrongquesanalysis.length>0">
+                            <button class="btn-circle  btn-blue" ng-click="promptedRedoDialog()">提醒学生重做</button><br>
+                            <button ng-click="goToCheckWrong()" class="btn-circle  btn-ff7 " type="button" style="margin-top:30px;">批改错题</button>
+                        </div>
+                        </div>
+
+
+                        <div class="clearfix  learn-state" style="margin-top: 20px;">
+                            <div class="float-l">
+                                说明：
+                            </div>
+                            <div class="float-l">
+                                <p style="margin: 0;">Y轴是错误率，X轴是题目。</p>
+                                <!--<p style="margin: 0;">1.鼠标悬移到每题的柱状图上，显示本道题的学生概况（包括本道题答对多少人，答错多少人，半对多少人，错误率多少）。</p>
+                                <p style="margin: 0;">2.每道题错误率：（错误人数+半对人数）/班级已交作业的总人数。</p>
+                                <p style="margin: 0;">3.横轴代表本次作业每道题的题号，纵轴代表错误率。</p>-->
+                            </div>
+                           
+                        </div>
+
+                        <!-- 空白页 -->
+                        <div no-data datalist="vm.hwInfoItems.tilist">
+                            <div class="kby xqfx-blank" style="display:none;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-graytemplate ">
+                    <div class="portlet-title clearfix classhw-title">
+                        <div class="selectbook-title float-l">
+                            <span>成绩分布情况</span>
+                        </div>    
+                        <div class="float-r font-minsong" style="margin:15px 0 0; line-height:40px;">
+                                <a ng-click="goToStudent()" class="font-blue" ng-show="vm.ucount>0">查看详情 <i class="fa fa-caret-right"></i></a>
+                         </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div id="levelpie" e-chart options="pieEchartOptions" style="height: 250px; margin-top: 10px;" ng-show="vm.ucount>0"></div>
+                                                
+                        <div class="kby xqfx-blank" ng-if="vm.ucount==0">
+                        </div>
+                        
+                    	<div class="clearfix  learn-state" style="margin-top: 30px;">
+                            <div class="float-l">
+                                	说明：
+                            </div>
+                            <div class="float-l">
+                                <p style="margin: 0;">21、各分数段：90-100优秀&nbsp;&nbsp;80-89良好&nbsp;&nbsp;60-79一般&nbsp;&nbsp;0-59不及格</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-form  block-graytemplate" style="padding-bottom: 7px;">
+                    <div class="portlet-title classhw-title">
+                        <div class="selectbook-title">
+                            <span>本次作业各知识点掌握情况</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body" style="position:relative; margin-top:10px;">
+                        <div ng-show="vm.hwInfoItems&&vm.hwInfoItems.zsdlist.length>0">
+                            <div style="position:absolute; width:5px; height:5px; border-radius:5px; background:#dbdbdb; top:0; left:-2px"></div>
+                            <div class="table-noborder" style="padding-left: 16px !important; border-left:dashed 1px #dbdbdb">
+                                <table class="table ">
+                                    <tbody>
+                                        <tr ng-repeat="k in vm.hwInfoItems.zsdlist">
+                                            <td align="left" valign="middle" width="20%">
+                                                <div class="" style="position:relative">
+                                                    <div style=" position:absolute; width:5px; height:5px; border-radius:5px; background:#e0e0e0; top:15px; left:-19px"></div>
+                                                    <div ng-bind="k.zsdname " class="table-texthidden" style="width:158px">因数和倍数的人数</div>
+                                                </div>
+                                            </td>
+                                            <td align="center" valign="middle" width="25%">
+                                                <div class="clearfix">
+                                                    <div class="float-l icon-marginr">
+                                                        <img src="img/icon-y.png" alt="" />（<span ng-bind="k.right">20</span>）
+                                                    </div>
+                                                    <div class="float-l icon-marginr">
+                                                        <img src="img/icon-w.png" alt="" />（<span ng-bind="k.wrong">20</span>）
+                                                    </div>
+                                                    <div class="float-l icon-marginr">
+                                                        <img src="img/icon-bd.png" alt="" />（<span ng-bind="k.wronghalf">20</span>）
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td align="left" valign="middle" width="40%">
+                                                <div class="plan-setd">
+                                                    <div class="plan-set" style="width: {{ k.rate}}%" ng-class="{'plan-red':k.rate<=85}"></div>
+                                                </div>
+
+                                            </td>
+                                            <td align="center" valign="middle" width="10%">
+                                                通过率 <span><span ng-bind="convertRate(k.rate)">7</span>%</span>
+                                            </td>
+                                            <td align="center" valign="middle" width="10%" class="font-blue cursor " ng-click="goToKnown(k)">
+                                                查看
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <!-- 空白页 -->
+                        <div no-data datalist="vm.hwInfoItems.zsdlist">
+                            <div class="kby xqfx-blank" style="display:none;">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="block-graytemplate" ng-if="false">
+                    <div class="portlet-title classhw-title">
+                        <div class="selectbook-title">
+                            <span>学生掌握情况</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="table-scrollable table-noborder">
+                            <table class="table  table-hover th-noborder">
+                                <thead>
+                                    <tr>
+                                        <th align="center" width="5%">
+                                            <div ng-show="vm.hwInfoItems.wrongquesanalysis.length>0">
+                                                <div ng-if="!vm.allchecked" class="md-checkbox ep-xz " ng-click="allChecked()">
+                                                    <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                        style="width: 15px; height: 15px;" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                                                        <path d="M0,0v512h512V0H0z M480,480H32V32h448V480z" />
+                                                    </svg>-->
+                                                    <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                         style="width: 15px; height: 15px; margin-top: 2px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                        bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                        bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                        eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                        MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                        dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                        dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                        IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                        ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                        cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                        RD0ieG1wLmlpZDo5QjNDMjA2NDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                        bnRJRD0ieG1wLmRpZDo5QjNDMjA2NTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                        ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNUUyMzM4NjExRTY5QzNG
+                                                        QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNUUzMzM4NjExRTY5
+                                                        QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                        ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BY6V2wAAAHtJREFUeNpiXLVqFRsDA0M3EMcAsRADYfAe
+                                                        iBcDcSkTkOgCYjUg1gFiRiKwNlR9EwuQiIVqfM5AHACpSwLiK0xQpxKrEdkAISYGCsCo5pGj+R0Q
+                                                        S5KoTwKkjwmaQ+ZABYgBMkA8F6QHpLkMiO8A8TUg/k8EvgRVXwsQYACfEB5gLshgigAAAABJRU5E
+                                                        rkJggg==">
+                                                    </image>
+                                                   </svg>
+                                                </div>
+                                                <div ng-if="vm.allchecked" class="md-checkbox ep-xz" ng-if="c.checked" ng-click="allChecked()">
+                                                    <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                        style="width: 15px; height: 15px;" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                                                        <path d="M0,0v512h512V0H0z M480,480H32V32h448V480z M384,112L224,272l-96-96l-64,64l160,160l224-224L384,112z" />
+                                                    </svg>-->
+                                                    <svg version="1.1" id="Svg3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                         style="width: 15px; height: 15px; margin-top:2px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                    bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                    bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                    eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                    MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                    dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                    dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                    IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                    ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                    cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                    RD0ieG1wLmlpZDo5QjEyQzVFMDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                    bnRJRD0ieG1wLmRpZDo5QjEyQzVFMTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                    ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNURFMzM4NjExRTY5QzNG
+                                                    QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNURGMzM4NjExRTY5
+                                                    QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                    ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7GfnjAAAAOhJREFUeNpitF/7k42BgaEbiGOAWIiBMHgP
+                                                    xIuBuJQJSHQBsRoQ6wAxIxFYG6q+iQVIxEI1PmcgDoDUJQHxFSaoU4nViGyAEBOJmnYA8Q8YhxTN
+                                                    U4DYHYh/kqp5AhBnA/ETIOYnRTMoNvKh/pRFlkDX/AeIHyPx20HxCcQvgVgK3VR0zTeAWAaI90Gj
+                                                    owKIXwOxBDYnsaDxQfG9AojDgdgR6kdZXP5hwSIWAcTS0FQkiy8wWHCI2xITBSA/vwNiSRITCygM
+                                                    3jFBc8gcXIGCBYACdC5ID0hzGRDfAeJrQPyfCHwJqr4WIMAAI14wiZLGvXEAAAAASUVORK5CYII=">
+                                                    </image>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th width="15%" align="center" valign="middle">学生基本信息 </th>
+                                        <th width="10%" align="center" valign="middle">本次作业情况</th>
+                                        <th width="20%" align="center" valign="middle">本课时处理情况</th>
+                                        <th width="20%" align="center" valign="middle">消灭错题情况</th>
+                                        <th width="10%" align="center" valign="middle">未批</th>
+                                        <th width="15%" align="center" valign="middle">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="c in vm.hwInfoItems.wrongquesanalysis" ng-hide="c.fished" ng-class="{'even-line':$index%2==0}">
+                                        <td align="center" valign="middle">
+                                            <div ng-if="!c.checked&&c.isalert!=1" class="md-checkbox ep-xz " ng-click="selectStudent(c)">
+                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                     style="width: 15px; height: 15px;" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                                                <path d="M0,0v512h512V0H0z M480,480H32V32h448V480z" />
+                                                </svg>-->
+                                                <svg version="1.1" id="Svg2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                     style="width: 15px; height: 15px; margin-top: -5px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                        bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                        bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                        eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                        MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                        dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                        dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                        IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                        ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                        cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                        RD0ieG1wLmlpZDo5QjNDMjA2NDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                        bnRJRD0ieG1wLmRpZDo5QjNDMjA2NTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                        ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNUUyMzM4NjExRTY5QzNG
+                                                        QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNUUzMzM4NjExRTY5
+                                                        QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                        ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BY6V2wAAAHtJREFUeNpiXLVqFRsDA0M3EMcAsRADYfAe
+                                                        iBcDcSkTkOgCYjUg1gFiRiKwNlR9EwuQiIVqfM5AHACpSwLiK0xQpxKrEdkAISYGCsCo5pGj+R0Q
+                                                        S5KoTwKkjwmaQ+ZABYgBMkA8F6QHpLkMiO8A8TUg/k8EvgRVXwsQYACfEB5gLshgigAAAABJRU5E
+                                                        rkJggg==">
+                                                    </image>
+                                                   </svg>
+                                            </div>
+                                            <div class="md-checkbox ep-xz" ng-if="c.checked&&c.isalert!=1" ng-click="selectStudent(c)">
+                                                <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                     style="width: 15px; height: 15px;" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                                                <path d="M0,0v512h512V0H0z M480,480H32V32h448V480z M384,112L224,272l-96-96l-64,64l160,160l224-224L384,112z" />
+                                                </svg>-->
+                                                <svg version="1.1" id="Svg4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                     style="width: 15px; height: 15px; margin-top: -5px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                    bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                    bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                    eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                    MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                    dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                    dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                    IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                    ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                    cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                    RD0ieG1wLmlpZDo5QjEyQzVFMDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                    bnRJRD0ieG1wLmRpZDo5QjEyQzVFMTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                    ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNURFMzM4NjExRTY5QzNG
+                                                    QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNURGMzM4NjExRTY5
+                                                    QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                    ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7GfnjAAAAOhJREFUeNpitF/7k42BgaEbiGOAWIiBMHgP
+                                                    xIuBuJQJSHQBsRoQ6wAxIxFYG6q+iQVIxEI1PmcgDoDUJQHxFSaoU4nViGyAEBOJmnYA8Q8YhxTN
+                                                    U4DYHYh/kqp5AhBnA/ETIOYnRTMoNvKh/pRFlkDX/AeIHyPx20HxCcQvgVgK3VR0zTeAWAaI90Gj
+                                                    owKIXwOxBDYnsaDxQfG9AojDgdgR6kdZXP5hwSIWAcTS0FQkiy8wWHCI2xITBSA/vwNiSRITCygM
+                                                    3jFBc8gcXIGCBYACdC5ID0hzGRDfAeJrQPyfCHwJqr4WIMAAI14wiZLGvXEAAAAASUVORK5CYII=">
+                                                    </image>
+                                                    </svg>
+                                            </div>
+                                            <div class="md-checkbox ep-xz" ng-if="c.isalert==1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                     width="15px" height="16px" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                    bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                    bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                    eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                    MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                    dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                    dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                    IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                    ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                    cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                    RD0ieG1wLmlpZDpDMDQ2QTNCMDQzNjQxMUU2QkE1OUI5NkIxRTkxRUYyOSIgeG1wTU06RG9jdW1l
+                                                    bnRJRD0ieG1wLmRpZDpDMDQ2QTNCMTQzNjQxMUU2QkE1OUI5NkIxRTkxRUYyOSI+IDx4bXBNTTpE
+                                                    ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkMwNDZBM0FFNDM2NDExRTZCQTU5
+                                                    Qjk2QjFFOTFFRjI5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkMwNDZBM0FGNDM2NDExRTZC
+                                                    QTU5Qjk2QjFFOTFFRjI5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                    ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Lw2z6QAAAItJREFUeNpiXLVqFRsDA0M3EMcAsRADYfAe
+                                                    iBcDcSkLkOgSFBTMU1FRYWBjYyOo89evX4J37tzJe//+/XcmID+WWI0gAFIHUg8EqSDNQsRqRDYA
+                                                    pI+JgQIwqnnkaH4HTK8kaYKqfwfSvBiY0BmINQCkDqQeCOaAclUZMIcwnj59OhbIFiQhS9YCBBgA
+                                                    ZPQuuTaQC3IAAAAASUVORK5CYII=">
+                                                    </image>
+                                                    </svg>
+                                            </div>
+                                        </td>
+                                        <td align="center" valign="middle">
+                                            <div class="clearfix" style="width: 120px;">
+                                                <div class="learn-table-headpt float-l">
+                                                    <img ng-src="{{c.headiconurl}}">
+                                                    <div class="check-xin fa fa-red " ng-class="{'font-heart':c.isguanzhu==1}"></div>
+                                                </div>
+                                                <div class="float-l  poto-name" ng-bind="c.username" chart-length content="u.realname" length="3" chartauto=true>1111</div>
+                                            </div>
+                                        </td>
+                                        <td align="center" valign="middle" class="font-redscore font-red">
+                                            <span ng-bind="c.sorce">90</span>分
+                                        </td>
+                                        <td align="center" valign="middle">
+                                            <div>
+                                                <span ng-bind="c.homewrokwrongprocessed">0</span>/<span ng-bind="c.homeworkwrong">5</span>道错题
+                                            </div>
+                                        </td>
+                                        <td align="center" valign="middle">
+                                            <div class="clearfix" style="text-align: center">
+                                                <div class="float-l" style="margin-left:15px;">
+                                                    累计<span ng-bind="c.wrongprocessed">15</span>/<span ng-bind="c.wrongtotal">20</span>
+                                                </div>
+                                                <div class="float-r i-marginl" style="margin-right:20px;">
+                                                    昨日处理<span ng-bind="c.wrongprocessedyesterday">9</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td align="center" valign="middle">
+                                            <span class="font-orange font-four" ng-bind="c.wrongnocorrectnum">5</span>
+                                        </td>
+                                        <td align="center" valign="middle">
+                                            <button class="btn-circle class-btnblue" ng-click="goToWrong(c)" style="margin-top: 3px;">
+                                                错题批改
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="ep-left">
+                            <button class="btn-circle btn-blue" style="width: 150px; margin-left:30px;" ng-click="promptedRedoDialog()">
+                                提醒他们重做错题
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight()
+</script>

@@ -1,0 +1,95 @@
+<div class="portlet">
+    <div class="portlet-body form">
+        <form class="form-horizontal" name="form">
+            <div class="form-wizard">
+                <div class="form-body">
+                    <div class="tab-pane active" id="tab1">
+                        <div class="alert alert-danger " ng-if="vm.msgstatus==1">
+                            <button class="close" data-close="alert"></button>
+                            <span ng-bind="vm.errormsg">You have some form errors. Please check below.</span>
+
+                        </div>
+                        <div class="alert alert-success" ng-if="vm.msgstatus==2">
+                            <button class="close" data-close="alert"></button>
+                            <span ng-bind="vm.succmsg">Your form validation is successful! </span>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 font-graysong">
+                                输入旧密码：
+                            </label>
+                            <div class="col-md-5">
+                                <input type="password" class="form-control " name="pwdold" placeholder="请输入旧密码" ng-model="vm.pwdold" maxlength="12" required />
+                                <span class="help-block"></span>
+                                <span class="wdatle"></span>
+                            </div>
+                            <div>
+                                <span class="class-zq" ng-if="vm.pwdold"></span>
+                                <span class="class-cwxx" ng-show="form.pwdold.$error.required && (form.pwdold.$invalid && !form.pwdold.$pristine ||!vm.pwdold&&vm.submitted)">旧密码不能为空</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 font-graysong">
+                                重新设置密码：
+                            </label>
+                            <div class="col-md-5">
+                                <input type="password" class="form-control " name="pwd" ng-minlength="6" ng-maxlength="12" maxlength="12" placeholder="请重新设置新密码" ng-model="vm.pwd" required />
+                                <span class="help-block"></span>
+                                <span class="wdatle"></span>
+                            </div>
+                            <div>
+                                <span class="class-zq" ng-if="vm.pwd"></span>
+                                <span class="class-cwxx" ng-show="form.pwd.$error.required && (form.pwd.$invalid && !form.pwd.$pristine ||!vm.pwd&&vm.submitted)">密码长度为6-12位,数字,大小写字母</span>
+                                <span class="class-cwxx" ng-show="form.pwd.$error.minlength&&!form.pwd.$error.pattern">密码长度最小为6位</span>
+                                <span class="class-cwxx" ng-show="form.pwd.$error.maxnlength&&!form.pwd.$error.pattern">密码长度最大为12位</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 font-graysong">
+                                请再次确认密码：
+                            </label>
+                            <div class="col-md-5">
+                                <input type="password" class="form-control" name="pwdconfirm" ng-minlength="6" ng-maxlength="12" maxlength="12" placeholder="请再次确认密码" ng-model="vm.pwdconfirm" required />
+                                <span class="help-block"></span>
+                                <span class="wdatle"></span>
+                            </div>
+                            <div>
+                                <span class="class-zq" ng-if="vm.pwdconfirm&&vm.pwd==vm.pwdconfirm"></span>
+                                <span class="class-cwxx" ng-show="form.pwdconfirm.$error.required && (form.pwdconfirm.$invalid && !form.pwdconfirm.$pristine ||!vm.pwdconfirm&&vm.submitted)">密码长度为6-12位,数字,大小写字母</span>
+                                <span class="class-cwxx" ng-show="form.pwdconfirm.$error.minlength&&!form.pwdconfirm.$error.pattern">密码长度最小为6位</span>
+                                <!--<span class="class-cwxx" ng-show="form.pwdconfirm.$error.maxlength&&!form.pwdconfirm.$error.pattern">密码长度最大为16位</span>-->
+                                <span class="class-cwxx" ng-show="vm.pwd!=vm.pwdconfirm&&form.pwdconfirm.$valid">两次输入不一致</span>
+                            </div>
+                        </div>
+                        <!--<div class="form-group" style="display: none;">
+                            <label class="control-label col-md-3 font-graysong">
+                                验证码：
+                            </label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="verificationcode" placeholder="" ng-model="vm.verificationcode" maxlength="2" required />
+                                <span class="help-block"></span>
+                            </div>
+                            <div style="height: 40px; line-height: 30px;" class="col-md-2 cursor" ng-click="refresh()">
+                                <img width="100" height="30" id="imgcode" ng-src="{{vm.verifycode}}" title="不会算，换一题" />
+                            </div>
+                            <div>
+                                <span class="class-zq" ng-if="vm.verificationcode"></span>
+                                <span class="class-cwxx" ng-show="form.verificationcode.$error.required && (form.verificationcode.$invalid && !form.verificationcode.$pristine ||!vm.verificationcode&&vm.submitted)">验证码不能为空</span>
+                            </div>
+                        </div>-->
+
+
+                    </div>
+                </div>
+                <div style="margin-left: 250px;">
+                    <button type="submit" class="btn-blue btn-circle cursor" ng-click="updPwd(form.$valid)">确认修改</button>
+                    <!--<button type="submit" class="btn-blue btn-circle btn-ccc" >取消</button>-->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

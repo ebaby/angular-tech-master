@@ -1,0 +1,171 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>学情分析</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li class="font-act">
+                <span ui-sref="app.analyze.period" class="cursor">课时学情分析</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li>
+                <span>分数段内分布的学生</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- <div class="hour-title"><span ng-bind="hwinfo.lhname"></span></div>-->
+                <div class="portlet  portlet-form block-graytemplate" style="box-shadow:0 1px 7px rgba(0,0,0,.1),0 1px 7px rgba(0,0,0,.1) !important;">
+                    <div class="portlet-title">
+                        <div class="selectbook-title float-l">
+                            <span class="i-marginr"><span ng-bind="hwinfo.gradename">4年级</span><span ng-bind="hwinfo.classname">404班</span></span>
+                            <!--<span class="hour-title"><span ng-bind="vm.hwInfoItems.lhname"></span></span>-->
+                        </div>
+                        <div class="float-r">
+                            <div class="font-minsong" style="margin:15px 0 0;">
+                                <span class="i-marginr">接收（<span class="font-red" ng-bind="hwinfo.acceptcount">20</span>）</span>
+                                <span class="i-marginr">未交（<span class="font-red" ng-bind="hwinfo.nosubmitcount">20</span>）</span>
+                                <span class="imarginr">预检（<span class="font-blue" ng-bind="hwinfo.waitcount">2</span>）</span>
+                                <span class="imarginr">已交（<span class="font-blue" ng-bind="hwinfo.submitcount">2</span>）</span>
+                                <span class="imarginr">未批（<span class="font-red" ng-bind="hwinfo.nocorrections">2</span>）</span>
+                                <span class="imarginr">已批（<span class="font-blue" ng-bind="hwinfo.correctcount">2</span>）</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart">
+                                    <div class="number transactions font-red  font-six" style="line-height: 35px;">
+                                        <span ng-bind="hwinfo.fullmark">100</span>分
+                                    </div>
+                                    <div class="number transactions" style="line-height: 35px;">
+                                        <span class="font-minsong">满分</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart">
+                                    <div class="number transactions font-red font-six" style="line-height: 35px;">
+                                        <span ng-bind="hwinfo.maxmark">100</span>分
+                                    </div>
+                                    <div class="number transactions" style="line-height: 35px;">
+                                        <span class="font-minsong">最高分</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart clearfix">
+                                    <div class="number transactions font-red font-six" style="line-height: 35px;">
+                                        <span ng-bind="hwinfo.minmark">100</span>分
+                                    </div>
+                                    <div class="number transactions" style="line-height: 35px;">
+                                        <span class="font-minsong">最低分</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart">
+                                    <div class="number transactions font-red font-six" style="line-height: 35px;">
+                                        <span ng-bind="hwinfo.averagescore">100</span>分
+                                    </div>
+                                    <div class="number transactions" style="line-height: 35px;">
+                                        <span class="font-minsong">平均分 </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart">
+                                    <div class="number transactions font-red font-six" style="line-height: 35px;">
+                                        <span ng-bind="hwinfo.passrate">100</span>%
+                                    </div>
+                                    <div class="number transactions" style="line-height: 35px;">
+                                        <span class="font-minsong">及格率</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-4">
+                                <div class="easy-pie-chart">
+                                    <div class="number transactions font-red font-six" style="line-height: 35px;">
+                                        <span ng-bind="hwinfo.excellentrates">100</span>%
+                                    </div>
+                                    <div class="number transactions" style="line-height: 35px;">
+                                        <span class="font-minsong">优秀率</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portlet  portlet-form block-graytemplate" style="border-left:0;border-right:0; padding:0 0 10px;">
+                    <div class="portlet-title">
+                        <div class="selectbook-title " style="margin-left:10px;">
+                            <span>学生掌握情况</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div ng-repeat="s in vm.scorelevel">
+                            <h4 class="class-learn-title padding-two" style="margin-bottom:0;"><span ng-bind="s.title">优秀90-100分数段人数</span><span ng-bind="levelConvert(s.title)"></span>（<span style="font-size:16px ;" ng-bind="s.userlist.length">8</span>）</h4>
+                            <div class="table-scrollable " style="margin-top:0 !important;">
+
+                                <table class="table table-hover no-border">
+                                    <tbody>
+                                        <tr ng-repeat="u in s.userlist" ng-class="{'even-line':$index%2==0}">
+                                            <td align="center" valign="middle" width="15%" class="padding-two">
+                                                <div class="clearfix">
+                                                    <div class="learn-table-headpt float-l">
+                                                        <img ng-src="{{u.headpic}}" />
+                                                        <div class="check-xin fa fa-red " ng-class="{'font-heart':u.isfocus==1}"></div>
+                                                    </div>
+                                                    <div class="float-l poto-name" ng-bind="u.username" chart-length content="u.realname" length="3" chartauto=true>王晶</div>
+                                                </div>
+                                            </td>
+                                            <td align="center" valign="middle" width="10%" class="font-six font-red"><span ng-bind="u.score">90</span>分</td>
+                                            <td align="center" valign="middle" width="30%">
+                                                <div class="clearfix" style="min-width: 160px;">
+                                                    <div class="float-l icon-marginr">
+                                                        <img src="img/icon-y.png" alt="" />（<span ng-bind="u.rightnum">4</span>题）
+                                                    </div>
+                                                    <div class="float-l icon-marginr">
+                                                        <img src="img/icon-w.png" alt="" />（<span ng-bind="u.wrongnum">4</span>题）
+                                                    </div>
+                                                    <div class="float-l icon-marginr">
+                                                        <img src="img/icon-bd.png" alt="" />（<span ng-bind="u.halfrightnum">4</span>题）
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td align="left" valign="middle" width="20%" class="clearfix">
+                                                <div class="float-l">
+                                                    <img src="img/icon-w.png" alt="" />
+                                                </div>
+                                                <div class="i-marginr float-l" ng-repeat="p in u.correctconditionlist"><span ng-show="p.answerstatus==3">（<span ng-bind="p.qnum">1-1</span>）</span></div>
+                                            </td>
+                                            <td align="left" valign="middle" width="20%" class="clearfix">
+                                                <div class="float-l">
+                                                    <img src="img/icon-bd.png" alt=""  />
+                                                </div>
+                                                <span class="i-marginr float-l" ng-repeat="p in u.correctconditionlist"><span ng-show="p.answerstatus==2">（<span ng-bind="p.qnum">1-1</span>）</span></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight()
+</script>

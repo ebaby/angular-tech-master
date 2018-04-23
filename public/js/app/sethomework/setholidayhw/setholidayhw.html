@@ -1,0 +1,208 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>布置作业</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li>
+                <span>布置暑假作业</span>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <img src="img/summer.png" style="margin-top: -1px;" alt="Alternate Text" />
+        <div class="summer-ts font-minsong">
+            <span style="color:#cb6237;font-weight:600;">提示：</span>  <span style="color:#cb6237;">1.</span>支持一键布置整本教辅书为暑假作业；<span style="color:#cb6237;">2.</span>已布置过个别章节的教辅书，不支持整本图书一键布置。
+        </div>
+    </div>
+    <div style="padding:15px;" class="clearfix">
+        <div class="row" ng-show="!vm.partindex">
+            <div class="col-md-12" ng-if="vm.classlist.length>0">
+
+                <div class="portlet portlet-form title-border">
+                    <div class="portlet-body ">
+                        <form>
+                            <div class="form-md-checkboxes">
+                                <div class="md-checkbox-inline">
+                                    <div class="md-checkbox clearfix" ng-repeat="c in vm.classlist" style="width:25%">
+                                        <div ng-if="!c.checked" ng-click="getClassBook(c,true)">
+                                            <div class="float-l check-set">
+                                                <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                     style="width: 16px; height: 16px; margin-top: -5px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                        bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                        bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                        eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                        MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                        dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                        dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                        IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                        ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                        cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                        RD0ieG1wLmlpZDo5QjNDMjA2NDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                        bnRJRD0ieG1wLmRpZDo5QjNDMjA2NTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                        ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNUUyMzM4NjExRTY5QzNG
+                                                        QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNUUzMzM4NjExRTY5
+                                                        QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                        ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BY6V2wAAAHtJREFUeNpiXLVqFRsDA0M3EMcAsRADYfAe
+                                                        iBcDcSkTkOgCYjUg1gFiRiKwNlR9EwuQiIVqfM5AHACpSwLiK0xQpxKrEdkAISYGCsCo5pGj+R0Q
+                                                        S5KoTwKkjwmaQ+ZABYgBMkA8F6QHpLkMiO8A8TUg/k8EvgRVXwsQYACfEB5gLshgigAAAABJRU5E
+                                                        rkJggg==">
+                                                    </image>
+                                                   </svg>
+                                            </div>
+                                            <div class="float-l font-song">
+                                                <span ng-bind="c.gradename"></span>
+                                                <span ng-bind="c.classname"></span>
+                                            </div>
+                                        </div>
+                                        <div class="md-checkbox clearfix" ng-if="c.checked" ng-click="getClassBook(c,false)">
+                                            <div class="float-l  check-set">
+                                                <svg version="1.1" id="Svg1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                     style="width: 16px; height: 16px; margin-top: -5px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                    bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                    bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                    eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                    MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                    dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                    dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                    IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                    ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                    cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                    RD0ieG1wLmlpZDo5QjEyQzVFMDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                    bnRJRD0ieG1wLmRpZDo5QjEyQzVFMTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                    ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNURFMzM4NjExRTY5QzNG
+                                                    QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNURGMzM4NjExRTY5
+                                                    QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                    ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7GfnjAAAAOhJREFUeNpitF/7k42BgaEbiGOAWIiBMHgP
+                                                    xIuBuJQJSHQBsRoQ6wAxIxFYG6q+iQVIxEI1PmcgDoDUJQHxFSaoU4nViGyAEBOJmnYA8Q8YhxTN
+                                                    U4DYHYh/kqp5AhBnA/ETIOYnRTMoNvKh/pRFlkDX/AeIHyPx20HxCcQvgVgK3VR0zTeAWAaI90Gj
+                                                    owKIXwOxBDYnsaDxQfG9AojDgdgR6kdZXP5hwSIWAcTS0FQkiy8wWHCI2xITBSA/vwNiSRITCygM
+                                                    3jFBc8gcXIGCBYACdC5ID0hzGRDfAeJrQPyfCHwJqr4WIMAAI14wiZLGvXEAAAAASUVORK5CYII=">
+                                                    </image>
+                                                    </svg>
+                                            </div>
+                                            <div class="float-l font-song">
+                                                <span ng-bind="c.gradename"></span>
+                                                <span ng-bind="c.classname"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="portlet-form  selectbook " ng-show="vm.tempArray.length==0">
+                    <div class="caption selectbook-title">
+                        <span class="caption">选择教辅</span>
+                    </div>
+                </div>
+                <div class="portlet-form  selectbook" ng-show="vm.tempArray.length>0">
+                    <div class="caption selectbook-title">
+                        <span class="caption">选择教辅</span>
+                    </div>
+                    <div class="portlet-body caption clearfix ">
+                        <div class="teach-list">
+                            <ul class="clearfix i-marginb2">
+                                <li class="block-graytemplate" ng-repeat="b in vm.hwbidlist track by $index" ng-click="selectBook(b)" ng-class="{' selectbook-act':vm.currenthwbid==b.hwbid}">
+                                    <div class="clearfix teach-poto ">
+                                        <div class="float-l bookimg">
+                                            <img ng-src="{{b.bookpic}}" alt="" />
+                                        </div>
+                                        <div class="float-r teach-font">
+                                            <div class="book-title"><span ng-bind="b.bookname">小学教材全练</span></div>
+                                            <div>年级：<span ng-bind="b.gradename">五年级</span>（<span ng-bind="b.njjdname">上册</span>）</div>
+                                            <div class="">学科：<span ng-bind="b.subjectname">数学</span>&nbsp;&nbsp;</div>
+                                            <div class="">版本：<span ng-bind="b.versionname">青岛版</span></div>
+                                            <div class="">学制：<span ng-bind="b.jxjdhfname">青岛版</span></div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portlet   portlet-fit portlet-form ">
+                    <div class="portlet-body ">
+                        <form action="#" class="form-horizontal" id="form_sample_2">
+                            <div class="form-body" style="padding: 0;">
+                                <div class="form-group form-md-radios clearfix deadline">
+                                    <label class="float-l control-label font-gray" for="form_control_1" style="padding-left:15px;">作业提交截止时间：</label>
+                                    <div class="float-l" style="width: 110px;padding-left:0;">
+                                        <div class="md-radio-inline">
+                                            <!--<div class="md-radio">
+                                                <input type="radio" id="checkbox1_8" name="radio2" value="1" class="md-radiobtn" ng-click="editDatetime(1)">
+                                                <label for="checkbox1_8">
+                                                    <span class="inc"></span>
+                                                    <span class="check"></span>
+                                                    <span class="boxext"></span>一天
+                                                </label>
+                                            </div>
+                                            <div class="md-radio">
+                                                <input type="radio" id="checkbox1_9" name="radio2" value="2" class="md-radiobtn" ng-click="editDatetime(2)">
+                                                <label for="checkbox1_9">
+                                                    <span class="inc"></span>
+                                                    <span class="check"></span>
+                                                    <span class="boxext"></span>二天
+                                                </label>
+                                            </div>
+                                            <div class="md-radio">
+                                                <input type="radio" id="checkbox1_10" name="radio2" value="3" class="md-radiobtn" ng-click="editDatetime(3)">
+                                                <label for="checkbox1_10">
+                                                    <span class="inc"></span>
+                                                    <span class="check"></span>
+                                                    <span class="boxext"></span>三天
+                                                </label>
+                                            </div>-->
+                                            <div class="md-radio" style=" margin:5px 0 0 !important;">
+                                                <input type="radio" id="checkbox1_11" name="radio2" value="4" class="md-radiobtn" ng-click="editDatetime(4)">
+                                                <label for="checkbox1_11">
+                                                    <span class="inc"></span>
+                                                    <span class="check"></span>
+                                                    <span class="boxext"></span>自定义
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="float-l" ng-show="vm.datedisable">
+                                        <div class="input-group date-picker date-select " date-picker date-option="dateoption"></div>
+                                    </div>
+                                    <div ng-if="vm.currentdatatime" class="float-l  date">
+                                        提交作业截止时间为：<span ng-bind="vm.currentdatatime">2016/05/13 15:05 星期四</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="form-actions" style="margin-left:120px;">
+                    <button type="button" class="btn-blue btn-circle" ng-click="setHomeWork()">确认布置</button>
+                </div>
+            </div>
+            <div no-data datalist="vm.classlist">
+                <div class="kby " style="display: none;">
+                	<div class="gyxs-blank"></div>
+                    <p>您还没有创建班级，不能布置作业~</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    setMinheight();
+</script>
+
+

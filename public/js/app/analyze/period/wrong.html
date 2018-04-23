@@ -1,0 +1,91 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>学情分析</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li class="font-act">
+                <span ui-sref="app.analyze.period" class="cursor">课时学情分析</span><span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li>
+                <span>错题批改</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet block-graytemplate portlet-form " style="box-shadow: 0 1px 7px rgba(0,0,0,.1),0 1px 7px rgba(0,0,0,.1) !important;">
+                    <div class="portlet-title clearfix">
+                        <div class="float-l">
+                            <div style=" margin-top 4px;">
+                                <span class="icon-marginr selectbook-title" ng-bind="wronginfo.username">王晶</span>
+                                <span class="i-marginr title-copy">本课时错题<span ng-bind="wronginfo.homewrokwrongprocessed" class="font-six font-red">0</span>/<span ng-bind="wronginfo.homeworkwrong" class="font-six">20</span></span>
+                                <span class="i-marginr title-copy">错题累计<span ng-bind="wronginfo.wrongprocessed" class="font-six font-red">30</span>/<span ng-bind="wronginfo.wrongtotal" class="font-six">300</span></span>
+                                <span class="i-marginr title-copy">昨日处理<span ng-bind="wronginfo.wrongprocessedyesterday" class="font-six font-red">9</span></span>
+                                <span class="i-marginr title-copy">已批<span class="font-six font-red" ng-bind="wronginfo.wrongcorrectnum">2</span></span>
+                                <span class="i-marginr title-copy">未批<span class="font-six font-red" ng-bind="wronginfo.wrongnocorrectnum">2</span></span>
+
+                            </div>
+                        </div>
+                        <div class="float-r font-six font-red" style="margin-top: 8px;">
+                            为<span ng-bind="wronginfo.username"></span>点个赞
+                            <span style="font-size: 22px; cursor: pointer;" ng-click="dianZanXueSheng()">
+                                <i class="fa fa-thumbs-o-up font-orange " ng-show="vm.ctzanstatus==0"></i>
+                                <i class="fa fa-thumbs-up font-orange" ng-show="vm.ctzanstatus==1"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row " ng-repeat="w in vm.pigaiwronglist">
+                            <div class="col-md-12 col-sm-12 ">
+                                <div class="portlet  learn-block-back " style="width:80%">
+                                    <div class="portlet-title block-graytemplate clearfix" style="margin: 0;">
+                                        <div class="float-l i-marginl" style="width: 7%;min-height: 20px;color: #999;margin-top: 7px;">
+                                            题目：
+                                        </div>
+
+                                        <div class="font-four float-l" style="margin-top:10px;width: 91%;">
+                                            <!--ng-bind="w.timuxushu" ng-bind-html="toHtml(w.timuxushu)-->
+                                            <span custom-mathjax content="w.timuxushu" ng-bind-html="toHtml(w.timuxushu)"></span>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="learn-tiblock">
+                                            <img ng-src="{{w.answerpic}}" height="148" width="151" alt="" />
+                                            <div class="learn-onyes" ng-if="w.wrongtistatus==1">
+                                                <img src="img/yes.png" height="52" width="51" alt="" />
+                                            </div>
+                                            <div class="learn-onyes" ng-if="w.wrongtistatus==2">
+                                                <img src="img/wrong.png" height="52" width="51" alt="" />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="learn-ok-on" ng-if="w.pigaistatus==2">
+                                            <img src="img/chapter.png" alt="" />
+                                        </div>
+                                    </div>
+                                    <div class="wrong-btn" ng-if="w.pigaistatus==1">
+                                        <button class="btn-circle class-btnblue" ng-click="subPiGaiWrongTi(w,1)">   正确</button>
+                                        <button class="btn-circle  btn-orange" ng-click="subPiGaiWrongTi(w,2)">   错误</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight()
+</script>
+

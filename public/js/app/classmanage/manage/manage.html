@@ -1,0 +1,319 @@
+<div class="container-top body-margin block-template content-left" style="padding:0; min-height: 600px;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>班级管理</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li>
+                <span>班级管理</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+
+        <!--<div class="topic" ng-hide="hide"  ng-if="vm.classlist.length>0">
+            <div class="col-md-11">告诉学生班群号！学生依据班群号加入相应班级。</div>
+            <div class="col-md-1" style="text-align:right;" ng-click="hide = true"><i class="fa fa-close font-sixsize cursor"></i></div>
+        </div>-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet" ng-if="vm.classlist&&vm.classlist.length>0">
+                    <div class="portlet-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="tab_1_1" style="margin-top: 15px;">
+                                <div class="search-container">
+                                    <div class="class-ts" style="top:110px;">提示：告诉学生班群号！学生依据班群号加入相应班级。</div>
+                                    <ul style="margin-bottom: 30px;">
+                                        <li class="search-item clearfix" style="list-style: none;">
+                                            <div class="class-tx">
+                                                <img ng-src="{{vm.currentclassinfo.classpic}}" width="160" height="160" />
+                                                <!--<div class="class-on" style="display: none"></div>-->
+                                                <!--<div class="lock" ng-class="{'class-on':vm.currentclassinfo.allowstudentadd==1,'class-off':vm.currentclassinfo.allowstudentadd==2}" ng-click="unlockDialog()"></div>-->
+                                            </div>
+                                            <div class="search-content">
+                                                <div class="search-title class-xx">
+                                                    <div style="position:relative;">
+                                                        <span class="cursor" ng-click="upgradeGradeDialog()" ng-if="vm.currentclassinfo.isupdategrade==1">
+                                                            <span ng-bind="vm.currentclassinfo.gradename"></span>
+                                                            <span ng-bind="vm.currentclassinfo.classname"></span>
+                                                        </span>
+                                                        <span ng-if="vm.currentclassinfo.isupdategrade==0">
+                                                            <span ng-bind="vm.currentclassinfo.gradename"></span>
+                                                            <span ng-bind="vm.currentclassinfo.classname"></span>
+                                                        </span>
+                                                        <span class="class-iconup " ng-if="vm.tips&&vm.currentclassinfo.isupdategrade==1"></span>
+                                                        <span class="class-iconlock class-lockon cursor"  ng-class="{'class-lockon':vm.currentclassinfo.allowstudentadd==1,'class-lockoff':vm.currentclassinfo.allowstudentadd==2}" ng-click="unlockDialog()"></span>
+                                                        &nbsp;<a ng-click="goToClass()">查看学情分析</a>
+                                                    </div>
+                                                </div>   
+
+                                                <div class="class-qh">
+                                                    班级群号：<span ng-bind="vm.currentclassinfo.classid" class="font-red"></span>
+                                                    <span ng-click="closeClassDialog(2)" class="cursor i-marginl font-red" style="font-size:14px;" >关闭本班级</span>
+                                                </div>
+                                                <div class="class-ls">数学老师：<span ng-bind="vm.currentclassinfo.teacher.realname"></span></div>
+                                                <div class="class-ls">所在学校：<span ng-bind="vm.currentclassinfo.schoolname"></span>   </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="class-qhbj">
+                                    <div class="clearfix" ng-if="vm.classlist.length!=1">
+                                        <!--<a href="javascript:;" class="class-btnblue btn-circle" ng-class="{'select-cl':vm.currentclassid==c.classid}" style="margin-left:5px;" ng-repeat="c in vm.classlist" ng-click="selectClass(c)">
+                                            <span ng-bind="c.gradename"></span>
+                                            <span ng-bind="c.classname"></span>
+                                        </a>-->
+                                        <button type="button" class="btn-circle  class-btnblue" ng-class="{'classbtn-act':vm.currentclassid==c.classid}" ng-repeat="c in vm.classlist" ng-click="selectClass(c)">
+                                            <span ng-bind="c.gradename"></span>
+                                            <span ng-bind="c.classname"></span>
+                                        </button>
+                                        <!--<a href="javascript:;" class="btn default green-stripe btn-ys btnf">5年级9班  </a>-->
+                                    </div>
+                                    
+                                    <div class="class-rh">
+                                        <a ng-click="goToHowJoinStu()"  class="font-blue i-marginl">学生加入指南</a>
+                                        <span ng-click="goToClosedClass()" class="cursor i-marginl font-blue" style="margin-right:6px;">
+                                            已关闭班级
+                                        </span>
+                                        <!--<span ng-click="closeClassDialog(0)" class="cursor i-marginl font-blue" style="margin-right:6px;" ng-if="vm.classlist.length>1">
+                                            关闭班级显示
+                                        </span>-->
+                                        <!--<span ng-click="upgradeGradeDialog()" class="cursor i-marginl font-blue" style="margin-right:6px;">
+                                            班级升级
+                                        </span>-->
+                                        <!--<span ng-click="deleteDialog()" class="cursor i-marginl" style="margin-right:6px;">删除本班级</span>-->
+                                    </div>
+                                </div>
+                                <div class="portlet-body" style="padding: 0 20px 20px">
+                                    <div class="tabbable-line">
+                                        <ul class="class-navtabs clearfix" style="margin-bottom: 0;list-style: none;">
+                                            <li ng-class='{"class-navtabsact":vm.tabindex==0}'>
+                                                <a data-toggle="tab" aria-expanded="true" ng-click="selectTab(0)">学生管理（<span ng-bind="vm.studentItems.length"></span>） </a>
+                                            </li>
+                                            <li ng-class='{"class-navtabsact":vm.tabindex==1}'>
+                                                <a data-toggle="tab" aria-expanded="false" ng-click="selectTab(1)">班级设置</a>
+                                            </li>
+                                            <li ng-class='{"class-navtabsact":vm.tabindex==2}'>
+                                                <a data-toggle="tab" aria-expanded="false" ng-click="selectTab(2)">教辅设置（<span ng-bind="vm.booknum"></span>）</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" style="padding-top:0 !important;">
+                                            <div class="tab-pane " ng-class="{'active':vm.tabindex==0}">
+                                                <div class="" ng-if="vm.studentItems.length>0">
+                                                    <table class="table  table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th width="14%" height="40" align="center" valign="middle">序号</th>
+                                                                <th width="14%" align="center" valign="middle">姓名 </th>
+                                                                <th width="14%" align="center" valign="middle">性别 </th>
+                                                                <th width="14%" align="center" valign="middle">手机号</th>
+                                                                <th width="14%" align="center" valign="middle">关注</th>
+                                                                <th width="14%" align="center" valign="middle">操作</th>
+                                                                <th width="14%" align="center" valign="middle">个人学情分析</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="s in vm.studentItems" ng-show="!s.disable" ng-class="{'even-line':$index%2==0}">
+                                                                <td height="40" align="center" valign="middle" ng-bind="$index+1">01 </td>
+                                                                <td align="center" valign="middle" ng-bind="s.turename">兰玉红 </td>
+                                                                <td align="center" valign="middle"><span ng-show="s.sex==='g'">女</span> <span ng-show="s.sex==='b'">男</span></td>
+                                                                <td align="center" valign="middle" ng-bind="s.mobile">15101568635</td>
+                                                                <td align="center" valign="middle">
+                                                                    <!--<span class="glyphicon glyphicon-heart " ng-show="s.isguanzhu==='1'" ng-click="teacherAttenDialog(s)" style="cursor:pointer;"></span>-->
+                                                                    <span class="glyphicon glyphicon-heart class-hui" ng-class="{'class-xin':s.attention===1}" ng-click="teacherAttenDialog(s)" style="cursor:pointer;"></span>
+                                                                </td>
+                                                                <td align="center" valign="middle"><a ng-click="deleteClassStudentDialog(s)" class="red-list">移除</a> </td>
+                                                                <td align="center" valign="middle">
+                                                                    <span class="blue-list cursor" ng-click="goToPerson(s)">查看</span>
+                                                                </td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                                <div no-data datalist="vm.studentItems">
+                                                    <div class="kby ">
+                                                    	<div class="gyxs-blank"></div>
+                                                        <p>
+                                                            	还没有学生加入班级哦，快把班级群号告诉他们吧~
+                                                        </p>
+                                                        <p>
+                                                            <!--请把 <a ng-click="goToHowJoinStu()"  class="font-blue ">< 学生加入指南 > </a>分享给学生-->
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" ng-class="{'active':vm.tabindex==1}">
+                                                <div class="portlet ">
+                                                    <div class="portlet-body form">
+                                                        <form class="form-horizontal" ng-keydown="keyDown($event)" name="form">
+                                                            <div class="form-wizard">
+                                                                <div class="form-body">
+
+                                                                    <!--<div class="alert alert-danger " ng-if="vm.msgstatus==1">
+                                                                        <button class="close" data-close="alert"></button>
+                                                                        <span ng-bind="vm.errormsg">You have some form errors. Please check below.</span>
+
+                                                                    </div>
+                                                                    <div class="alert alert-success" ng-if="vm.msgstatus==2">
+                                                                        <button class="close" data-close="alert"></button>
+                                                                        <span ng-bind="vm.succmsg">Your form validation is successful! </span>
+                                                                    </div>-->
+                                                                    <div class="form-group form-group-sm">
+                                                                        <label class="col-sm-2  control-label font-minsong">当前年级：</label>
+                                                                        <div class="col-sm-6" ng-show="vm.promote">
+                                                                            <input type="text" class="form-control " style="background: #f9f9f9;" name="gradename" ng-model="vm.gradeinfo.gradename" disabled="disabled" />
+                                                                        </div>
+                                                                        <div class="col-sm-6 " ng-show="!vm.promote">
+                                                                            <select class="bs-select form-control bs-select-hidden" name="gradeinfo" ng-model="vm.gradeinfo" ng-options="g.gradename for  g in vm.gradeItem" required>
+                                                                                <option value="">请选择</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <!--<div ng-click="upGrade()">
+                                                                            <span class="cursor font-blue" style="line-height: 30px;">班级升级</span>
+                                                                        </div>-->
+                                                                    </div>
+                                                                    <div class="form-group form-group-sm">
+                                                                        <label class="col-sm-2  control-label font-minsong">班级名称：</label>
+                                                                        <div class="col-sm-6 ">
+                                                                            <input type="text" class="form-control " name="classname" ng-model="vm.classinfo.classname" maxlength="6" placeholder="请输入班级名称" required>
+                                                                            <span class="wdatle"></span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <span class="class-zq" ng-if="vm.classinfo.classname"></span>
+                                                                            <span class="class-cwxx" ng-show="form.classname.$error.required && (form.classname.$invalid && !form.classname.$pristine ||!vm.classname&&vm.submitted)">请填写班级名称</span>
+                                                                            <span class="class-cwxx" ng-show="form.classname.$error.maxlengt">班级名称不能超过6个字符</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group form-group-sm">
+                                                                        <label class="col-sm-2 control-label font-minsong">班级人数：</label>
+                                                                        <div class="col-sm-6">
+                                                                            <input type="text" class="form-control" name="maxusercount" ng-pattern='numReg' ng-model="vm.classinfo.maxusercount" maxlength="4" placeholder="人数只能输入数字">
+                                                                            <span class="wdatle"></span>
+                                                                        </div>
+                                                                        <div style="padding-top:0px;">
+                                                                            <span class="class-zq" ng-if="vm.classinfo.maxusercount"></span>
+                                                                            <span class="class-cwxx" ng-show="form.maxusercount.$error.pattern">人数只能输入数字</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="tab-pane">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-sm-2 font-minsong">班级图标： </label>
+                                                                            <div class="col-md-6 col-sm-6">
+                                                                                <div class="class-gl">
+                                                                                    <ul class="clearfix">
+                                                                                        <li ng-class="{'on':vm.picindex===$index}" ng-repeat="p in piclist">
+                                                                                            <img ng-src="{{p}}" width="60" height="60" ng-click="selectPic($index)">
+                                                                                        </li>
+                                                                                        <!--<li ng-class="{'on':vm.picindex===1}">
+                                                                                            <img src="http://img1.yqj.cn/w/images/jsd/zy/bjtb2.jpg" width="60" height="60" ng-click="selectPic(1)"></li>
+                                                                                        <li ng-class="{'on':vm.picindex===2}">
+                                                                                            <img src="http://img1.yqj.cn/w/images/jsd/zy/bjtb3.jpg" width="60" height="60" ng-click="selectPic(2)"></li>
+                                                                                        <li ng-class="{'on':vm.picindex===3}">
+                                                                                            <img src="http://img1.yqj.cn/w/images/jsd/zy/bjtb4.jpg" width="60" height="60" ng-click="selectPic(3)"></li>
+                                                                                        <li ng-class="{'on':vm.picindex===4}">
+                                                                                            <img src="http://img1.yqj.cn/w/images/jsd/zy/bjtb5.jpg" width="60" height="60" ng-click="selectPic(4)"></li>-->
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <!--<span class="class-zq"></span>-->
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-sm-2 font-minsong">班级口号：</label>
+                                                                            <div class="col-sm-6">
+                                                                                <input type="text" class="form-control" name="des" ng-model="vm.classinfo.des" maxlength="10" placeholder="班级口号不能超过10个字符"  />
+                                                                                <span class="wdatle"></span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <span class="class-zq" ng-if="vm.classinfo.des"></span>
+                                                                                <span class="class-cwxx" ng-show="form.des.$error.maxlengt">班级口号不能超过10个字符</span>
+                                                                                <span class="class-cwxx" ng-show="form.des.$error.required && (form.des.$invalid && !form.des.$pristine ||!vm.des&&vm.submitted)">请添加班级口号</span>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-sm-2 font-minsong">教材版本：</label>
+                                                                            <div class="col-sm-6">
+                                                                                <select id="notific8_pos_hor" class="form-control input-small input-inline wadd" name="versioninfo" ng-model="vm.versioninfo" ng-options="v.versionname for v in vm.versionlist" ng-change="selectBookInfo()" required>
+                                                                                    <!--  <option value="">请选择</option>-->
+                                                                                    <!--<option value="人教版">人教版</option>-->
+                                                                                </select>
+                                                                            </div>
+                                                                            <div>
+                                                                                <span class="" ng-if="vm.versioninfo"></span>
+                                                                                <span class="" ng-show="form.versioninfo.$error.required && (form.versioninfo.$invalid && !form.versioninfo.$pristine ||!vm.versioninfo&&vm.submitted)">请添加教材版本</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div style="margin-left:160px;">
+                                                                    <button type="button" class="btn-circle btn-blue" ng-click="updateClass(form.$valid)">保存</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" ng-class="{'active':vm.tabindex==2}">
+                                                <div class="tab-content">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-md-12" style="padding-left: 0; padding-right: 0;">
+                                                                <div class="portlet  borderedh clearfix">
+                                                                    <div class="portlet-body caption ">
+                                                                        <div class="setting-list">
+                                                                            <ul class="clearfix">
+                                                                                <li ng-repeat="b in vm.bookItems" ng-click="selectClassBook(b,$event)" class="block-graytemplate">
+                                                                                    <div class="pl">
+                                                                                        <div class="stting-ing">
+                                                                                            <img ng-src="{{b.bookpic}}">
+                                                                                        </div>
+                                                                                        <div class="stting-wz1"><span ng-bind="b.year">2017</span><span ng-bind="b.gradename">六年级</span><span ng-bind="b.subjectname">数学</span>（<span ng-bind="b.njjdname">下</span>）</div>
+                                                                                        <div class="stting-wz"><span ng-bind="b.versionname">人教实验A版</span> <span ng-bind="b.jxjdhfname">五四制</span></div>
+                                                                                    </div>
+                                                                                    <div class="stting-sc" ng-show="b.checked" ng-click="deleteClassBookDialog(b,$event)"></div>
+                                                                                </li>
+                                                                                <li class="block-graytemplate">
+                                                                                    <!--<div class="list-title" ng-click="bookDialog()"></div>-->
+                                                                                    <div class="book-add" ng-click="bookDialog()"></div>
+                                                                                </li>
+                                                                                <div class="clear"></div>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div no-data datalist="vm.currentclassinfo">
+                    <div class="kby " style="display: none;">
+                    	<div class="gyxs-blank"></div>
+                        <p>您还没有创建班级，快去创建班级吧~</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight()
+</script>

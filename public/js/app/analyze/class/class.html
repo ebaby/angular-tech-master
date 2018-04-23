@@ -1,0 +1,453 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;" >
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>学情分析</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li>
+                <span>班级报告</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet portlet-form " ng-show="vm.classlist&&vm.classlist.length>0">
+                    <div class="clearfix">
+                        <div class="float-l class-bigtitle">
+                            <span ng-bind="vm.currentclassinfo.gradename"></span><span ng-bind="vm.currentclassinfo.classname"></span>
+
+                            <div class="float-r  chose-book" style="position:relative;margin-left: 10px;">     
+                            	<span style="color:#999;" class="font-six">时间：</span>
+                            	<span data-toggle="dropdown" data-hover="dropdown" data-close-others="true" style="cursor:pointer">
+                                <span class="cursor font-blue"  ng-bind="selectdatetime"></span><span style="color:#3fadf9;">月份</span>
+                                <i class="fa fa-caret-down" style="color:#3fadf9;margin-left:6px;"></i>
+                                </span>
+                                <ul class="dropdown-menu-v2  block-graytemplate chose-date" style="top:50%;min-width:140px;">
+                                    <li>
+                                        <a style="overflow: hidden;text-overflow:ellipsis; " ng-repeat="d in vm.datelist" ng-bind="d*1000|date:'yyyy-MM'" ng-click="selectDate(d)">2017-021</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="float-r" style="max-width:660px;">
+                            <div class="clearfix" ng-if="vm.classlist.length!=1">
+                                <!--<a href="javascript:;" class="btn default blue-stripe btn-ys btnt" ng-class="{'select-cl':vm.currentclassid==c.classid}" style="margin-left: 5px;" ng-repeat="c in vm.classlist" ng-click="selectClass(c)">
+                                    <span ng-bind="c.gradename"></span>
+                                    <span ng-bind="c.classname"></span>
+                                </a>-->
+                                <button type="button" class="btn-circle  class-btnblue" ng-class="{'classbtn-act':vm.currentclassid==c.classid}" ng-repeat="c in vm.classlist" ng-click="selectClass(c)">
+                                    <span ng-bind="c.gradename"></span>
+                                    <span ng-bind="c.classname"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portlet-body block-graytemplate clearfix" style="margin-top:20px; padding-bottom:0;">
+                            <div class="portlet-title clearfix classhw-title">
+                                <div class="selectbook-title ">
+                                    <span class="i-marginr">基本信息</span>
+                                </div>
+                                <!--<div class="float-r">
+                                    <div class="font-minsong"  style="margin:10px 0 0;" >
+                                        <span class="i-marginr">未交（<span class="font-red" ng-bind="vm.classInfoItems.weijiao">20</span>）</span>
+                                        <span class="imarginr">已交（<span class="font-blue" ng-bind="vm.classInfoItems.yijiao">2</span>）</span>
+                                        <span class="imarginr">未批（<span class="font-red" ng-bind="vm.classInfoItems.wpg">2</span>）</span>
+                                        <span class="imarginr">已批（<span class="font-blue" ng-bind="vm.classInfoItems.ypg">2</span>）</span>
+                                    </div>
+                                </div>-->
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane active">
+                                    <div class="table-scrollable" style="border:0;">
+                                        <table class="table no-border low-height">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="left" valign="middle" width="25%">
+                                                        <span class="font-nine">班级名称：</span><span ng-bind="vm.classInfoItems.gradename"></span><span ng-bind="vm.classInfoItems.classname" class="font-gray"></span>
+                                                    </td>
+                                                    <td align="left" valign="middle" width="25%">
+                                                        <span class="font-nine">已布置课时：</span><span class="font-red" ng-bind="vm.classInfoItems.setlhnum">100</span>课时
+                                                    </td>
+                                                    <td align="left" valign="middle" width="25%">
+                                                        <span class="font-nine">批改作业次数：</span><span ng-bind="vm.classInfoItems.correctnum" class="font-red">90</span>次
+                                                    </td>
+                                                    <td align="left" valign="middle" width="25%">
+                                                        <div class="float-l font-nine">班级整体趋势：</div>
+                                                        <div class="float-l">
+                                                            <img src="img/icon-up.png" alt="" title="上升趋势" ng-show="vm.classInfoItems.classtrend=='上升'" />
+                                                            <img src="img/icon-down.png" alt="" title="下降趋势" ng-show="vm.classInfoItems.classtrend=='下降'" />
+                                                            <img src="img/icon-smooth.png" alt="" title="平稳趋势" ng-show="vm.classInfoItems.classtrend=='平稳'" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+
+                                                <!--<tr>
+                                                    <td align="left" valign="middle" width="33%" ><span class="font-nine">班级名称：</span><span ng-bind="vm.classInfoItems.gradename" ></span><span ng-bind="vm.classInfoItems.classname" class="font-gray"></span>
+                                                    </td>
+                                                    <td align="left" valign="middle" width="33%" ><span class="font-nine">已布置题数：</span><span ng-bind="vm.classInfoItems.ybzquestionnum" >500</span>道
+                                                    </td>
+                                                    <td align="left" valign="middle" width="33%"><span class="font-nine">班级错题总数：</span><span ng-bind="vm.classInfoItems.classwrongtotal">300</span>道
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" width="33%" ><span class="font-nine">班级人数：</span><span ng-bind="vm.classInfoItems.joinusercount" >50</span>人
+                                                    </td>
+                                                    <td align="left" valign="middle" width="33%"><span class="font-nine">批改作业次数：</span><span ng-bind="vm.classInfoItems.correctnum">90</span>次
+                                                    </td>
+                                                    <td align="left" valign="middle" width="33%" ><span class="font-nine">班级已处理错题：</span><span ng-bind="vm.classInfoItems.classwrongprocced">300</span>道
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="middle" width="33%" ><span class="font-nine">已布置课时：</span><span ng-bind="vm.classInfoItems.setlhnum">100</span>课时
+                                                    </td>
+                                                    <td align="left" valign="middle" width="33%"><span class="font-nine">已判题次数：</span>
+                                                        <img src="img/icon-y.png"alt="" /><span ng-bind="vm.classInfoItems.correctright"   >500</span>次
+
+                                                        <img src="img/icon-w.png" alt="" class="i-marginl"/><span ng-bind="vm.classInfoItems.correctwrong">1000</span>次
+                                                    </td>
+                                                    <td align="left" valign="middle" width="33%" class="clearfix ">
+                                                        <div class="float-l font-nine">班级整体趋势：</div>
+                                                        <div class="float-l">
+                                                            <img src="img/icon-up.png" alt="" title="上升趋势" ng-show="vm.classInfoItems.classtrend=='上升'" />
+                                                            <img src="img/icon-down.png" alt="" title="下降趋势" ng-show="vm.classInfoItems.classtrend=='下降'" />
+                                                            <img src="img/icon-smooth.png" alt="" title="平稳趋势" ng-show="vm.classInfoItems.classtrend=='平稳'" />
+                                                        </div>
+                                                    </td>
+                                                </tr>-->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="block-graytemplate i-margint2" >
+                        <div class="portlet-title classhw-title" >
+                            <div class="selectbook-title ">
+                                    <span>班级成绩趋势</span>
+                            </div>
+                            <!--<div class="actions">
+                            <div class="btn-group">
+                                <a class="btn green btn-outline btn-circle btn-sm" href="javascript:;">查看详情
+                                </a>
+                            </div>
+                        </div>-->
+                        </div>
+                        <div class="portlet-body">
+                            <div ng-show="vm.homeworklist&&vm.homeworklist.length>0">
+                                <div style="position: relative;">
+                                    <!--<img src="images/no-9.jpg" alt="" />-->
+                                    <div id="hwbar" e-chart options="lineEchartOptions" style="height: 300px; margin-top: 20px;"></div>
+                                    <!--<div class="btn_list">
+                                        <span class="l" ng-click="nextHomeWork()" ng-hide="vm.pageindex==vm.allpage" title="下一页">&lt;</span>
+                                        <span class="r" ng-click="prevHomeWork()" ng-show="vm.pageindex>1" title="上一页">&gt;</span>
+                                    </div>-->
+                                </div>
+                            </div>
+							<!-- 空白页 -->
+                            <div no-data datalist="vm.homeworklist">
+                                <div class="kby xqfx-blank" style="display:none;">
+                                </div>
+                            </div>
+                            
+                            <div class="clearfix  learn-state " style="margin-top: 16px;">
+                                <div class="float-l">
+                                    说明：
+                                </div>
+                                <div class="float-l">
+                                    <p style="margin: 0;">班级平均分总体趋势</p>
+                                    <p style="margin: 0;">1.计算本班级每次作业的平均分，在哪个分数段内。2.横轴代表布置作业时间，纵轴代表分数段。</p>
+                                </div>
+                            </div>
+
+                            
+
+                        </div>
+                    </div>
+                    <div class="block-graytemplate i-margint2" ng-if="false" >
+                        <div class="portlet-title clearfix classhw-title">
+                            <div class="selectbook-title float-l">
+                                <span>分数段内分布的学生</span>
+                            </div>
+                            <div class="float-r">
+                                <div class="float-r font-blue font-minsong cursor"   ng-click="goToStudent()" style="margin:15px 0;">
+                                    查看详情 <span class="btn-amend"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="portlet-body">
+                            <div>
+                                <div ng-if="vm.classInfoItems.scorelevel.length>0">
+                                    <div class="table-scrollable table-noborder">
+                                        <table class="table  no-border">
+                                            <tbody>
+                                                <tr ng-repeat="j in vm.classInfoItems.scorelevel">
+                                                    <td align="right" valign="middle" width="9%" style="padding-right: 10px">
+                                                        <div ng-bind="j.title">优秀：90-100</div>
+                                                    </td>
+                                                    <td align="left" valign="middle" width="80%">
+                                                        <!-- 进度条 -->
+                                                        <div class="plan-setd">
+                                                            <div class="plan-set" style="width: {{ j.upidnum/vm.classInfoItems.joinusercount }}%"></div>
+                                                        </div>
+                                                    </td>
+                                                    <td align="center" valign="middle" width="10%">
+                                                        <span ng-bind="j.upidnum">7</span>人
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="clearfix  learn-state">
+                                        <div class="float-l">
+                                            说明：
+                                        </div>
+                                        <div class="float-l">
+                                            <p style="margin: 0;">1.各分数段：90-100优秀&nbsp;&nbsp;80-89良好&nbsp;&nbsp;60-79一般&nbsp;&nbsp;0-59不及格。</p>
+                                            <p style="margin: 0;">2.分数段内学生分布情况：按照学生作业历史，全部作业平均排名，平均分在班级的那个分数段内</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div no-data datalist="vm.classInfoItems.scorelevel">
+                                <div class="kby xqfx-blank" style="display:none;">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-graytemplate i-margint2">
+                        <div class="portlet-title clearfix classhw-title">
+                            <div class="selectbook-title float-l">
+                                <span>平均成绩分布</span>
+                            </div>
+                            <div class="float-r font-minsong" style="margin:15px 0 0;line-height:40px"><a ng-click="goToStudent()" class="font-blue">查看详情 <i class="fa fa-caret-right"></i></a></div>
+                        </div>
+                        <div class="portlet-body">
+                            <div id="levelpie" e-chart options="pieEchartOptions" style="height: 250px; margin-top: 20px;" ng-show="vm.ucount>0"></div>
+
+                            <div class="kby xqfx-blank" ng-if="vm.ucount==0">
+                            </div>
+
+                            <div class="clearfix  learn-state">
+                                <div class="float-l">
+                                    说明：
+                                </div>
+                                <div class="float-l">
+                                    <p style="margin: 0;">1.各分数段：90-100优秀&nbsp;&nbsp;80-89良好&nbsp;&nbsp;60-79一般&nbsp;&nbsp;0-59不及格。</p>
+                                    <p style="margin: 0;">2.分数段内学生分布情况：按照学生作业历史，全部作业平均排名，平均分在班级的那个分数段内</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portlet-form block-graytemplate i-margint2" >
+                        <div class="portlet-title classhw-title" style="margin-bottom: 10px;">
+                            <div class="selectbook-title">
+                                <span>知识点班级掌握情况</span>
+                            </div>
+                        </div>
+                        <div class="portlet-body" style="position:relative;margin-top: 10px">
+                          <div style="position:absolute; background:#e0e0e0; left:-2px;border-radius:5px; width:5px; height:5px;"></div>
+                            <div ng-if="vm.classInfoItems.chapterlist.length>0">
+                                <div class="portlet box ">
+                                    <div class="panel-group accordion" id="accordion1">
+                                        <div class=""  ng-repeat="c in vm.classInfoItems.chapterlist">
+                                        <div style="border-left:dashed 1px #D2D2D2;">
+                                            <div class="cursor">
+                                                <div class="table-noborder" style=" margin:0;">
+                                                    <table class="table" style="margin-bottom:0; padding-bottom:20px;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="left" valign="middle" width="22%" style="height:30px !important;"  ng-click="checkTab($index,c)">
+                                                                    <div class="" style="position:relative;">
+                                                                             <span ng-bind="c.chaptername" style="padding-left:30px;display:inline-block;width:193px; " class="table-texthidden ">因数和倍数的人数</span>
+                                                                            <div class="xq-jia" ng-if="!c.checked"></div>
+                                                                            <div class="xq-jian" ng-if="c.checked"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td align="left" valign="middle" width="50%">
+                                                                    <div class="plan-setd">
+                                                                        <div class="plan-set" set-rate rate="c.chapterzsdtgl" ng-class="{'plan-red':c.chapterzsdtgl<=85}"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td align="center" valign="middle" width="10%">通过率 <span><span ng-bind="c.chapterzsdtgl"></span>%</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div  class="panel-collapse collapsed" style="margin:0 60px;" ng-class="{'in':vm.tabindex==$index}"   ng-if="!vm.checked&&vm.tabindex==$index">
+                                                <div class="table-scrollable table-noborder" style="margin:0;">
+                                                    <table class="table ">
+                                                        <tbody>
+                                                            <tr ng-repeat="z in c.zsdlist">
+                                                                <td align="left" valign="middle"  width="20%" style="color:#999999">
+                                                                    <div class="table-texthidden" ng-bind="removeHTMLTag(z.zsdname)" style="width:158px;"> 因数和倍数的人数</div>
+                                                                </td>
+                                                                <td align="left" valign="middle" width="50%">
+                                                                    <div class="plan-setd">
+                                                                        <div class="plan-set" style="width: {{ z.tgl}}%" ng-class="{'plan-red':z.tgl<=85}"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td align="center" valign="middle" width="10%" style="color:#999999">通过率 <span><span ng-bind="z.tgl"></span>%</span>
+                                                                </td>
+                                                                <td align="center" valign="middle" width="10%" class="font-blue cursor " ng-click="goToKnown(c,z)">查看
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                         </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="clearfix learn-state ">
+                                    <div class="float-l">
+                                      	  说明：
+                                    </div>
+                                    <div class="float-l">
+                                        <p style="margin: 0;">1.薄弱知识点掌握情况，本班级所涉及的知识点通过率低于85%的都属于薄弱知识点。</p>
+                                        <p style="margin: 0;">2.通过率：答对题数/这个知识点下的总题数。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 空白页 -->
+                            <div no-data datalist="vm.classInfoItems.chapterlist">
+                                <div  class="kby xqfx-blank" style="display:none;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-graytemplate i-margint2" ng-if="false">
+                        <div class="portlet-title classhw-title">
+                            <div class="selectbook-title">
+                                <span>班级高频错题</span>
+                            </div>
+                        </div>
+                        <div class="portlet-body table-noborder">
+                            <div class="table-noborder" ng-if="vm.chapterlist&&vm.chapterlist.length>0">
+                                <table class="table  table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th width="30%" align="left" valign="middle">章节名称 </th>
+                                            <th width="20%" align="center" valign="middle">错误题次</th>
+                                            <th width="20%" align="center" valign="middle">错误率</th>
+                                            <th width="20%" align="center" valign="middle">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody ng-if="vm.chapterlist.length>0">
+                                        <tr ng-repeat="c in vm.chapterlist" ng-class="{'even-line':$index%2==0}">
+                                            <td align="center" valign="middle" style="padding-left:10px;">
+                                                <div class="clearfix">
+                                                   <span ng-bind="c.chaptername">xxxxx</span>
+                                                </div>
+                                            </td>
+                                            <td align="center" valign="middle" class="font-redscore font-red">
+                                                <span ng-bind="c.chapterwrongnum">90</span>
+                                            </td>
+                                            <td align="center" valign="middle" class=" font-six">
+                                                <span ng-bind="c.chapterrate">15</span>%
+                                            </td>
+                                            <td align="center" valign="middle">
+                                                <span class="font-blue cursor"  ng-click="goToHeightWrong(c)">
+                                                    查看详情
+                                                </span>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div no-data datalist="vm.chapterlist">
+                                <div class="kby xqfx-blank"  style="display:none;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-graytemplate i-margint2">
+                        <div class="portlet-title classhw-title">
+                            <div class="selectbook-title">
+                                <span>学生学情报告</span>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="table-noborder">
+                                <table class="table  table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th width="15%" align="center" valign="middle">学生基本信息 </th>
+                                            <th width="10%" align="center" valign="middle">平均分</th>
+                                            <th width="10%" align="center" valign="middle">交作业</th>
+                                            <th width="20%" align="center" valign="middle">消灭数/错题总数</th>
+                                            <th width="15%" align="center" valign="middle">学情报告</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody ng-if="vm.classInfoItems.upidlist.length>0">
+                                        <tr ng-repeat="u in vm.classInfoItems.upidlist" ng-class="{'even-line':$index%2==0}">
+
+                                             <td align="center" valign="middle">
+                                                <div class="clearfix" style="width: 120px;">
+                                                    <div class="learn-table-headpt float-l" >
+                                                        <img ng-src="{{u.headiconurl}}" >
+                                                        <div class="check-xin fa font-red" ng-class="{'fa-heart':u.isfocus==1}"></div>
+                                                    </div>
+                                                    <div class="float-l  poto-name" ng-bind="u.realname" chart-length content="u.realname" length="3" chartauto=true >1111</div>
+                                                </div>
+                                            </td>
+                                            <td align="center" valign="middle" class="font-redscore font-red" >
+                                                <span ng-bind="u.averagescore">90</span>分
+                                            </td>
+                                            <td align="center" valign="middle"><span ng-bind="u.subnums"></span>次</td>
+                                            <td align="center" valign="middle"><span ng-bind="u.wrongprocessed">15</span>道/<span ng-bind="u.wrongtotal">20</span>道
+                                            </td>
+                                            <td align="center" valign="middle">
+                                                <button class="btn-circle class-btnblue" ng-click="goToPerson(u)">
+                                                    查看报告
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div no-data datalist="vm.classInfoItems.upidlist">
+                                <div class="kby xqfx-blank" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row" style="text-align: right; margin-right: 50px;">
+                            <div set-pagination page-options="jllistOptions" class="pagination"></div>
+                     </div>
+                </div>
+                <!-- 空白页 -->
+                <div no-data datalist="vm.classlist">
+                    <div class="kby " style="display: none;">
+                    	<div class="xqfx-blank"></div>
+                      	<p>还没有班级学情分析~</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight()
+</script>

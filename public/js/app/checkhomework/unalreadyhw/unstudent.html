@@ -1,0 +1,321 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>批改作业</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li class="font-act">
+                <span ui-sref="app.checkhomework.unalreadyhw" class="cursor">未批完作业</span><span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li>
+                <span>未批改作业学生列表</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+        <div class="note note-info" ng-if="false">
+            <div class="row pg-titlel">
+                <div class="col-md-6">
+                    <div>
+                        <!-- <span class="i-marginr">4年级404班</span>
+                        <span class="i-marginr">周文秀</span>
+                        <span class="i-marginr">课时3因数与倍数</span> -->
+                        已交 （<span ng-bind="vm.tchwinfo.yijiao" class="ng-binding">4</span>） 未交（<span ng-bind="vm.tchwinfo.weijiao" class="ng-binding">1</span>） 已批（<span ng-bind="vm.tchwinfo.ypg" class="ng-binding">0</span>） 未批（<span ng-bind="vm.tchwinfo.wpg" class="ng-binding">4</span>）
+                    </div>
+                </div>
+                <div class="col-md-6" style="text-align:right;">
+                    <div>
+                        <!-- <span class="i-marginr">当前作业：已批（<span>20</span>）未批（<span>2</span>）</span>
+                        <button class="btn sbold uppercase btn-outline green btn-circle">学生重拍</button> -->
+                        <button class="btn sbold uppercase btn-outline green btn-circle" ng-click="editDateDialog()">调整作业截止时间</button>
+                        <!--<div ng-if="vm.editable" style="width: 150px;margin-left: 95px;height: 30px;margin-top: -25px;" date-picker date-option="dateoption"></div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 已交作业人数及未交作业人数切换 -->
+        <div class="tabbable-line">
+            <!-- <ul class="nav nav-tabs ">
+                 <li class="" ng-class='{"active":vm.tabindex==0}'><a href="javascript:void(null)" data-toggle="tab" ng-click="selectTab(0)"> 已交作业{{vmm.title}}（<span ng-bind="vm.commitCount"></span>） </a></li>
+                 <li ng-class='{"active":vm.tabindex==1}'><a href="javascript:void(null)" data-toggle="tab" ng-click="selectTab(1)"> 未交作业（<span ng-bind="vm.unCommitCount"></span>）</a></li>
+             </ul>-->
+            <ul class="class-navtabs clearfix" style="margin:0 !important;">
+                <li class="class-navtabsact" ng-class='{"class-navtabsact":vm.tabindex==0}'>
+                    <a data-toggle="tab" ng-click="selectTab(0)" aria-expanded="true">已交作业{{vmm.title}}（<span ng-bind="vm.commitlist.length"></span>人） </a>
+                </li>
+                <li ng-class='{"class-navtabsact":vm.tabindex==1}'>
+                    <a data-toggle="tab" ng-click="selectTab(1)" aria-expanded="false">未交作业（<span ng-bind="vm.uncommitlist.length"></span>人）</a>
+                </li>
+
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane " ng-class="{'active':vm.tabindex==0}">
+                    <div class="portlet">
+                        <div class="portlet-body">
+                            <div class="" ng-if="vm.commitlist.length>0">
+                                <table class="table table-noborder table-hover">
+                                    <thead>
+                                        <tr style="border-bottom:1px solid #e0e0e0;">
+                                            <th width="15%" height="60" align="center" valign="middle"> 头像 </th>
+                                            <th width="25%" align="center" valign="middle"> 姓名 </th>
+                                            <th width="25%" align="center" valign="middle"> 提交时间</th>
+                                            <th width="20%" align="center" valign="middle"> 操作 </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="s in vm.commitlist" ng-class="{'even-line':$index%2==0}">
+                                            <td height="50" align="center" valign="middle">
+                                                <!--<div class="check-tu">
+                                                    <img ng-src="{{s.headpic}}" width="60" height="60">
+                                                    <div class="check-xin"><i ng-if="s.isguanzhu=='1'" class="fa fa-heart" style="color:#ff0000;"></i></div>
+                                                </div>-->
+                                                <div class="learn-table-headpt">
+                                                    <img ng-src="{{s.headpic}}">
+                                                    <div class="check-xin fa font-red" ng-class="{'fa-heart':s.attention==1}"></div>
+                                                </div>
+                                            </td>
+                                            <td align="center" valign="middle" ng-bind="s.realname"></td>
+                                            <td align="center" valign="middle" ng-bind="s.submittime*1000 | date:'yyyy/MM/dd  HH:mm:ss'"></td>
+                                            <td align="center" valign="middle">
+                                                <button type="button" class="btn-circle class-btnblue" ng-click="goToDetail(s)">
+                                                    <span ng-if="s.correctstatus==0">未批</span>
+                                                    <span ng-if="s.correctstatus==1">批改中</span>
+                                                    <span ng-if="s.correctstatus==2">已批</span>
+                                                </button>
+                                                <!--<button class="btn-circle class-btnblue">未批改</button>
+                                                <button class="btn-circle btn-orange">批改中</button>
+                                                <button class="btn-circle btn-red">已批改</button>-->
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div no-data datalist="vm.commitlist">
+                                <div class="kby" style="display: none;">
+                                	<div class="gyzy-blank"></div>
+                                    <p>老师耐心等候哦，还没有学生提交作业呢~</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" ng-class="{'active':vm.tabindex==1}">
+                    <div class="portlet">
+                        <div class="portlet-body">
+                            <div class="" ng-if="vm.uncommitlist.length>0">
+                                <table class="table table-noborder table-hover">
+                                    <thead>
+                                        <tr style="border-bottom:1px solid #e0e0e0;">
+                                            <th align="center" width="5%">
+                                                <div ng-if="!vm.allchecked" class="md-checkbox ep-xz " ng-click="allChecked()">
+                                                    <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                         style="width: 15px; height: 15px; margin-top: -5px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                        bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                        bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                        eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                        MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                        dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                        dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                        IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                        ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                        cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                        RD0ieG1wLmlpZDo5QjNDMjA2NDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                        bnRJRD0ieG1wLmRpZDo5QjNDMjA2NTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                        ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNUUyMzM4NjExRTY5QzNG
+                                                        QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNUUzMzM4NjExRTY5
+                                                        QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                        ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BY6V2wAAAHtJREFUeNpiXLVqFRsDA0M3EMcAsRADYfAe
+                                                        iBcDcSkTkOgCYjUg1gFiRiKwNlR9EwuQiIVqfM5AHACpSwLiK0xQpxKrEdkAISYGCsCo5pGj+R0Q
+                                                        S5KoTwKkjwmaQ+ZABYgBMkA8F6QHpLkMiO8A8TUg/k8EvgRVXwsQYACfEB5gLshgigAAAABJRU5E
+                                                        rkJggg==">
+                                                    </image>
+                                                   </svg>
+                                                </div>
+                                                <div ng-if="vm.allchecked" class="md-checkbox ep-xz" ng-click="allChecked()">
+                                                    <svg version="1.1" id="Svg1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                         style="width: 15px; height: 15px; margin-top: -5px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                    bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                    bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                    eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                    MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                    dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                    dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                    IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                    ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                    cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                    RD0ieG1wLmlpZDo5QjEyQzVFMDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                    bnRJRD0ieG1wLmRpZDo5QjEyQzVFMTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                    ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNURFMzM4NjExRTY5QzNG
+                                                    QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNURGMzM4NjExRTY5
+                                                    QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                    ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7GfnjAAAAOhJREFUeNpitF/7k42BgaEbiGOAWIiBMHgP
+                                                    xIuBuJQJSHQBsRoQ6wAxIxFYG6q+iQVIxEI1PmcgDoDUJQHxFSaoU4nViGyAEBOJmnYA8Q8YhxTN
+                                                    U4DYHYh/kqp5AhBnA/ETIOYnRTMoNvKh/pRFlkDX/AeIHyPx20HxCcQvgVgK3VR0zTeAWAaI90Gj
+                                                    owKIXwOxBDYnsaDxQfG9AojDgdgR6kdZXP5hwSIWAcTS0FQkiy8wWHCI2xITBSA/vwNiSRITCygM
+                                                    3jFBc8gcXIGCBYACdC5ID0hzGRDfAeJrQPyfCHwJqr4WIMAAI14wiZLGvXEAAAAASUVORK5CYII=">
+                                                    </image>
+                                                    </svg>
+
+                                                </div>
+                                            </th>
+                                            <th width="15%" align="center" valign="middle"> 头像 </th>
+                                            <th width="25%" align="center" valign="middle"> 姓名 </th>
+                                            <th width="25%" align="center" valign="middle"> 截止时间</th>
+                                            <th width="20%" align="center" valign="middle"> 操作 </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="s in vm.uncommitlist" ng-class="{'even-line':$index%2==0}">
+                                            <td align="center" valign="middle">
+                                                <!--<div ng-if="c.isalert==1" class="md-checkbox ep-xz ">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                         style="width: 15px; height: 15px;" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                                                    <path fill="#ccc" d="M0,0v512h512V0H0z M480,480H32V32h448V480z" />
+                                                </svg>
+                                                </div>
+                                                <div ng-if="!c.checked&&c.isalert!=1" class="md-checkbox ep-xz " ng-click="selectStudent(c)">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                         style="width: 15px; height: 15px;" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                                                    <path d="M0,0v512h512V0H0z M480,480H32V32h448V480z" />
+                                                </svg>
+                                                </div>
+                                                <div class="md-checkbox ep-xz" ng-if="c.checked&&c.isalert!=1" ng-click="selectStudent(c)">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                         style="width: 15px; height: 15px;" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                                                    <path d="M0,0v512h512V0H0z M480,480H32V32h448V480z M384,112L224,272l-96-96l-64,64l160,160l224-224L384,112z" />
+                                                </svg>
+                                                </div>-->
+                                                <div ng-if="!s.checked&&s.isalert==2" class="md-checkbox ep-xz " ng-click="selectStudent(s)">
+                                                    <svg id="Svg3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                         style="width: 15px; height: 15px; margin-top: -5px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                        bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                        bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                        eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                        MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                        dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                        dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                        IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                        ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                        cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                        RD0ieG1wLmlpZDo5QjNDMjA2NDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                        bnRJRD0ieG1wLmRpZDo5QjNDMjA2NTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                        ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNUUyMzM4NjExRTY5QzNG
+                                                        QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNUUzMzM4NjExRTY5
+                                                        QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                        ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BY6V2wAAAHtJREFUeNpiXLVqFRsDA0M3EMcAsRADYfAe
+                                                        iBcDcSkTkOgCYjUg1gFiRiKwNlR9EwuQiIVqfM5AHACpSwLiK0xQpxKrEdkAISYGCsCo5pGj+R0Q
+                                                        S5KoTwKkjwmaQ+ZABYgBMkA8F6QHpLkMiO8A8TUg/k8EvgRVXwsQYACfEB5gLshgigAAAABJRU5E
+                                                        rkJggg==">
+                                                    </image>
+                                                   </svg>
+                                                </div>
+                                                <div class="md-checkbox ep-xz" ng-if="s.checked&&s.isalert==2" ng-click="selectStudent(s)">
+                                                    <svg id="Svg2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                         style="width: 15px; height: 15px; margin-top: -5px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                    bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                    bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                    eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                    MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                    dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                    dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                    IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                    ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                    cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                    RD0ieG1wLmlpZDo5QjEyQzVFMDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                    bnRJRD0ieG1wLmRpZDo5QjEyQzVFMTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                    ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNURFMzM4NjExRTY5QzNG
+                                                    QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNURGMzM4NjExRTY5
+                                                    QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                    ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7GfnjAAAAOhJREFUeNpitF/7k42BgaEbiGOAWIiBMHgP
+                                                    xIuBuJQJSHQBsRoQ6wAxIxFYG6q+iQVIxEI1PmcgDoDUJQHxFSaoU4nViGyAEBOJmnYA8Q8YhxTN
+                                                    U4DYHYh/kqp5AhBnA/ETIOYnRTMoNvKh/pRFlkDX/AeIHyPx20HxCcQvgVgK3VR0zTeAWAaI90Gj
+                                                    owKIXwOxBDYnsaDxQfG9AojDgdgR6kdZXP5hwSIWAcTS0FQkiy8wWHCI2xITBSA/vwNiSRITCygM
+                                                    3jFBc8gcXIGCBYACdC5ID0hzGRDfAeJrQPyfCHwJqr4WIMAAI14wiZLGvXEAAAAASUVORK5CYII=">
+                                                    </image>
+                                                    </svg>
+                                                </div>
+                                                <div class="md-checkbox ep-xz" ng-if="s.isalert==1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                         width="15px" height="16px" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                    bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                    bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                    eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                    MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                    dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                    dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                    IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                    ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                    cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                    RD0ieG1wLmlpZDpDMDQ2QTNCMDQzNjQxMUU2QkE1OUI5NkIxRTkxRUYyOSIgeG1wTU06RG9jdW1l
+                                                    bnRJRD0ieG1wLmRpZDpDMDQ2QTNCMTQzNjQxMUU2QkE1OUI5NkIxRTkxRUYyOSI+IDx4bXBNTTpE
+                                                    ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkMwNDZBM0FFNDM2NDExRTZCQTU5
+                                                    Qjk2QjFFOTFFRjI5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkMwNDZBM0FGNDM2NDExRTZC
+                                                    QTU5Qjk2QjFFOTFFRjI5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                    ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Lw2z6QAAAItJREFUeNpiXLVqFRsDA0M3EMcAsRADYfAe
+                                                    iBcDcSkLkOgSFBTMU1FRYWBjYyOo89evX4J37tzJe//+/XcmID+WWI0gAFIHUg8EqSDNQsRqRDYA
+                                                    pI+JgQIwqnnkaH4HTK8kaYKqfwfSvBiY0BmINQCkDqQeCOaAclUZMIcwnj59OhbIFiQhS9YCBBgA
+                                                    ZPQuuTaQC3IAAAAASUVORK5CYII=">
+                                                    </image>
+                                                    </svg>
+                                                </div>
+                                            </td>
+                                            <td align="center" valign="middle">
+                                                <!--<div class="check-tu">
+                                                    <img ng-src="{{s.headpic}}" width="60" height="60">
+                                                    <div class="check-xin"><i ng-if="s.isguanzhu=='1'" class="fa fa-heart" style="color:#ff0000;"></i></div>
+                                                </div>-->
+                                                <div class="learn-table-headpt">
+                                                    <img ng-src="{{s.headpic}}">
+                                                    <div class="check-xin fa font-red" ng-class="{'fa-heart':s.attention==1}"></div>
+                                                </div>
+                                            </td>
+                                            <td align="center" valign="middle" ng-bind="s.realname"></td>
+                                            <td align="center" valign="middle" ng-bind="tchwinfo.subendtime*1000 | date:'yyyy/MM/dd  HH:mm:ss'"></td>
+                                            <td align="center" valign="middle"> <button ng-if="s.isalert==1" class="btn-circle class-btnblue btn-ccc" style="border:1px solid #ccc;">已提醒</button> <button ng-if="s.isalert==2" ng-click="reSubmitWorkDialog(s)" class="btn-circle class-btnblue">提醒TA</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="kby gyzy-blank" style="display: none;" ng-if="vm.uncommitlist.length==0">
+                            	<div class=""></div>
+                                	<p>目前没有未交作业的同学~</p>
+                            </div>
+                        </div>
+                        <div class="clearfix" ng-if="vm.num>0">
+                            <div><button ng-click="reSubmitWorkDialog(true)" class="btn-circle btn-blue" style="width:180px !important; margin-left: 20px;">批量提醒学生提交作业</button></div>
+                            <div>
+                                <!--<div class="ep-pages">
+                                    <span class="ep-pages-e5e5e5">首页</span> <span class="ep-pages-ctrl ep-pages-e5e5e5">&lt;</span>
+                                    <a href="#" target="_self" class="current">1</a> <a href="#" target="_self">2</a> <a href="#" target="_self">3</a>
+                                    <span>...</span> <a href="#" target="_self" class="ep-pages-ctrl">&gt;</a> <a href="#" target="_self">尾页</a>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight();
+</script>

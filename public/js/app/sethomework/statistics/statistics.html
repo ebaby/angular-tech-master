@@ -1,0 +1,108 @@
+<div class="container-top body-margin block-template content-left" style="padding: 0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>布置作业</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li>
+                <span>作业统计</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding: 15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="clearfix">
+                    <div class="float-l hour-title" ng-bind="statisticshw.lhname"></div>
+                    <div class="float-l font-four font-nine" style="padding-top: 3px;"><span ng-bind="statisticshw.gradename">4年级</span><span ng-bind="statisticshw.classname">404班</span></div>
+                </div>
+                <div class="font-minsong font-nine" style="margin: 10px 0 20px;">布置作业时间：<span ng-bind="statisticshw.publishtime*1000 | date:'yyyy/MM/dd  HH:mm:ss'">2016/05/20 6:20</span></div>
+                <div class="block-graytemplate portlet-fit portlet-form">
+                    <div class="portlet-title clearfix classhw-title">
+                        <div class="selectbook-title float-l" style="margin:10px 0 10px;">
+                            作业统计
+                        </div>
+                        <div class="float-r">
+                            <div class="font-minsong" style="margin: 10px 0 0;">
+                                <span>接收 <span>（<span class="font-red " ng-bind="statisticshw.accept">20</span>）</span></span>
+                                <span>未交<span>（<span class="font-blue " ng-bind="statisticshw.nosubmit">20</span>）</span></span>
+                                <span>预检<span>（<span class="font-red " ng-bind="statisticshw.waiting">20</span>）</span></span>
+                                <span>已交<span>（<span class="font-blue  " ng-bind="statisticshw.submit">2</span>）</span></span>
+                                <span>未批<span>（<span class="font-red " ng-bind="statisticshw.nocorrections">2</span>）</span></span>
+                                <span>已批<span>（<span class="font-blue" ng-bind="statisticshw.correct">2</span>）</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="vm.hwstatisticslist.length>0">
+
+                        <div class="portlet-body">
+                            <div class="tab-content">
+                                <div class="tab-pane active">
+                                    <div class="table-scrollable table-noborder">
+                                        <table class="table   table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <!--<td align="center" valign="middle" width="10%">学籍号</td>-->
+                                                    <th align="center" valign="middle" width="10%">姓名</th>
+                                                    <th align="center" valign="middle" width="10%">提交状态</th>
+                                                    <th align="center" valign="middle" width="20%">提交时间</th>
+                                                    <th align="center" valign="middle" width="10%">批改状态</th>
+                                                    <th align="center" valign="middle" width="20%">作业得分</th>
+                                                    <th align="center" valign="middle" width="10%">名次</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="u in vm.hwstatisticslist" ng-class="{'even-line':$index%2==0}">
+                                                    <!--<td align="center" valign="middle" ng-bind="u.upid">1</td>-->
+                                                    <td align="center" valign="middle" ng-bind="u.realname">
+                                                        周文秀
+                                                    </td>
+                                                    <td align="center" valign="middle">
+                                                        <span ng-show="u.submitstatus==0">未提交</span>
+                                                        <span ng-show="u.submitstatus==1">提交中</span>
+                                                        <span ng-show="u.submitstatus==2">已提交</span>
+                                                    </td>
+                                                    <td align="center" valign="middle">
+                                                        <span ng-bind="u.submittime*1000 | date:'yyyy/MM/dd  HH:mm:ss'" ng-if="u.submitstatus!=0">2016/5/10 12:01</span>
+                                                    </td>
+                                                    <td align="center" valign="middle">
+                                                        <span ng-show="u.correctstatus==0">未批改</span>
+                                                        <span ng-show="u.correctstatus==1">批改中</span>
+                                                        <span ng-show="u.correctstatus==2">已批改</span>
+                                                    </td>
+                                                    <td align="center" valign="middle" class="font-redscore font-red">
+                                                        <span ng-bind="u.score">90</span>
+                                                    </td>
+                                                    <td align="center" valign="middle" ng-bind="u.ranking">
+                                                        10
+                                                    </td>
+                                                </tr>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div no-data datalist="vm.hwstatisticslist">
+                        <div class="kby gyzy-blank" style="display:none;">
+                        </div>
+                    </div>
+                    <div class="row" style="text-align: right; margin-right: 50px;">
+                        <div set-pagination page-options="listOptions" class="pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight();
+</script>

@@ -1,0 +1,126 @@
+﻿<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+
+            <li>
+                <span>使用帮助</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet portlet-form ">
+                    <div class="faq-section bordered">
+
+                        <div class="panel-group accordion faq-content" id="accordion3">
+                            <div class=" panel-default">
+                                <div class="help-title" ng-click="selectTab(0)">
+                                    <h4 class="panel-title selectbook-title">
+                                        <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion3" aria-expanded="true">一、如何使用易师（此操作流程适用于电脑端和微信端）？</a>
+                                    </h4>
+                                </div>
+                                <div class="panel-collapse collapse in" aria-expanded="true" ng-if="!vm.checked&&vm.tabindex==0" ng-class="{'in':vm.tabindex==0}">
+                                    <div class="panel-body note-usehelp">
+                                        <p>1、注册登录 - 手机号注册易师并登录；</p>
+                                        <p>2、创建班级 - 将创建后的班群号分享至学生（学生配合易全解APP使用）；</p>
+                                        <p>3、学生加入 - 让学生下载“易全解”APP，并加入到您的班群号；</p>
+                                        <p>4、布置作业 -	选择在易师电脑端或微信端布置作业；</p>
+                                        <p>5、收取作业 - 学生在易全解APP端收到您布置的作业，线下写完，即可拍照提交作业；</p>
+                                        <p>6、作业批改 - 收到学生提交的作业后，您可选择在易师电脑端或微信端进行作业批改；</p>
+                                        <p>7、反馈结果 - 批改完成后，作业结果会实时反馈到学生的易全解APP上；</p>
+                                        <p>8、家长关注 - 家长关注“易起教”微信公众号，绑定孩子易全解APP，您的批改结果会同步至家长端易起教微信公号上；</p>
+                                        <p>9、学情分析 - 作业批改完成后会生成分析报告，将自动推送给老师（电脑站和微信端）、学生（易全解APP）、家长（易起教微信公众号）上</p>
+                                        <p>注：“易师”微信公众号ID：yishi-yqj</p>
+                                        <p>“易起教”微信公众号ID：yiqijiao-yqj</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-default">
+                                <div class=" help-title" ng-click="selectTab(1)">
+                                    <h4 class="panel-title selectbook-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3">二、电脑版和微信版有何区别？</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse_3_2" class="panel-collapse collapse" ng-if="!vm.checked&&vm.tabindex==1" ng-class="{'in':vm.tabindex==1}">
+                                    <div class="panel-body  note-usehelp">
+                                        <p>1、都可以布置作业、批改作业、查看学情分析；</p>
+                                        <p>2、微信端可以对学生的作业进行语音评语，电脑端不可以；</p>
+                                        <p>3、微信端可以关注学生，电脑端展示没有这个功能；</p>
+                                        <p>4、电脑端的管理班级中，可以删除学生，微信不可以；</p>
+                                        <p>5、电脑端可以打印学生错题，微信端不可以；</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-default">
+                                <div class=" help-title" ng-click="selectTab(2)">
+                                    <h4 class="panel-title usehelp-block selectbook-title">
+                                        <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion3">三、老师为什么要用易师？</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse_3_3" class="panel-collapse collapse" ng-if="!vm.checked&&vm.tabindex==2" ng-class="{'in':vm.tabindex==2}">
+                                    <div class="panel-body  note-usehelp">
+                                        <p>1、优质的配套教辅资源：智能作业本配套的纸质图书百万名师精选每一道试题，多层次，全方位让孩子掌握相关知识点；</p>
+                                        <p>2、便捷的作业批改服务：网页版和微信版随时随地批改作业方便快捷，将作业批改碎片化、及时化；</p>
+                                        <p>3、系统的学情分析报告：及时的作业分析，实现“一课一反馈”，并提供教学参考。</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-default">
+                                <div class="help-title" ng-click="selectTab(3)">
+                                    <h4 class="panel-title selectbook-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3">四、易师支持哪些教材？</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse_3_4" class="panel-collapse collapse" ng-if="!vm.checked&&vm.tabindex==3" ng-class="{'in':vm.tabindex==3}">
+                                    <div class="note-usehelp panel-body">
+                                        <p>
+                                            1、易师是配合纸质教辅图书《小学教材全练》使用；
+                                        </p>
+                                        <p> 2、目前覆盖《小学教材全练》4、5、6年级人教版及青岛版，之后将不断完善；</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-default">
+                                <div class=" help-title" ng-click="selectTab(4)">
+                                    <h4 class="panel-title selectbook-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3">五、使用易师，遇到问题怎么办？</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse_3_5" class="panel-collapse collapse" ng-if="!vm.checked&&vm.tabindex==4" ng-class="{'in':vm.tabindex==4}">
+                                    <div class="panel-body  note-usehelp">
+                                        <p>1、查看右下方【攻略】；</p>
+                                        <p>2、与在线客服联系：</p>
+                                        <p>3、添加客服微信号：bjyqj-kf002或bjyqj-kf；</p>
+                                        <p>我们客服工作时间为：早9:00—晚21:00（含周六周日）</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="panel-default">
+                                <div class="help-title" ng-click="selectTab(5)">
+                                    <h4 class="panel-title selectbook-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3">6.易师怎么布置作业？</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse_3_6" class="panel-collapse collapse" ng-if="!vm.checked&&vm.tabindex==5" ng-class="{'in':vm.tabindex==5}">
+                                    <div class="panel-body note-usehelp">
+                                        <p>用易师布置作业可以按课时布置，也可以进行课时中分题布置。在易师微信版或者网页版，进入布置作业页面：选择班级-选择教辅-选择课时（全部布置、分题布置）-选择作业截止时间-确定布置即可</p>
+
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight()
+</script>

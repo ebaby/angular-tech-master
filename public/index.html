@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>易师</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="X-UA-Compatible" content="edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="//img1.yqj.cn/w/res/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="//img1.yqj.cn/w/res/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="//img1.yqj.cn/w/res/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="//img1.yqj.cn/w/res/assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="//img1.yqj.cn/w/res/assets/layouts/layout5/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="//img1.yqj.cn/w/res/assets/pages/css/profile.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.min.css" />
+    <!--<link rel="stylesheet" type="text/css" href="/css/setup.css" />-->
+    <link href="//img1.yqj.cn/w/images/Eico.ico" rel="shortcut icon" />
+    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js" type="text/javascript"></script>
+    <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="/js/libs/jquery.imgviewer.min.js"></script>
+    <script src="//img1.yqj.cn/w/res/assets/global/scripts/app.min.js" type="text/javascript"></script>
+    <script src='//static.polyv.net/file/polyvplayer_v2.0.min.js'></script>
+    <script data-main="/js/config" src="/js/libs/require.js"></script>
+
+
+
+    <!-- END THEME LAYOUT STYLES -->
+</head>
+<!-- END HEAD -->
+<body id="layoutcontainer" class="">
+    <div>
+        <div ui-view='header'>
+
+        </div>
+        <!-- END HEADER -->
+        <div class="content-area clearfix" style="min-height:500px;margin-top:80px !important;">
+            <div id="sidebar" ui-view="sidebar">
+
+            </div>
+            <div ui-view=''>
+
+            </div>
+        </div>
+    </div>
+    <div class="back">
+        <img src="/img/body-back.png" alt="" />
+    </div>
+    <!--footer-->
+
+    <div class="foot1" id="aboutfoot">
+        <div class="float-l foot-left"><a href="resource/Footer/about.html" target="_blank">关于我们</a>  |  <a href="resource/Footer/addour.html" target="_blank">加入我们</a>  | <a href="resource/Footer/contactour.html" target="_blank"> 联系我们</a>  | <a href="resource/Footer/friendlinks.html" target="_blank"> 友情链接</a>  </div>
+        <div class="foot-left" style="float:right">2013-2016 易全解 (yqj.cn)京ICP备15055904号</div>
+        <div class="clear"></div>
+    </div>
+
+
+    <!--悬浮-->
+    <div class="fixed" ui-view='menubar'>
+
+    </div>
+    <div class="all-loading"></div>
+    <div class="picBox" style="display:none;">
+        <div class="picBox-bj">
+            <div class="picBox-left"></div>
+            <div class="picBox-right"><img onclick="closeMQ()" src="http://img1.yqj.cn/w/images/cha.png" /></div>
+        </div>
+        <div class="picBox-cont">
+            <iframe id="iframegensee" name="iframegensee" style="height:100%; width:100%" src="https://static.meiqia.com/dist/standalone.html?eid=5097" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes"></iframe>
+        </div>
+    </div>
+    <script type="text/javascript" src="//www.sobot.com/chat/frame/js/entrance.js?sysNum=1c500e3d004840999d0c257b4ad1ee28" id="zhichiScript" class="zhiCustomBtn" data-args="manual=true"></script>
+    <script src="//img1.yqj.cn/w/res/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="//img1.yqj.cn/w/res/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="//img1.yqj.cn/w/res/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="//img1.yqj.cn/w/res/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="/js/libs/datepicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="//img1.yqj.cn/w/res/assets/layouts/layout5/scripts/layout.min.js" type="text/javascript"></script>
+    <script src="//img1.yqj.cn/w/res/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+    <div style="display: none">
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?4b0a35926f2e43cc6c8d256758631c11";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+        <script type="text/javascript" src="//tajs.qq.com/stats?sId=54620497" charset="UTF-8"></script>
+    </div>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax:["input/TeX","output/SVG"],
+        "SVG" : {
+        font: "TeX",
+        scale: 120,
+        blacker: 30,
+        minscaleadjust:250,
+        matchfontheight:true,
+        showMathMenu: false
+        }
+        });
+    </script>
+    <script>
+        window.localStorage.tch_token = $.cookie('tch_token');//getQueryString('token');
+      
+        function closeMQ() {
+            $(".picBox").hide();
+        }
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    </script>
+    <!--<style type="text/css">
+        #MEIQIA-BTN-HOLDER {
+            right: -200px !important;
+        }
+    </style>-->
+
+    <!-- END THEME LAYOUT SCRIPTS -->
+</body>
+
+</html>

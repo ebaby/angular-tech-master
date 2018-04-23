@@ -1,0 +1,62 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li>
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li>
+                <span>布置作业</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li>
+                <span ui-sref="app.sethomework.sethw" class="cursor">布置新作业</span><span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li>
+                <span>布置作业完成</span>
+
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet">
+                    <div class="homeok">
+                        <img src="img/homeok.png" alt="Alternate Text" />
+                    </div>
+                    <div class="classhw-ok block-graytemplate " ng-repeat="vt in tempArray">
+                        <div class="classhw-title clearfix">
+                            <div class="classname" style="margin-top:10px;"><span ng-bind="vt.gradename"></span><span ng-bind="vt.classname"></span>（<span ng-bind="vt.joinusercount"></span>人）</div>
+                        </div>
+                        <div class="clearfix" style="padding:20px 0 0;">
+                            <div class="homeok-l">布置课时：</div>
+                            <div class="homeok-r">
+                                <div class="clearfix" ng-repeat="hi in hwItems">
+                                    <div class="float-l" style="margin-bottom:10px;">
+                                        【<span ng-bind="hi.lhname"></span>】
+                                        <div class="font-four font-nine">
+                                            <span style="padding-left: 6px;" ng-repeat="hh in hi.arrques">
+                                                (<span ng-bind="hh.xuanxiang"></span>)
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="float-r" style="margin-right:10px;">(<span ng-if="hi.isallarrangement==0" class="font-blue" ng-bind="hi.arrques.length"></span><span ng-if="hi.isallarrangement==1" class="font-blue" ng-bind="hi.allnum"></span>/ <span ng-bind="hi.allnum"></span>道)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-indent:12px;">
+                            作业截止时间：<span ng-bind="hwendtime*1000 | date:'yyyy/MM/dd  HH:mm:ss'"></span>
+                        </div>
+                    </div>
+                    <div class="homeok-btn">
+                        <button type="button" ng-click="goToHwLog()" class="btn-circle  btn-blue" style="width:136px;">查看布置的作业</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight();
+</script>

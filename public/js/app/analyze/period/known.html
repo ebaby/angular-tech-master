@@ -1,0 +1,65 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;" >
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>学情分析</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li class="font-act">
+                <span ui-sref="app.analyze.period" class="cursor">课时学情分析</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li>
+                <span>本课时知识点分析</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet   portlet-form  block-graytemplate" style="box-shadow: 0 1px 7px rgba(0,0,0,.1),0 1px 7px rgba(0,0,0,.1) !important;">
+                    <div class="portlet-title">
+                        <div class="selectbook-title">
+                            <span ng-bind="known.zsdname">因数和倍数的认识</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="table-scrollable table-noborder">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr ng-repeat="q in vm.questionlist" style="border-bottom:1px solid #e0e0e0;">
+                                        <td align="left" valign="middle" width="80%">
+                                            <span ng-bind="q.xuanxiang">1.根据从一个方向看的的图形，用给定数量的小正方题摆出的立体图形。</span>
+                                            <span custom-mathjax content="q.timuxushu" ng-bind-html="toHtml(q.timuxushu)" ></span>
+                                        </td>
+                                        <td align="center" valign="middle" width="20%" class="font-red">
+                                            <div >平均错误率：<span><span ng-bind="q.cwl" >20</span>%</span></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="clearfix learn-state font-minsong">
+                            <div class="float-l">
+                                说明：
+                            </div>
+                            <div class="float-l">
+                                <p style="margin: 0;">1.题号：本次作业中每个小题的题号。</p>
+                                <p style="margin: 0;">2.答题人次：班级中做过本小题的人数。</p>
+                                <p style="margin: 0;">3.答错人次：班级张做错本小题的人数。</p>
+                                <p style="margin: 0;">4.错误率：次作业中每个小题的错误率，即答错人次与在答题人次中所占的比例。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight()
+</script>

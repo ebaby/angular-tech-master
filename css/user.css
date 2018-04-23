@@ -1,0 +1,78 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+
+.xgmm{
+		color:#666f78 !important; 
+		font-size:20px !important; 
+		font-family:"微软雅黑";
+		font-weight:normal !important}
+.form{
+		padding:0  20px 20px 20px  !important}
+.form1{
+		padding:20px  20px 0px 20px  !important}
+.button{
+		width:243px;}
+.mm{
+		padding:0 !important;}
+.portlet.light {
+		padding: 12px 20px 15px !important;
+		background-color: #fff;
+}
+.wrapper{
+		position:relative
+	}
+.zzc{
+		width:100%; 
+		height:900px; 
+		background-color:#000000;
+		opacity:0.5; 
+		-moz-opacity:0.5; 
+		filter:alpha(opacity=50);
+		position:absolute; 
+		z-index:99999; 
+		top:0;}
+		
+.zz-nr{
+	width:380px;
+	height:200px;
+	background:#fff;
+	position:absolute;
+	z-index:9999999;
+	top:50%;
+	left:40%;
+	border-radius:5px;
+	padding:15px 20px 20px 20px;
+	}	
+.zz-dx{
+	color:#666565;
+	font-size:14px; 
+	font-family:"微软雅黑";
+	line-height:25px;}
+.zz-dx span{
+	color:#35c5d2;
+	font-size:14px; 
+	font-family:"微软雅黑"}
+.zz-tx{
+	color:#666565;
+	font-size:12px; 
+	font-family:"微软雅黑";
+	margin-top:10px;}
+.zz-tx span{
+	color:#35c5d2;
+	font-size:16px; 
+	font-family:"微软雅黑"}
+.zz-an{
+	font-family:"微软雅黑" !important; 
+	font-size:16px !important;
+	color:#fff !important;
+    font-weight:normal !important}	
+
+.dl{
+	color:#666565; 
+	font-family:"微软雅黑"; 
+	font-size:14px; 
+	margin-top:8px;}
+.dl span{color:#35c5d2; 
+	font-size:14px; 
+	font-family:"微软雅黑";}		

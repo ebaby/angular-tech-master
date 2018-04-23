@@ -1,0 +1,93 @@
+<header class="page-header ">
+    <nav class="navbar mega-menu  header-our" role="navigation">
+        <div class="navbar-fixed-top content-area header-top" >
+            <div class="clearfix" id="container-head">
+                <a id="index" class="page-logo" ui-sref="app">
+                    <img src="http://img1.yqj.cn/w/images/logo/yspc-logo/logo.png " alt="Logo">
+                </a>
+            </div>
+            <!-- BEGIN HEADER MENU -->
+            <div>
+                <div class="topbar-actions" style="top: 3px; right:0;">
+                    <div class="btn-group-notification btn-group"  title="您还有{{vm.messagecount}}条未读消息">
+                        <button ng-click="commentDialog()" type="button" class="btn dropdown-toggle btn-new" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                           <div class="float-l">
+                               <svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                style="width:18px;height:17px;" viewBox="0 0 16 17" enable-background="new 0 0 16 17" xml:space="preserve">
+                               <image overflow="visible" width="16px" height="17px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAARCAYAAADUryzEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                               bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                               bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                               eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                               MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                               dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                               dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                               IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                               ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                               cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                               RD0ieG1wLmlpZDpBMUVBODQ4NDMyOUMxMUU2OURFNzkxMEI1QkNEQzZFNyIgeG1wTU06RG9jdW1l
+                               bnRJRD0ieG1wLmRpZDpBMUVBODQ4NTMyOUMxMUU2OURFNzkxMEI1QkNEQzZFNyI+IDx4bXBNTTpE
+                               ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkExRUE4NDgyMzI5QzExRTY5REU3
+                               OTEwQjVCQ0RDNkU3IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkExRUE4NDgzMzI5QzExRTY5
+                               REU3OTEwQjVCQ0RDNkU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                               ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+QslrgQAAAWZJREFUeNqck7tKA1EQhnfDaoKikEYhXQoR
+                               FBS1UAhoI1pYKihE8BHsfQG1EwRLU1hoCjsFL3hJCkELDVaCN1TWwjIB8Qbrd2RWRtmsMQPfzvlP
+                               dubMTM7anudZ2gaypSRuFPqgFerBhQJs5cYbNvX7tk5A8AJu2gq3Q5gi0f13AgId1sfQbVVmz9BG
+                               kruIbOz8I9hYnWnnq4L+teIIfsOqztKmgrTaOJFqfDuCPaXPYVvpMdP7kIgneuqVYV7jkuiU6BvR
+                               naJ3cYPQZVp4Y1EDRWiHElxAMyTgVXQTtJiDIA8mmWsqOJAqGuFBAqJS1SO8Q63oS3iBmOiCmUH2
+                               12Ci+p6oYN9iap0xCTJwVcU/sM9M1iM8zFVMSW+V2hkM/7jKTDaOW/V/CLFZDp0J/BYk0QRuCeJq
+                               +wOWYY7g27Ifk0oyiVsROQ+LBLpB5ThlyuzwcxGYD+vHCTjdlivbQ/DpX9P8FGAAQSNyZBKEfBAA
+                               AAAASUVORK5CYII=">
+                               </image>
+                               </svg>
+                            </div>
+                            <div class="float-l i-marginl  font-four font-gray" title="您还有{{teacherinfo.messagecount}}条未读消息" ng-bind="vm.messagecount"></div>
+                        </button>
+                    </div>
+                    <div class="btn-group-notification btn-group"  title="您目前有{{teacherinfo.integralscore}}积分" >
+                        <button type="button" class="btn dropdown-toggle btn-color btn-new" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" ng-click="goToCredit()">
+                           <div class="float-l">
+                              <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	                                style="width:15px;height:17px;"  viewBox="0 0 15.004 18.004" enable-background="new 0 0 15.004 18.004" xml:space="preserve">
+                                <image overflow="visible" width="15" height="18" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAASCAYAAACEnoQPAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+                                AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAA
+                                CXBIWXMAAAsSAAALEgHS3X78AAABbUlEQVQ4y43TvWsVQRjF4WfHCxqR+C+oAxcFUVLaaIR0wpaS
+                                Io1gIWnSWPnZprBKKiuxEETSZBuJIAFRUil+gUSZIlaWoo0K5lpkVifLBu+BLeZ33sPOe2AqhVId
+                                D2CILdzBJdzDVRzBZmzSj3Z+YLfWcLbDLucPnuFca1T5jxVm8MT/NYP12KTtKtXxIDZwaoxgqzc4
+                                M8CxnuBvPMJ7nMRF7Cv80zg6wGdsI2RjhAuxSWtFkffxuF0zz38JeFgEYbUMQj6vFijgQcD5zpW3
+                                9tizy6cDFrowt/9X+TzdmVsIWMl7lmUspzpO5OAEljNvNcJKleo4xGbPNb8hIWKyxx+G2KSPmMf3
+                                jjmJqZ7gV8zHJn1qW36HQ8bTYbyFKtVxP17j+Jhh+ICpgOt7BF/iLl71eCdwLdh5akuYxYts/sRc
+                                bNIVzOFX5s/z3FLO/VOq4+1Ux1Gq480Ov5X5jZIHu/XUzotZ7PDFXOp6Cf8Ai9FkyELYqRYAAAAA
+                                SUVORK5CYII=" transform="matrix(1.0002 0 0 1.0002 0 0)">
+                                </image>
+                                </svg>
+                           </div>
+                            <div class="float-l i-marginl font-four font-gray" title="您目前有{{teacherinfo.integralscore}}积分" ng-bind="teacherinfo.integralscore"></div>
+                        </button>
+                    </div>
+                    <div class="btn-group-img btn-group">
+                        <button type="button" class="btn dropdown-toggle header-poto clearfix" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" style="top:3px;">
+                            <div class="navtop-poto float-l">
+                                <img src="{{teacherinfo.headpic}}" height="100%"  alt="" />
+                            </div>
+                            <div class="float-l i-marginl" style="line-height:36px;" >
+                                <span class="font-four font-gray" style="margin-right:5px;"><span ng-bind="teacherinfo.turename">兰云红</span></span>
+                                <i class="fa fa-caret-down "></i>
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu-v2  block-graytemplate " role="menu">
+                            <li>
+                                <a ng-click='setBaseinfo(-1)'>信息设置</a>
+                            </li>
+                            <li>
+                                <a ng-click='teacherLoginOutDialog()'>退出</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END USER PROFILE -->
+                </div>
+            </div>
+            <!-- END HEADER MENU -->
+        </div>
+        <!--/container-->
+    </nav>
+</header>

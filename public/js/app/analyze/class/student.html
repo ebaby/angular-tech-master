@@ -1,0 +1,61 @@
+<div class="container-top body-margin block-template content-left" style="padding:0;">
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>学情分析</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li class="font-act">
+                <span ui-sref="app.analyze.class" class="cursor">班级报告</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li>
+                <span>分数段内分布的学生</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block-graytemplate portlet-form ">
+                    <div class="portlet-title classhw-title">
+                        <div class="selectbook-title ">
+                            <span>分数段内分布的学生</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div ng-repeat="s in vm.scorelevel">
+                            <h4 class="class-learn-title" style="margin:20px 0 0;" ng-bind="s.title">优秀90-100分数段人数（<span ng-bind="s.userlist.length">8</span>）</h4>
+                            <div style="border-bottom 1px solid #e0e0e0; margin-top:10px 0 0;">
+                                <div class="row row-class-learn">
+                                    <div class="col-md-4 col-xs-6 " ng-repeat="u in s.userlist">
+                                        <div class="clearfix col-class-learn even-line">
+                                            <div class="float-l">
+                                                <img ng-src="{{u.headpic}}" alt="" />
+                                                <span class="font-sexsize" ng-bind="u.username">朱冰</span>
+                                            </div>
+                                            <div class="float-r">
+                                                平均分<span class="bjxq-score" ng-bind="u.averagescore">90</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight()
+</script>

@@ -1,0 +1,30 @@
+
+<div class="dialog-head" ng-bind="vm.currentwrong.resourcename" style="background:#fff;color:#333;">方程与方程组</div>
+<div class="dialog-videobox" style="background:#fff;">
+	<div class="dialog-video">
+    	 <div class="player-modal">
+	        <div id="playercontainer" player-form player-options='playerOptions' style="width:770px;height:433px;"></div>
+	    </div>
+	</div>
+	<div class="dialog-video-content">
+		<h6 >内容简介</h6>
+		<p ng-bind-html="toHtml(vm.currentwrong.resourcedes)" style="text-indent:0;">
+		基于易全解200多万用户作业的实时数据报告，遴选出错误率在50%以上的错题，特邀名师进行深入讲解分析，最终形成一套与用户学习情况相匹配兼具针对性的“错题精讲
+        微课，是学生考试提分的好帮手。基于易全解200多万用户作业的实时数据报告，
+		</p>
+	</div>
+	<div class="dialog-video-student">
+		<h6 >错题学生</h6>
+		 <div class="clearfix">
+		 	<div class="student-list cursor" ng-repeat="u in vm.currentwrong.stu_list" ng-if="vm.currentwrong.stu_list.length>0">
+				<div class="learn-table-headpt poto-list">
+					<img src="http://upimg.yqj.cn/headpic/student/2016/08/30/3bb23db7-4135-498f-bad8-1173f8f25088.jpg" ng-src="{{u.headiconurl}}" >
+					<!--<div class="check-xin fa fa-heart font-red"  ></div>-->
+				</div>
+				<span class="font-minsong ng-binding" ><span ng-bind="u.realname">兰玉红</span></span>
+			</div>
+		 </div>
+		 <div class="font-six" style="margin: 30px auto;width: 242px;color:#999;" ng-if="vm.currentwrong.stu_list.length==0">您的班级中暂无学生出错~</div>
+	</div>
+</div>
+

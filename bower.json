@@ -1,0 +1,72 @@
+{
+  "name": "angular-lazyload",
+  "description": "The template project",
+  "main": "",
+  "authors": [
+    "mzh"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-bootstrap": "~0.13.4",
+    "angularAMD": "~0.2.1",
+    "bootstrap": "~3.3.5",
+    "moment": "~2.10.6",
+    "require-css": "~0.1.8",
+    "ui-router": "~0.2.15",
+    "ui-router-extras": "~0.0.14",
+    "ng-dialog": "^0.6.1",
+    "angular-animate": "^1.5.5",
+    "angular-toastr": "^1.7.0",
+    "angular-loading-bar": "^0.9.0",
+    "angular-slimscroll": "^1.1.5",
+    "angular-local-storage": "^0.2.7",
+    "ng-file-upload": "^12.0.4"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js",
+        "dist/fonts/glyphicons-halflings-regular.eot",
+        "dist/fonts/glyphicons-halflings-regular.svg",
+        "dist/fonts/glyphicons-halflings-regular.ttf",
+        "dist/fonts/glyphicons-halflings-regular.woff"
+      ]
+    },
+    "angular-loading-bar": {
+      "main": [
+        "build/loading-bar.css",
+        "build/loading-bar.js"
+      ]
+    },
+    "angular-toastr": {
+      "main": [
+        "dist/angular-toastr.css",
+        "dist/angular-toastr.js",
+        "dist/angular-toastr.tpls.js"
+      ]
+    },
+    "ng-dialog": {
+      "main": [
+        "css/ngDialog.min.css",
+        "css/ngDialog-theme-default.css",
+        "js/ngDialog.min.js"
+      ]
+    },
+    "angularAMD": {
+      "main": [
+        "angularAMD.js",
+        "ngload.js"
+      ]
+    }
+  }
+}
